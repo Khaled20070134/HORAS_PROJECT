@@ -124,6 +124,7 @@
             pictureBoxStatus = new PictureBox();
             labelStatus = new Label();
             panel2 = new Panel();
+            label13 = new Label();
             metroTabControl1.SuspendLayout();
             tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PriceNUD).BeginInit();
@@ -192,6 +193,7 @@
             // tabPage3
             // 
             tabPage3.BackColor = Color.Black;
+            tabPage3.Controls.Add(label13);
             tabPage3.Controls.Add(buttonchosecontract);
             tabPage3.Controls.Add(PriceNUD);
             tabPage3.Controls.Add(ItemTypeCB);
@@ -1343,6 +1345,16 @@
             panel2.Size = new Size(782, 38);
             panel2.TabIndex = 2;
             // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.ForeColor = Color.IndianRed;
+            label13.Location = new Point(27, 102);
+            label13.Name = "label13";
+            label13.Size = new Size(46, 15);
+            label13.TabIndex = 219;
+            label13.Text = "التغيييير";
+            // 
             // NewContractorContract
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1499,5 +1511,6 @@
         private PictureBox pictureBox23;
         private Button button3;
         private Button button4;
+        private Label label13;
     }
 }
