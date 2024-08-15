@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
@@ -14,6 +16,7 @@ using HORAS.EmployeFolder.Employees;
 using HORAS.Interims_Data;
 using HORAS.LogFolder;
 using HORAS.SuppliersAndClients;
+using Microsoft.Office.Interop.Excel;
 using Microsoft.VisualBasic.Logging;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static HORAS.Enums;
@@ -59,6 +62,8 @@ namespace HORAS
         {
             try
             {
+                DatabaseConnected = CheckConnectionString();
+                if (!DatabaseConnected) return;
                 SetConnectionString();
                 Contracts.RefreshList();
                 assessments.RefreshList();
@@ -68,34 +73,57 @@ namespace HORAS
                 Interim.RefreshList();
                 Collections.RefreshList();
 
-                DatabaseConnected = true;
+                //DatabaseConnected = true;
             }
-            catch (Exception)
+            catch (InvalidOperationException Ex)
             {
 
                 DatabaseConnected = false;
+                return;
             }
         }
 
-
+        static bool CheckConnectionString()
+        {
+            try
+            {
+                var conn = new SqlConnection(Settings1.Default.CS);
+                conn.Open();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
 
         static void SetConnectionString()
         {
             //Settings1.Default.Reload();
 
-            Contracts.ContractTableAdapter.Connection.ConnectionString = Settings1.Default.CS;
-            Contracts.ExpTrAdapter.Connection.ConnectionString = Settings1.Default.CS;
-            Contracts.IExpansesAdapter.Connection.ConnectionString = Settings1.Default.CS;
-            Contracts.JExpansesAdapter.Connection.ConnectionString = Settings1.Default.CS;
-            Contracts.BGLAdapter.Connection.ConnectionString = Settings1.Default.CS;
-            Collections.CollectionAdapter.Connection.ConnectionString = Settings1.Default.CS;
-            employees.EmployeesTableAdapter.Connection.ConnectionString = Settings1.Default.CS;
-            assessments.AssessmentHeadTableAdapter.Connection.ConnectionString = Settings1.Default.CS;
-            assessments.AssItemsAdapter.Connection.ConnectionString = Settings1.Default.CS;
-            OwnersAndContractors.PartyTableAdapter.Connection.ConnectionString = Settings1.Default.CS;
-            Interim.InterimsHeadTableAdapter.Connection.ConnectionString = Settings1.Default.CS;
-            Interim.InterimsItemsTableAdapter.Connection.ConnectionString = Settings1.Default.CS;
-            LogActivity.LogTableAdapter.Connection.ConnectionString = Settings1.Default.CS;
+            try
+            {
+                Contracts.ContractTableAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                Contracts.ExpTrAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                Contracts.IExpansesAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                Contracts.JExpansesAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                Contracts.BGLAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                Collections.CollectionAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                employees.EmployeesTableAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                assessments.AssessmentHeadTableAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                assessments.AssItemsAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                OwnersAndContractors.PartyTableAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                Interim.InterimsHeadTableAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                Interim.InterimsItemsTableAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                LogActivity.LogTableAdapter.Connection.ConnectionString = Settings1.Default.CS;
+            }
+            catch (InvalidOperationException Ex)
+            {
+
+                DatabaseConnected = false;
+                return;
+            }
+            // Settings1.Default.Save();
         }
 
         public static bool CheckMail(string email)
