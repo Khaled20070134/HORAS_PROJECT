@@ -65,6 +65,7 @@
             DGVContractItems = new DataGridView();
             ItemNo = new DataGridViewTextBoxColumn();
             ItemQty = new DataGridViewTextBoxColumn();
+            Unit = new DataGridViewTextBoxColumn();
             ItemPrice = new DataGridViewTextBoxColumn();
             LOL2 = new DataGridViewTextBoxColumn();
             type = new DataGridViewTextBoxColumn();
@@ -124,7 +125,6 @@
             pictureBoxStatus = new PictureBox();
             labelStatus = new Label();
             panel2 = new Panel();
-            label13 = new Label();
             metroTabControl1.SuspendLayout();
             tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PriceNUD).BeginInit();
@@ -169,8 +169,8 @@
             // metroTabControl1
             // 
             metroTabControl1.Appearance = TabAppearance.FlatButtons;
-            metroTabControl1.Controls.Add(tabPage3);
             metroTabControl1.Controls.Add(tabPage2);
+            metroTabControl1.Controls.Add(tabPage3);
             metroTabControl1.Controls.Add(tabPage1);
             metroTabControl1.CustomBackground = false;
             metroTabControl1.FontSize = MetroFramework.MetroTabControlSize.Medium;
@@ -193,7 +193,6 @@
             // tabPage3
             // 
             tabPage3.BackColor = Color.Black;
-            tabPage3.Controls.Add(label13);
             tabPage3.Controls.Add(buttonchosecontract);
             tabPage3.Controls.Add(PriceNUD);
             tabPage3.Controls.Add(ItemTypeCB);
@@ -408,6 +407,7 @@
             DGVItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DGVItems.Size = new Size(645, 147);
             DGVItems.TabIndex = 27;
+            DGVItems.CellContentClick += DGVItems_CellContentClick_1;
             DGVItems.SelectionChanged += DGVItems_SelectionChanged;
             // 
             // Column1
@@ -548,7 +548,7 @@
             // DGVContractItems
             // 
             DGVContractItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGVContractItems.Columns.AddRange(new DataGridViewColumn[] { ItemNo, ItemQty, ItemPrice, LOL2, type });
+            DGVContractItems.Columns.AddRange(new DataGridViewColumn[] { ItemNo, ItemQty, Unit, ItemPrice, LOL2, type });
             DGVContractItems.Location = new Point(36, 13);
             DGVContractItems.Name = "DGVContractItems";
             DGVContractItems.Size = new Size(698, 189);
@@ -568,6 +568,12 @@
             ItemQty.HeaderText = "كمية أو نسبة البند";
             ItemQty.Name = "ItemQty";
             ItemQty.ReadOnly = true;
+            // 
+            // Unit
+            // 
+            Unit.Frozen = true;
+            Unit.HeaderText = "وحده البند";
+            Unit.Name = "Unit";
             // 
             // ItemPrice
             // 
@@ -1345,16 +1351,6 @@
             panel2.Size = new Size(782, 38);
             panel2.TabIndex = 2;
             // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.ForeColor = Color.IndianRed;
-            label13.Location = new Point(27, 102);
-            label13.Name = "label13";
-            label13.Size = new Size(46, 15);
-            label13.TabIndex = 219;
-            label13.Text = "التغيييير";
-            // 
             // NewContractorContract
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1512,5 +1508,6 @@
         private Button button3;
         private Button button4;
         private Label label13;
+        private DataGridViewTextBoxColumn Unit;
     }
 }

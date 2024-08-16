@@ -25,6 +25,7 @@ namespace HORAS.Contracts
 {
     public partial class NewContractorContract : Form
     {
+        Dictionary<string, string> desriptiondictionary = new Dictionary<string, string>();
         //Contractor SelectedContractor;
         Contractor SelectedOwner;
         assessment SelectedAssessment;
@@ -33,7 +34,25 @@ namespace HORAS.Contracts
         AssItemsRow ItemRow;
         AssItemsDataTable ItemsList;
         List<AssItemsRow> ListToSave = new List<AssItemsRow>();
-        List<AssItemsRow> ItemsToSave = new List<AssItemsRow>();
+        //List<AssItemsRow> ItemsToSave = new List<AssItemsRow>();
+        void getItemdata() 
+        {
+            ListToSave.Clear();
+            for (int i=0; i< DGVContractItems.Rows.Count-1;i++)
+            {
+                ItemRow = MasterData.Database.AssItems.NewAssItemsRow();
+                ItemRow.Number = DGVContractItems.Rows[i].Cells[0].Value.ToString();
+                ItemRow.Qty = double.Parse(DGVContractItems.Rows[i].Cells[1].Value.ToString());
+                ItemRow.Item_Unit = DGVContractItems.Rows[i].Cells[2].Value.ToString();
+                ItemRow.Total_Price = double.Parse(DGVContractItems.Rows[i].Cells[3].Value.ToString());
+                ItemRow.LOL = double.Parse(DGVContractItems.Rows[i].Cells[4].Value.ToString());
+                ItemRow.Item_Type = (int)(Item_TYPE)Enum.Parse(typeof(Item_TYPE), DGVContractItems.Rows[i].Cells[5].Value.ToString());
+                ItemRow.Description = desriptiondictionary[ItemRow.Number];
+                ListToSave.Add(ItemRow);
+            }
+
+            
+        }
         float TotalAssessment
         {
             get { return float.Parse(TotalvalueLBL.Text); }
@@ -47,7 +66,6 @@ namespace HORAS.Contracts
             InitializeComponent();
             LoadOwnerContracts();
             ItemTypeCB.DataSource = Enum.GetValues(typeof(Enums.Item_TYPE));
-
         }
 
         void SetNewContractData()
@@ -71,7 +89,8 @@ namespace HORAS.Contracts
             contract.StartedBy = -1;
             contract.Contract_type = (int)ContractType.ContractorContract;
             contract.OwnerContractID = SelectedOwnerContract.ID;
-            CopyFiles();
+            if (TextBoxFile1.Text != string.Empty || TextBoxFile2.Text != string.Empty)
+                CopyFiles();
         }
 
         void CopyFiles()
@@ -102,17 +121,6 @@ namespace HORAS.Contracts
                 ComboBoxOwner.Items.Add(C.Name);
         }
 
-
-        void LoadContracts()
-        {
-            // Load Contractor and Owners
-            MasterData.LoadMasterData();
-            CBAssessmentContracts.Items.Clear();
-            // Load Assessments
-            foreach (var ass in MasterData.assessments.AssessmentHeadDataTable.Where(X => X.Confirmed == true).ToList())
-                CBAssessmentContracts.Items.Add(ass.About);
-        }
-
         private void ComboBoxOwner_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ComboBoxOwner.SelectedIndex != -1)
@@ -131,7 +139,7 @@ namespace HORAS.Contracts
             if (CBAssessmentContracts.SelectedIndex != -1)
             {
                 DGVContractItems.Rows.Clear();
-                ItemsToSave.Clear();
+                ListToSave.Clear();
                 updateFIData();
 
                 SelectedOwnerContract = new Contract();
@@ -162,7 +170,6 @@ namespace HORAS.Contracts
 
             foreach (var Item in ItemsList)
             {
-
                 double Total = 0;
                 switch (Item.Item_Type)
                 {
@@ -248,7 +255,7 @@ namespace HORAS.Contracts
             SelectedItems.Clear();
             DGVItems.Rows.Clear();
             DGVContractItems.Rows.Clear();
-            ItemsToSave.Clear();
+            ListToSave.Clear();
             updateFIData();
             DescTxt.Text = string.Empty;
             NUDItemQ.Value = PriceNUD.Value = 0;
@@ -256,7 +263,6 @@ namespace HORAS.Contracts
 
         private void metroButton4_Click(object sender, EventArgs e)
         {
-
             bool ContractOK = CheckContractData();
             if (ContractOK)
             {
@@ -272,15 +278,8 @@ namespace HORAS.Contracts
                 setStatus("تم تسجيل بيانات التعاقد بنجاح", 1);
                 MasterData.LoadMasterData();
             }
-
         }
-        void ResetSave()
-        {
-            DGVContractItems.Rows.Clear();
-            updateFIData();
 
-            //TextBoxURL.Text = TextBoxSubject.Text = TextBoxAbout.Text = string.Empty;
-        }
         int AddAssessment(int ContractID)
         {
             MasterData.assessments.AssessmentRow = MasterData.assessments.AssessmentHeadDataTable.NewAssessmentHeadRow();
@@ -290,8 +289,9 @@ namespace HORAS.Contracts
             MasterData.assessments.AssessmentRow.Subject = TextBoxShortDesc.Text;
             MasterData.assessments.AssessmentRow.About = TextBoxShortDesc.Text;
             MasterData.assessments.AssessmentRow.ID = -1;
+            getItemdata();
             SetItemsIDAndContract(ContractID);
-            int AssHeadID = MasterData.assessments.AddNew(ItemsToSave);
+            int AssHeadID = MasterData.assessments.AddNew(ListToSave);
             return AssHeadID;
         }
 
@@ -301,41 +301,8 @@ namespace HORAS.Contracts
             if (MasterData.assessments.AssItemsDataTable.Count > 0)
                 StartItemIndex = MasterData.assessments.AssItemsDataTable.Max(X => X.ID) + 1;
 
-            for (int i = 0; i < ItemsToSave.Count; i++)
-            { ItemsToSave[i].ID = StartItemIndex + i; ItemsToSave[i].Contract_ID = ContractID; }
-
-        }
-
-        void LoadItems()
-        {
-            ListToSave.Clear();
-            int StartItemIndex = 0;
-            if (MasterData.assessments.AssItemsDataTable.Count > 0)
-                StartItemIndex = MasterData.assessments.AssItemsDataTable.Max(X => X.ID) + 1;
-
-            for (int i = 0; i < DGVContractItems.RowCount - 1; i++)
-            {
-                ItemRow = MasterData.assessments.AssItemsDataTable.NewAssItemsRow();
-             //   ItemRow.ID = StartItemIndex + i;
-                ItemRow.Number = DGVContractItems.Rows[i].Cells[0].Value.ToString();
-                ItemRow.Description = DGVContractItems.Rows[i].Cells[1].Value.ToString();
-                ItemRow.Item_Unit = DGVContractItems.Rows[i].Cells[2].Value.ToString();
-                ItemRow.Total_Price = float.Parse(DGVContractItems.Rows[i].Cells[2].Value.ToString());
-                ItemRow.LOL = float.Parse(DGVContractItems.Rows[i].Cells[3].Value.ToString());
-                ItemRow.Item_Type = ((int)(Item_TYPE)Enum.Parse(typeof(Item_TYPE), DGVContractItems.Rows[i].Cells[5].Value.ToString()));
-                ItemRow.Qty = float.Parse(DGVContractItems.Rows[i].Cells[4].Value.ToString());
-                if (ItemRow.Item_Type == 1 || ItemRow.Item_Type == 2) ItemRow.Qty = 100;
-                ListToSave.Add(ItemRow);
-            }
-
-        }
-        private void metroButton7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void metroButton6_Click(object sender, EventArgs e)
-        {
+            for (int i = 0; i < ListToSave.Count; i++)
+            { ListToSave[i].ID = StartItemIndex + i; ListToSave[i].Contract_ID = ContractID; }
 
         }
 
@@ -343,11 +310,6 @@ namespace HORAS.Contracts
         {
             //UpdateFIData();
             updateFIData();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Close();
         }
 
         List<AssItemsRow> SelectedItems = new List<AssItemsRow>();
@@ -368,18 +330,8 @@ namespace HORAS.Contracts
                 ItemRow.Item_Type = (int)(Item_TYPE)Enum.Parse(typeof(Item_TYPE), DGVItems.Rows[i].Cells[5].Value.ToString());
                 Sum += ItemRow.Total_Price;
                 SelectedItems.Add(ItemRow);
-
             }
             labelItemTotal.Text = MasterData.NumericString(Sum);
-            // UpdateFIData();
-        }
-
-        private void RefreshBTN_Click(object sender, EventArgs e)
-        {
-            CBAssessmentContracts.Items.Clear();
-            foreach (var ass in MasterData.assessments.AssessmentHeadDataTable.Where(X => X.Confirmed == true).ToList())
-                CBAssessmentContracts.Items.Add(ass.About);
-            setStatus("تم تحديث قائمة ارقام المقايسات", 1);
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)
@@ -419,11 +371,6 @@ namespace HORAS.Contracts
             NUDItemQ.Maximum = (decimal)MasterData.Contracts.GetRemainingItem(SelectedOwnerContract.Number, itemno);
 
             labelRemain.Text = NUDItemQ.Maximum.ToString();
-
-            //ItemTypeCB.DataSource =
-
-
-
         }
 
         private void DGVItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -440,6 +387,8 @@ namespace HORAS.Contracts
         {
 
         }
+        AssItemsRow NewItem;
+        List<AssItemsRow> NewList = new List<AssItemsRow>();
 
         private void button2_Click_1(object sender, EventArgs e)
         {
@@ -448,6 +397,7 @@ namespace HORAS.Contracts
                 setStatus("يجب إختيار البند أولاً", 0);
                 return;
             }
+
 
 
             double Ownertotalvalue = double.Parse(DGVItems.SelectedRows[0].Cells[2].Value.ToString());
@@ -460,17 +410,38 @@ namespace HORAS.Contracts
             {
                 setStatus("قيمة البند يجب ان تكون اقل", 0); return;
             }
-            AssItemsRow NewItem = MasterData.assessments.AssItemsDataTable.NewAssItemsRow();
 
-            NewItem.Number = DGVItems.SelectedRows[0].Cells[0].Value.ToString();
-            NewItem.Qty = (double)NUDItemQ.Value;
-            NewItem.Item_Type = (int)(Item_TYPE)Enum.Parse(typeof(Enums.Item_TYPE), ItemTypeCB.SelectedItem.ToString());
-            NewItem.LOL = (double)DGVItems.SelectedRows[0].Cells[4].Value;
-            NewItem.Total_Price = (double)PriceNUD.Value;
-            NewItem.Description = DescTxt.Text;
-            NewItem.Item_Unit = DGVItems.SelectedRows[0].Cells[1].Value.ToString();
-            DGVContractItems.Rows.Add(NewItem.Number, NewItem.Qty, NewItem.Total_Price, NewItem.LOL, ItemTypeCB.SelectedItem.ToString());
-            ItemsToSave.Add(NewItem);
+            MasterData.assessments.AssItemsRow = MasterData.assessments.AssItemsDataTable.NewAssItemsRow();
+            //  NewItem = MasterData.assessments.AssItemsDataTable.NewAssItemsRow();
+
+            MasterData.assessments.AssItemsRow.Number = DGVItems.SelectedRows[0].Cells[0].Value.ToString();
+            MasterData.assessments.AssItemsRow.Qty = (double)NUDItemQ.Value;
+            MasterData.assessments.AssItemsRow.Item_Type = (int)(Item_TYPE)Enum.Parse(typeof(Enums.Item_TYPE), ItemTypeCB.SelectedItem.ToString());
+            MasterData.assessments.AssItemsRow.LOL = (double)DGVItems.SelectedRows[0].Cells[4].Value;
+            MasterData.assessments.AssItemsRow.Total_Price = (double)PriceNUD.Value;
+            MasterData.assessments.AssItemsRow.Description = DescTxt.Text;
+            MasterData.assessments.AssItemsRow.Item_Unit = DGVItems.SelectedRows[0].Cells[1].Value.ToString();
+            desriptiondictionary.Add(MasterData.assessments.AssItemsRow.Number, MasterData.assessments.AssItemsRow.Description);
+            //ItemsToSave.Add(MasterData.assessments.AssItemsRow);
+            NewList.Add(MasterData.assessments.AssItemsRow);
+            DGVContractItems.Rows.Add(MasterData.assessments.AssItemsRow.Number,
+                MasterData.assessments.AssItemsRow.Qty, MasterData.assessments.AssItemsRow.Item_Unit, MasterData.assessments.AssItemsRow.Total_Price,
+                MasterData.assessments.AssItemsRow.LOL, ItemTypeCB.SelectedItem.ToString());
+
+
+
+            //NewItem = MasterData.assessments.AssItemsDataTable.NewAssItemsRow();
+
+            //NewItem.Number = DGVItems.SelectedRows[0].Cells[0].Value.ToString();
+            //NewItem.Qty = (double)NUDItemQ.Value;
+            //NewItem.Item_Type = (int)(Item_TYPE)Enum.Parse(typeof(Enums.Item_TYPE), ItemTypeCB.SelectedItem.ToString());
+            //NewItem.LOL = (double)DGVItems.SelectedRows[0].Cells[4].Value;
+            //NewItem.Total_Price = (double)PriceNUD.Value;
+            //NewItem.Description = DescTxt.Text;
+            //NewItem.Item_Unit = DGVItems.SelectedRows[0].Cells[1].Value.ToString();
+            // ItemsToSave.Add(NewItem);
+            // DGVContractItems.Rows.Add(NewItem.Number, NewItem.Qty, NewItem.Total_Price, NewItem.LOL, ItemTypeCB.SelectedItem.ToString());
+
             setStatus("تم اضافه البند بنجاح", 1);
 
             updateFIData();
@@ -484,7 +455,7 @@ namespace HORAS.Contracts
         {
             double totalvalue = 0;
             for (int i = 0; i < DGVContractItems.RowCount - 1; i++)
-                totalvalue += double.Parse(DGVContractItems.Rows[i].Cells[2].Value.ToString());
+                totalvalue += double.Parse(DGVContractItems.Rows[i].Cells[3].Value.ToString());
             TotalvalueLBL.Text = MasterData.NumericString(totalvalue);
 
             LabelDelayP.Text = MasterData.NumericString((double)(NUDDelayP.Value / 100) * totalvalue);
@@ -546,6 +517,11 @@ namespace HORAS.Contracts
             FileDialoge.InitialDirectory = Application.StartupPath;
             if (FileDialoge.ShowDialog() == DialogResult.OK)
                 TextBoxFile2.Text = FileDialoge.FileName;
+        }
+
+        private void DGVItems_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

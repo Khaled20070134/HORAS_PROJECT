@@ -18,6 +18,7 @@ namespace HORAS
         public AssessmentHeadTableAdapter AssessmentHeadTableAdapter = new AssessmentHeadTableAdapter();
         public AssessmentHeadDataTable AssessmentHeadDataTable = new AssessmentHeadDataTable();
         public AssessmentHeadRow AssessmentRow;
+        public AssItemsRow AssItemsRow;
 
         public AssItemsTableAdapter AssItemsAdapter = new AssItemsTableAdapter();
         public AssItemsDataTable AssItemsDataTable = new AssItemsDataTable();

@@ -57,13 +57,13 @@ namespace HORAS
         public static ConnectionData ConnectionData = new ConnectionData();
         public static string ConnectionString;
 
-        public static bool DatabaseConnected = true;
+        public static bool DatabaseConnected = false;
         public static void LoadMasterData()
         {
             try
             {
-                DatabaseConnected = CheckConnectionString();
-                if (!DatabaseConnected) return;
+                //DatabaseConnected = CheckConnectionString();
+                if (!CheckConnectionString()) return;
                 SetConnectionString();
                 Contracts.RefreshList();
                 assessments.RefreshList();
@@ -73,7 +73,7 @@ namespace HORAS
                 Interim.RefreshList();
                 Collections.RefreshList();
 
-                //DatabaseConnected = true;
+                DatabaseConnected = true;
             }
             catch (InvalidOperationException Ex)
             {
@@ -85,6 +85,7 @@ namespace HORAS
 
         static bool CheckConnectionString()
         {
+            if (Settings1.Default.CS == string.Empty) return false;
             try
             {
                 var conn = new SqlConnection(Settings1.Default.CS);
