@@ -153,16 +153,17 @@ namespace HORAS.Contracts
             {
 
                 double Total = 0;
+                Total = Item.Total_Price * Item.Qty;
                 switch (Item.Item_Type)
                 {
-                    case 0: Type = Item_TYPE.Supply.ToString(); Total = Item.Total_Price * Item.Qty; break;
+                    case 0: Type = Item_TYPE.Supply.ToString(); break;
                     case 1:
                         Type = Item_TYPE.Implementation_Installation.ToString();
-                        Total = Item.Total_Price; break;
-                    case 2: Type = Item_TYPE.Both.ToString(); Total = Item.Total_Price; break;
+                        break;
+                    case 2: Type = Item_TYPE.Both.ToString(); break;
                 }
                 DGVItems.Rows.Add(Item.Number,
-                        Item.Item_Unit, Item.Total_Price, Item.Qty, Type, Total);
+                        Item.Item_Unit, Item.Total_Price, Item.Qty, Type, MasterData.NumericString(Total));
             }
 
             setStatus("تم تحميل بيانات المقايسة", 1);
@@ -289,12 +290,11 @@ namespace HORAS.Contracts
                 ItemRow = MasterData.Database.AssItems.NewAssItemsRow();
                 ItemRow.AssID = SelectedAssessment.ID;
                 ItemRow.Number = DGVItems.Rows[i].Cells[0].Value.ToString();
-                // ItemRow.Description = DGVItems.Rows[i].Cells[1].Value.ToString();
                 ItemRow.Item_Unit = DGVItems.Rows[i].Cells[1].Value.ToString();
                 ItemRow.Total_Price = double.Parse(DGVItems.Rows[i].Cells[2].Value.ToString());
                 ItemRow.Qty = double.Parse(DGVItems.Rows[i].Cells[3].Value.ToString());
                 ItemRow.Item_Type = (int)(Item_TYPE)Enum.Parse(typeof(Item_TYPE), DGVItems.Rows[i].Cells[4].Value.ToString());
-                Sum += ItemRow.Total_Price;
+                Sum += ItemRow.Total_Price * ItemRow.Qty;
                 SelectedItems.Add(ItemRow);
 
             }
@@ -366,14 +366,14 @@ namespace HORAS.Contracts
 
         private void DGVItems_SelectionChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void DGVItems_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (!dataloaded) return;
             if (DGVItems.SelectedRows.Count == 0) return;
-            if (CBAssessment.SelectedIndex == 0) return;
+            if (CBAssessment.SelectedIndex == -1) return;
 
             if (DGVItems.SelectedRows[0].Cells[0].Value == null) return;
 

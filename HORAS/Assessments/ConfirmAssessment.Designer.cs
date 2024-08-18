@@ -131,7 +131,7 @@
             LabelTotal.FontWeight = MetroFramework.MetroLabelWeight.Light;
             LabelTotal.ForeColor = Color.White;
             LabelTotal.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            LabelTotal.Location = new Point(132, 61);
+            LabelTotal.Location = new Point(105, 61);
             LabelTotal.Name = "LabelTotal";
             LabelTotal.Size = new Size(21, 19);
             LabelTotal.Style = MetroFramework.MetroColorStyle.White;

@@ -58,11 +58,8 @@ namespace HORAS.Assessments
                     workSheet = (Worksheet)workBook.Sheets[1];
                     Range = workSheet.UsedRange;
 
-
                     DGV_Data.Rows.Clear();
                     float Total = 0;
-
-
 
                     for (int i = 6; i <= Range.Rows.Count; i++)
                     {
@@ -74,15 +71,15 @@ namespace HORAS.Assessments
                         NewItem.Qty = float.Parse(Range.Cells[i, 5].Value.ToString());
                         NewItem.Type = ((Item_TYPE)int.Parse(Range.Cells[i, 6].Value.ToString()));
                         NewItem.LOL = float.Parse(Range.Cells[i, 7].Value.ToString()) / 100;
-                        //  LoadedItemsList.Add(NewItem);
+                        string Total_ = MasterData.NumericString(NewItem.Total_PRice * NewItem.Qty);
                         DGV_Data.Rows.Add(NewItem.Number,
                             NewItem.Item_Unit, NewItem.Total_PRice, NewItem.Qty,
-                            NewItem.Type, NewItem.LOL, (NewItem.Total_PRice * NewItem.Qty));
-                        Total += NewItem.Total_PRice;
+                            NewItem.Type, NewItem.LOL, Total_);
+                        Total += NewItem.Total_PRice * NewItem.Qty;
                         itemlist.Add(NewItem);
 
                     }
-                    LabelTotal.Text = Total.ToString();
+                    LabelTotal.Text = MasterData.NumericString(Total);
 
                     Marshal.ReleaseComObject(Range);
                     Marshal.ReleaseComObject(workSheet);
@@ -96,45 +93,6 @@ namespace HORAS.Assessments
                 {
                     setStatus(E.Message, 0);
                 }
-
-
-
-
-
-
-
-
-
-
-                //WorkBook workBook = WorkBook.Load(FileDialoge.FileName);
-                //WorkSheet workSheet = workBook.WorkSheets.First();
-                //Items NewItem;
-                //double Total = 0;
-                //foreach (var cell in workSheet.Rows)
-                //{
-                //    if (cell.RowNumber < 5) continue;
-                //    NewItem = new Items();
-                //    NewItem.Number = cell.Columns[0].Value.ToString();
-                //    NewItem.Dexcription = cell.Columns[1].Value.ToString();
-                //    NewItem.Item_Unit = cell.Columns[2].Value.ToString();
-                //    NewItem.Total_PRice = float.Parse(cell.Columns[3].Value.ToString());
-                //    NewItem.Qty = float.Parse(cell.Columns[4].Value.ToString());
-                //    NewItem.Type = ((Item_TYPE)int.Parse(cell.Columns[5].Value.ToString()));
-                //    NewItem.LOL = float.Parse(cell.Columns[6].Value.ToString());
-                //    LoadedItemsList.Add(NewItem);
-
-                //    //double TotalItem = 0; 
-                //    //switch(NewItem.Type)
-                //    //{
-                //    //    case Item_TYPE.Supply: TotalItem = NewItem.Total_PRice * NewItem.Qty;  break;
-                //    //    default: TotalItem = NewItem.Total_PRice; break;
-                //    //}
-
-                //    DGV_Data.Rows.Add(NewItem.Number, NewItem.Dexcription,
-                //        NewItem.Item_Unit, NewItem.Total_PRice, NewItem.Qty,
-                //        NewItem.Type, NewItem.LOL, NewItem.Total_PRice);
-                //    Total += NewItem.Total_PRice;
-                //}
 
             }
         }
@@ -157,10 +115,10 @@ namespace HORAS.Assessments
                 ItemRow.LOL = float.Parse(DGV_Data.Rows[i].Cells[5].Value.ToString());
                 ItemRow.Item_Type = ((int)(Item_TYPE)Enum.Parse(typeof(Item_TYPE), DGV_Data.Rows[i].Cells[4].Value.ToString()));
                 ItemRow.Qty = float.Parse(DGV_Data.Rows[i].Cells[3].Value.ToString());
-                if (ItemRow.Item_Type == 1 || ItemRow.Item_Type == 2) ItemRow.Qty = 100;
+               // if (ItemRow.Item_Type == 1 || ItemRow.Item_Type == 2) ItemRow.Qty = 100;
                 ListToSave.Add(ItemRow);
             }
-            TotalAssessment();
+           // TotalAssessment();
         }
 
         void TotalAssessment()

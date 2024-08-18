@@ -31,13 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportAssessment));
             TextBoxURL = new MetroFramework.Controls.MetroTextBox();
             DGV_Data = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column7 = new DataGridViewTextBoxColumn();
-            LOL = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
             metroButton3 = new MetroFramework.Controls.MetroButton();
             TextBoxSubject = new MetroFramework.Controls.MetroTextBox();
             TextBoxAbout = new MetroFramework.Controls.MetroTextBox();
@@ -64,6 +57,13 @@
             button1 = new Button();
             button2 = new Button();
             richTextBox1 = new RichTextBox();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
+            Column7 = new DataGridViewTextBoxColumn();
+            LOL = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)DGV_Data).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxStatus).BeginInit();
@@ -111,47 +111,6 @@
             DGV_Data.Size = new Size(650, 130);
             DGV_Data.TabIndex = 3;
             DGV_Data.SelectionChanged += DGV_Data_SelectionChanged;
-            // 
-            // Column1
-            // 
-            Column1.Frozen = true;
-            Column1.HeaderText = "مسلسل";
-            Column1.Name = "Column1";
-            // 
-            // Column3
-            // 
-            Column3.Frozen = true;
-            Column3.HeaderText = "الوحدة";
-            Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            Column4.Frozen = true;
-            Column4.HeaderText = "سعر الوحدة";
-            Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            Column5.Frozen = true;
-            Column5.HeaderText = "الكمية";
-            Column5.Name = "Column5";
-            // 
-            // Column7
-            // 
-            Column7.Frozen = true;
-            Column7.HeaderText = "نوع البند";
-            Column7.Name = "Column7";
-            // 
-            // LOL
-            // 
-            LOL.Frozen = true;
-            LOL.HeaderText = "حد الإلتزام";
-            LOL.Name = "LOL";
-            // 
-            // Column6
-            // 
-            Column6.HeaderText = "الاجمالى";
-            Column6.Name = "Column6";
             // 
             // metroButton3
             // 
@@ -497,11 +456,55 @@
             richTextBox1.TabIndex = 76;
             richTextBox1.Text = "";
             // 
+            // Column1
+            // 
+            Column1.FillWeight = 50F;
+            Column1.Frozen = true;
+            Column1.HeaderText = "مسلسل";
+            Column1.Name = "Column1";
+            // 
+            // Column3
+            // 
+            Column3.FillWeight = 50F;
+            Column3.Frozen = true;
+            Column3.HeaderText = "الوحدة";
+            Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            Column4.Frozen = true;
+            Column4.HeaderText = "سعر الوحدة";
+            Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            Column5.Frozen = true;
+            Column5.HeaderText = "الكمية";
+            Column5.Name = "Column5";
+            // 
+            // Column7
+            // 
+            Column7.Frozen = true;
+            Column7.HeaderText = "نوع البند";
+            Column7.Name = "Column7";
+            // 
+            // LOL
+            // 
+            LOL.Frozen = true;
+            LOL.HeaderText = "حد الإلتزام";
+            LOL.Name = "LOL";
+            // 
+            // Column6
+            // 
+            Column6.HeaderText = "الاجمالى";
+            Column6.Name = "Column6";
+            // 
             // ImportAssessment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.gr;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(679, 532);
             Controls.Add(richTextBox1);
             Controls.Add(button2);
@@ -576,6 +579,7 @@
         private PictureBox pictureBox6;
         private Button button1;
         private Button button2;
+        private RichTextBox richTextBox1;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
@@ -583,6 +587,5 @@
         private DataGridViewTextBoxColumn Column7;
         private DataGridViewTextBoxColumn LOL;
         private DataGridViewTextBoxColumn Column6;
-        private RichTextBox richTextBox1;
     }
 }

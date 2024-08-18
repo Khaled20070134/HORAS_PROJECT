@@ -142,14 +142,16 @@ namespace HORAS.Assessments
                     NewItem.Total_PRice = (float)Item.Total_Price;
                     NewItem.Qty = (float)Item.Qty;
                     NewItem.Type = (Item_TYPE)Item.Item_Type;
-                     
+
+                    string Total_ = MasterData.NumericString(NewItem.Total_PRice * NewItem.Qty);
+
                     DGV_Data.Rows.Add(NewItem.Number,
                         NewItem.Item_Unit, NewItem.Total_PRice, NewItem.Qty,
-                        NewItem.Type, NewItem.Total_PRice);
-                    Total += NewItem.Total_PRice;
+                        NewItem.Type, Total_);
+                    Total += NewItem.Total_PRice * NewItem.Qty;
                     itemlist.Add(NewItem);
                 }
-                LabelTotal.Text = Total.ToString();
+                LabelTotal.Text = MasterData.NumericString(Total);
                 DataLoaded = true;
                 MasterData.styleGridView(DGV_Data);
             }
