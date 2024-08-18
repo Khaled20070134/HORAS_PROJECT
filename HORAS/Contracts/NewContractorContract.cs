@@ -37,6 +37,7 @@ namespace HORAS.Contracts
         //List<AssItemsRow> ItemsToSave = new List<AssItemsRow>();
         void getItemdata() 
         {
+
             ListToSave.Clear();
             for (int i=0; i< DGVContractItems.Rows.Count-1;i++)
             {
