@@ -81,7 +81,7 @@ namespace HORAS.Interims_Data
             labelTotalQty.Text = MasterData.NumericString(Item_Status.Total_QP);
             labelTotalValue.Text = MasterData.NumericString(Item_Status.Total_Value);
             labelTotalDeliveredQ.Text = MasterData.NumericString(Item_Status.Delivered_QP);
-            labelTotalDeliveredValue.Text = MasterData.NumericString(Item_Status.Delivered_Value);
+            labelTotalDeliveredValue.Text = MasterData.NumericString(Item_Status.Delivered_Value );
             labelTotalExps.Text = MasterData.NumericString((double)Item_Status.Total_Exps);
         }
 

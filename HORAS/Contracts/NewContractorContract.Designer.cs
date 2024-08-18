@@ -1,4 +1,5 @@
-﻿namespace HORAS.Contracts
+﻿
+namespace HORAS.Contracts
 {
     partial class NewContractorContract
     {
@@ -287,9 +288,9 @@
             label12.ForeColor = Color.White;
             label12.Location = new Point(662, 331);
             label12.Name = "label12";
-            label12.Size = new Size(54, 15);
+            label12.Size = new Size(64, 15);
             label12.TabIndex = 44;
-            label12.Text = "قيمة البند";
+            label12.Text = "سعر الوحدة";
             // 
             // labelRemain
             // 
@@ -1408,6 +1409,11 @@
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxStatus).EndInit();
             ResumeLayout(false);
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

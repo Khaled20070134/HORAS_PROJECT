@@ -103,7 +103,7 @@ namespace HORAS.Contracts
             {
                 string ItemType = MasterData.GetItemTypeString(Item.Item_Type);
                 string LOL = MasterData.NumericString(Item.LOL) + " %";
-                DGVItems.Rows.Add(Item.Number, Item.Description, MasterData.NumericString(Item.Total_Price), ItemType, LOL);
+                DGVItems.Rows.Add(Item.Number, Item.Description, MasterData.NumericString(Item.Total_Price* Item.Qty), ItemType, LOL);
             }
 
 

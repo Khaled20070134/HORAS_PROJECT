@@ -44,7 +44,7 @@ namespace HORAS.Contracts
                 ItemRow.Number = DGVContractItems.Rows[i].Cells[0].Value.ToString();
                 ItemRow.Qty = double.Parse(DGVContractItems.Rows[i].Cells[1].Value.ToString());
                 ItemRow.Item_Unit = DGVContractItems.Rows[i].Cells[2].Value.ToString();
-                ItemRow.Total_Price = double.Parse(DGVContractItems.Rows[i].Cells[3].Value.ToString());
+                ItemRow.Total_Price = double.Parse(DGVContractItems.Rows[i].Cells[3].Value.ToString()) / ItemRow.Qty;
                 ItemRow.LOL = double.Parse(DGVContractItems.Rows[i].Cells[4].Value.ToString());
                 ItemRow.Item_Type = (int)(Item_TYPE)Enum.Parse(typeof(Item_TYPE), DGVContractItems.Rows[i].Cells[5].Value.ToString());
                 ItemRow.Description = desriptiondictionary[ItemRow.Number];
@@ -418,7 +418,7 @@ namespace HORAS.Contracts
             MasterData.assessments.AssItemsRow.Qty = (double)NUDItemQ.Value;
             MasterData.assessments.AssItemsRow.Item_Type = (int)(Item_TYPE)Enum.Parse(typeof(Enums.Item_TYPE), ItemTypeCB.SelectedItem.ToString());
             MasterData.assessments.AssItemsRow.LOL = (double)DGVItems.SelectedRows[0].Cells[4].Value;
-            MasterData.assessments.AssItemsRow.Total_Price = (double)PriceNUD.Value;
+            MasterData.assessments.AssItemsRow.Total_Price = (double)PriceNUD.Value * (double) NUDItemQ.Value ;
             MasterData.assessments.AssItemsRow.Description = DescTxt.Text;
             MasterData.assessments.AssItemsRow.Item_Unit = DGVItems.SelectedRows[0].Cells[1].Value.ToString();
             desriptiondictionary.Add(MasterData.assessments.AssItemsRow.Number, MasterData.assessments.AssItemsRow.Description);
@@ -463,10 +463,7 @@ namespace HORAS.Contracts
             LabelBusinessG.Text = MasterData.NumericString((double)(NUDGuranteeP.Value / 100) * totalvalue);
             LabelLOL.Text = MasterData.NumericString((double)(NUDLOL.Value / 100) * totalvalue);
         }
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void DGVContractItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
