@@ -31,6 +31,34 @@ namespace HORAS.Contracts
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewContractorContract));
             metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
+            tabPage2 = new TabPage();
+            TotalvalueLBL = new Label();
+            DGVContractItems = new DataGridView();
+            ItemNo = new DataGridViewTextBoxColumn();
+            ItemQty = new DataGridViewTextBoxColumn();
+            Unit = new DataGridViewTextBoxColumn();
+            ItemPrice = new DataGridViewTextBoxColumn();
+            LOL2 = new DataGridViewTextBoxColumn();
+            type = new DataGridViewTextBoxColumn();
+            pictureBox21 = new PictureBox();
+            LabelLOL = new MetroFramework.Controls.MetroLabel();
+            LabelDownPayment = new MetroFramework.Controls.MetroLabel();
+            NUDLOL = new NumericUpDown();
+            label16 = new Label();
+            pictureBox2 = new PictureBox();
+            label2 = new Label();
+            label9 = new Label();
+            metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            pictureBox1 = new PictureBox();
+            LabelBusinessG = new MetroFramework.Controls.MetroLabel();
+            LabelDelayP = new MetroFramework.Controls.MetroLabel();
+            label10 = new Label();
+            pictureBox4 = new PictureBox();
+            pictureBox3 = new PictureBox();
+            NUDDownPaymentP = new NumericUpDown();
+            metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            NUDDelayP = new NumericUpDown();
+            NUDGuranteeP = new NumericUpDown();
             tabPage3 = new TabPage();
             buttonchosecontract = new Button();
             PriceNUD = new NumericUpDown();
@@ -61,34 +89,6 @@ namespace HORAS.Contracts
             pictureBox7 = new PictureBox();
             pictureBox8 = new PictureBox();
             label4 = new Label();
-            tabPage2 = new TabPage();
-            TotalvalueLBL = new Label();
-            DGVContractItems = new DataGridView();
-            ItemNo = new DataGridViewTextBoxColumn();
-            ItemQty = new DataGridViewTextBoxColumn();
-            Unit = new DataGridViewTextBoxColumn();
-            ItemPrice = new DataGridViewTextBoxColumn();
-            LOL2 = new DataGridViewTextBoxColumn();
-            type = new DataGridViewTextBoxColumn();
-            pictureBox21 = new PictureBox();
-            LabelLOL = new MetroFramework.Controls.MetroLabel();
-            LabelDownPayment = new MetroFramework.Controls.MetroLabel();
-            NUDLOL = new NumericUpDown();
-            label16 = new Label();
-            pictureBox2 = new PictureBox();
-            label2 = new Label();
-            label9 = new Label();
-            metroLabel6 = new MetroFramework.Controls.MetroLabel();
-            pictureBox1 = new PictureBox();
-            LabelBusinessG = new MetroFramework.Controls.MetroLabel();
-            LabelDelayP = new MetroFramework.Controls.MetroLabel();
-            label10 = new Label();
-            pictureBox4 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            NUDDownPaymentP = new NumericUpDown();
-            metroLabel8 = new MetroFramework.Controls.MetroLabel();
-            NUDDelayP = new NumericUpDown();
-            NUDGuranteeP = new NumericUpDown();
             tabPage1 = new TabPage();
             button4 = new Button();
             button3 = new Button();
@@ -127,16 +127,6 @@ namespace HORAS.Contracts
             labelStatus = new Label();
             panel2 = new Panel();
             metroTabControl1.SuspendLayout();
-            tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)PriceNUD).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox15).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox22).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)NUDItemQ).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)DGVItems).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DGVContractItems).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox21).BeginInit();
@@ -148,6 +138,16 @@ namespace HORAS.Contracts
             ((System.ComponentModel.ISupportInitialize)NUDDownPaymentP).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NUDDelayP).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NUDGuranteeP).BeginInit();
+            tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)PriceNUD).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox15).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox22).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NUDItemQ).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DGVItems).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox23).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox20).BeginInit();
@@ -170,8 +170,8 @@ namespace HORAS.Contracts
             // metroTabControl1
             // 
             metroTabControl1.Appearance = TabAppearance.FlatButtons;
-            metroTabControl1.Controls.Add(tabPage2);
             metroTabControl1.Controls.Add(tabPage3);
+            metroTabControl1.Controls.Add(tabPage2);
             metroTabControl1.Controls.Add(tabPage1);
             metroTabControl1.CustomBackground = false;
             metroTabControl1.FontSize = MetroFramework.MetroTabControlSize.Medium;
@@ -190,6 +190,337 @@ namespace HORAS.Contracts
             metroTabControl1.TextAlign = ContentAlignment.MiddleCenter;
             metroTabControl1.Theme = MetroFramework.MetroThemeStyle.Dark;
             metroTabControl1.UseStyleColors = false;
+            // 
+            // tabPage2
+            // 
+            tabPage2.BackColor = Color.Black;
+            tabPage2.Controls.Add(TotalvalueLBL);
+            tabPage2.Controls.Add(DGVContractItems);
+            tabPage2.Controls.Add(pictureBox21);
+            tabPage2.Controls.Add(LabelLOL);
+            tabPage2.Controls.Add(LabelDownPayment);
+            tabPage2.Controls.Add(NUDLOL);
+            tabPage2.Controls.Add(label16);
+            tabPage2.Controls.Add(pictureBox2);
+            tabPage2.Controls.Add(label2);
+            tabPage2.Controls.Add(label9);
+            tabPage2.Controls.Add(metroLabel6);
+            tabPage2.Controls.Add(pictureBox1);
+            tabPage2.Controls.Add(LabelBusinessG);
+            tabPage2.Controls.Add(LabelDelayP);
+            tabPage2.Controls.Add(label10);
+            tabPage2.Controls.Add(pictureBox4);
+            tabPage2.Controls.Add(pictureBox3);
+            tabPage2.Controls.Add(NUDDownPaymentP);
+            tabPage2.Controls.Add(metroLabel8);
+            tabPage2.Controls.Add(NUDDelayP);
+            tabPage2.Controls.Add(NUDGuranteeP);
+            tabPage2.Location = new Point(4, 38);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Size = new Size(761, 356);
+            tabPage2.TabIndex = 3;
+            tabPage2.Text = "بيانات بنود التعاقد";
+            tabPage2.Click += tabPage2_Click;
+            // 
+            // TotalvalueLBL
+            // 
+            TotalvalueLBL.AutoSize = true;
+            TotalvalueLBL.ForeColor = Color.White;
+            TotalvalueLBL.Location = new Point(36, 249);
+            TotalvalueLBL.Name = "TotalvalueLBL";
+            TotalvalueLBL.Size = new Size(13, 15);
+            TotalvalueLBL.TabIndex = 34;
+            TotalvalueLBL.Text = "1";
+            // 
+            // DGVContractItems
+            // 
+            DGVContractItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGVContractItems.Columns.AddRange(new DataGridViewColumn[] { ItemNo, ItemQty, Unit, ItemPrice, LOL2, type });
+            DGVContractItems.Location = new Point(36, 13);
+            DGVContractItems.Name = "DGVContractItems";
+            DGVContractItems.Size = new Size(698, 189);
+            DGVContractItems.TabIndex = 33;
+            DGVContractItems.CellContentClick += DGVContractItems_CellContentClick;
+            // 
+            // ItemNo
+            // 
+            ItemNo.Frozen = true;
+            ItemNo.HeaderText = "رقم البند";
+            ItemNo.Name = "ItemNo";
+            ItemNo.ReadOnly = true;
+            // 
+            // ItemQty
+            // 
+            ItemQty.Frozen = true;
+            ItemQty.HeaderText = "كمية أو نسبة البند";
+            ItemQty.Name = "ItemQty";
+            ItemQty.ReadOnly = true;
+            // 
+            // Unit
+            // 
+            Unit.Frozen = true;
+            Unit.HeaderText = "وحده البند";
+            Unit.Name = "Unit";
+            // 
+            // ItemPrice
+            // 
+            ItemPrice.HeaderText = "سعر الوحدة";
+            ItemPrice.Name = "ItemPrice";
+            // 
+            // LOL2
+            // 
+            LOL2.HeaderText = "حد الالتزام";
+            LOL2.Name = "LOL2";
+            // 
+            // type
+            // 
+            type.HeaderText = "نوع البند";
+            type.Name = "type";
+            // 
+            // pictureBox21
+            // 
+            pictureBox21.Image = (Image)resources.GetObject("pictureBox21.Image");
+            pictureBox21.Location = new Point(313, 249);
+            pictureBox21.Name = "pictureBox21";
+            pictureBox21.Size = new Size(16, 18);
+            pictureBox21.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox21.TabIndex = 32;
+            pictureBox21.TabStop = false;
+            // 
+            // LabelLOL
+            // 
+            LabelLOL.AutoSize = true;
+            LabelLOL.BackColor = Color.Transparent;
+            LabelLOL.CustomBackground = true;
+            LabelLOL.FontSize = MetroFramework.MetroLabelSize.Medium;
+            LabelLOL.FontWeight = MetroFramework.MetroLabelWeight.Light;
+            LabelLOL.ForeColor = Color.White;
+            LabelLOL.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
+            LabelLOL.Location = new Point(469, 277);
+            LabelLOL.Name = "LabelLOL";
+            LabelLOL.Size = new Size(26, 19);
+            LabelLOL.Style = MetroFramework.MetroColorStyle.White;
+            LabelLOL.StyleManager = null;
+            LabelLOL.TabIndex = 7;
+            LabelLOL.Text = "0.0";
+            LabelLOL.Theme = MetroFramework.MetroThemeStyle.Dark;
+            LabelLOL.UseStyleColors = true;
+            // 
+            // LabelDownPayment
+            // 
+            LabelDownPayment.AutoSize = true;
+            LabelDownPayment.BackColor = Color.Transparent;
+            LabelDownPayment.CustomBackground = true;
+            LabelDownPayment.FontSize = MetroFramework.MetroLabelSize.Medium;
+            LabelDownPayment.FontWeight = MetroFramework.MetroLabelWeight.Light;
+            LabelDownPayment.ForeColor = Color.White;
+            LabelDownPayment.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
+            LabelDownPayment.Location = new Point(469, 304);
+            LabelDownPayment.Name = "LabelDownPayment";
+            LabelDownPayment.Size = new Size(26, 19);
+            LabelDownPayment.Style = MetroFramework.MetroColorStyle.White;
+            LabelDownPayment.StyleManager = null;
+            LabelDownPayment.TabIndex = 0;
+            LabelDownPayment.Text = "0.0";
+            LabelDownPayment.Theme = MetroFramework.MetroThemeStyle.Dark;
+            LabelDownPayment.UseStyleColors = true;
+            // 
+            // NUDLOL
+            // 
+            NUDLOL.Location = new Point(549, 275);
+            NUDLOL.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            NUDLOL.Name = "NUDLOL";
+            NUDLOL.Size = new Size(49, 23);
+            NUDLOL.TabIndex = 8;
+            NUDLOL.TextAlign = HorizontalAlignment.Center;
+            NUDLOL.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            NUDLOL.ValueChanged += NUDTotalAmountP_ValueChanged;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.ForeColor = Color.White;
+            label16.Location = new Point(105, 251);
+            label16.Name = "label16";
+            label16.Size = new Size(202, 15);
+            label16.TabIndex = 31;
+            label16.Text = "إجمالى قيمة التعاقد (قيمة البنود بالجنيه)";
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(718, 304);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(16, 18);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 19;
+            pictureBox2.TabStop = false;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Black;
+            label2.ForeColor = Color.FromArgb(128, 128, 255);
+            label2.Location = new Point(113, 328);
+            label2.Name = "label2";
+            label2.Size = new Size(198, 15);
+            label2.TabIndex = 9;
+            label2.Text = "الحد الاقصى 10 % طبقاً للقانون المصرى";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.BackColor = Color.Black;
+            label9.ForeColor = Color.White;
+            label9.Location = new Point(659, 279);
+            label9.Name = "label9";
+            label9.Size = new Size(57, 15);
+            label9.TabIndex = 16;
+            label9.Text = "نسبة الربح";
+            // 
+            // metroLabel6
+            // 
+            metroLabel6.AutoSize = true;
+            metroLabel6.BackColor = Color.Black;
+            metroLabel6.CustomBackground = true;
+            metroLabel6.FontSize = MetroFramework.MetroLabelSize.Medium;
+            metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Light;
+            metroLabel6.ForeColor = Color.White;
+            metroLabel6.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
+            metroLabel6.Location = new Point(197, 275);
+            metroLabel6.Name = "metroLabel6";
+            metroLabel6.Size = new Size(114, 19);
+            metroLabel6.Style = MetroFramework.MetroColorStyle.White;
+            metroLabel6.StyleManager = null;
+            metroLabel6.TabIndex = 0;
+            metroLabel6.Text = "نسبة ضمان الأعمال";
+            metroLabel6.Theme = MetroFramework.MetroThemeStyle.Dark;
+            metroLabel6.UseStyleColors = true;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(718, 277);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(16, 18);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 18;
+            pictureBox1.TabStop = false;
+            // 
+            // LabelBusinessG
+            // 
+            LabelBusinessG.AutoSize = true;
+            LabelBusinessG.BackColor = Color.Transparent;
+            LabelBusinessG.CustomBackground = true;
+            LabelBusinessG.FontSize = MetroFramework.MetroLabelSize.Medium;
+            LabelBusinessG.FontWeight = MetroFramework.MetroLabelWeight.Light;
+            LabelBusinessG.ForeColor = Color.White;
+            LabelBusinessG.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
+            LabelBusinessG.Location = new Point(64, 275);
+            LabelBusinessG.Name = "LabelBusinessG";
+            LabelBusinessG.Size = new Size(26, 19);
+            LabelBusinessG.Style = MetroFramework.MetroColorStyle.White;
+            LabelBusinessG.StyleManager = null;
+            LabelBusinessG.TabIndex = 0;
+            LabelBusinessG.Text = "0.0";
+            LabelBusinessG.Theme = MetroFramework.MetroThemeStyle.Dark;
+            LabelBusinessG.UseStyleColors = true;
+            // 
+            // LabelDelayP
+            // 
+            LabelDelayP.AutoSize = true;
+            LabelDelayP.BackColor = Color.Transparent;
+            LabelDelayP.CustomBackground = true;
+            LabelDelayP.FontSize = MetroFramework.MetroLabelSize.Medium;
+            LabelDelayP.FontWeight = MetroFramework.MetroLabelWeight.Light;
+            LabelDelayP.ForeColor = Color.White;
+            LabelDelayP.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
+            LabelDelayP.Location = new Point(64, 302);
+            LabelDelayP.Name = "LabelDelayP";
+            LabelDelayP.Size = new Size(26, 19);
+            LabelDelayP.Style = MetroFramework.MetroColorStyle.White;
+            LabelDelayP.StyleManager = null;
+            LabelDelayP.TabIndex = 0;
+            LabelDelayP.Text = "0.0";
+            LabelDelayP.Theme = MetroFramework.MetroThemeStyle.Dark;
+            LabelDelayP.UseStyleColors = true;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.BackColor = Color.Black;
+            label10.ForeColor = Color.White;
+            label10.Location = new Point(615, 306);
+            label10.Name = "label10";
+            label10.Size = new Size(101, 15);
+            label10.TabIndex = 17;
+            label10.Text = "نسبة الدفه المقدمة";
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(313, 302);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(16, 18);
+            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox4.TabIndex = 21;
+            pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(313, 275);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(16, 18);
+            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox3.TabIndex = 20;
+            pictureBox3.TabStop = false;
+            // 
+            // NUDDownPaymentP
+            // 
+            NUDDownPaymentP.Location = new Point(549, 302);
+            NUDDownPaymentP.Name = "NUDDownPaymentP";
+            NUDDownPaymentP.Size = new Size(49, 23);
+            NUDDownPaymentP.TabIndex = 1;
+            NUDDownPaymentP.TextAlign = HorizontalAlignment.Center;
+            NUDDownPaymentP.ValueChanged += NUDTotalAmountP_ValueChanged;
+            // 
+            // metroLabel8
+            // 
+            metroLabel8.AutoSize = true;
+            metroLabel8.BackColor = Color.Black;
+            metroLabel8.CustomBackground = true;
+            metroLabel8.FontSize = MetroFramework.MetroLabelSize.Medium;
+            metroLabel8.FontWeight = MetroFramework.MetroLabelWeight.Light;
+            metroLabel8.ForeColor = Color.White;
+            metroLabel8.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
+            metroLabel8.Location = new Point(209, 302);
+            metroLabel8.Name = "metroLabel8";
+            metroLabel8.Size = new Size(102, 19);
+            metroLabel8.Style = MetroFramework.MetroColorStyle.White;
+            metroLabel8.StyleManager = null;
+            metroLabel8.TabIndex = 0;
+            metroLabel8.Text = "نسبة غرامة التأخير";
+            metroLabel8.Theme = MetroFramework.MetroThemeStyle.Light;
+            metroLabel8.UseStyleColors = true;
+            // 
+            // NUDDelayP
+            // 
+            NUDDelayP.Location = new Point(144, 300);
+            NUDDelayP.Name = "NUDDelayP";
+            NUDDelayP.Size = new Size(49, 23);
+            NUDDelayP.TabIndex = 1;
+            NUDDelayP.TextAlign = HorizontalAlignment.Center;
+            NUDDelayP.ValueChanged += NUDTotalAmountP_ValueChanged;
+            // 
+            // NUDGuranteeP
+            // 
+            NUDGuranteeP.Location = new Point(144, 273);
+            NUDGuranteeP.Name = "NUDGuranteeP";
+            NUDGuranteeP.Size = new Size(49, 23);
+            NUDGuranteeP.TabIndex = 1;
+            NUDGuranteeP.TextAlign = HorizontalAlignment.Center;
+            NUDGuranteeP.ValueChanged += NUDTotalAmountP_ValueChanged;
             // 
             // tabPage3
             // 
@@ -504,337 +835,6 @@ namespace HORAS.Contracts
             label4.Size = new Size(87, 15);
             label4.TabIndex = 4;
             label4.Text = "رقم تعاقد المالك";
-            // 
-            // tabPage2
-            // 
-            tabPage2.BackColor = Color.Black;
-            tabPage2.Controls.Add(TotalvalueLBL);
-            tabPage2.Controls.Add(DGVContractItems);
-            tabPage2.Controls.Add(pictureBox21);
-            tabPage2.Controls.Add(LabelLOL);
-            tabPage2.Controls.Add(LabelDownPayment);
-            tabPage2.Controls.Add(NUDLOL);
-            tabPage2.Controls.Add(label16);
-            tabPage2.Controls.Add(pictureBox2);
-            tabPage2.Controls.Add(label2);
-            tabPage2.Controls.Add(label9);
-            tabPage2.Controls.Add(metroLabel6);
-            tabPage2.Controls.Add(pictureBox1);
-            tabPage2.Controls.Add(LabelBusinessG);
-            tabPage2.Controls.Add(LabelDelayP);
-            tabPage2.Controls.Add(label10);
-            tabPage2.Controls.Add(pictureBox4);
-            tabPage2.Controls.Add(pictureBox3);
-            tabPage2.Controls.Add(NUDDownPaymentP);
-            tabPage2.Controls.Add(metroLabel8);
-            tabPage2.Controls.Add(NUDDelayP);
-            tabPage2.Controls.Add(NUDGuranteeP);
-            tabPage2.Location = new Point(4, 38);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Size = new Size(761, 356);
-            tabPage2.TabIndex = 3;
-            tabPage2.Text = "بيانات بنود التعاقد";
-            tabPage2.Click += tabPage2_Click;
-            // 
-            // TotalvalueLBL
-            // 
-            TotalvalueLBL.AutoSize = true;
-            TotalvalueLBL.ForeColor = Color.White;
-            TotalvalueLBL.Location = new Point(36, 249);
-            TotalvalueLBL.Name = "TotalvalueLBL";
-            TotalvalueLBL.Size = new Size(13, 15);
-            TotalvalueLBL.TabIndex = 34;
-            TotalvalueLBL.Text = "1";
-            // 
-            // DGVContractItems
-            // 
-            DGVContractItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGVContractItems.Columns.AddRange(new DataGridViewColumn[] { ItemNo, ItemQty, Unit, ItemPrice, LOL2, type });
-            DGVContractItems.Location = new Point(36, 13);
-            DGVContractItems.Name = "DGVContractItems";
-            DGVContractItems.Size = new Size(698, 189);
-            DGVContractItems.TabIndex = 33;
-            DGVContractItems.CellContentClick += DGVContractItems_CellContentClick;
-            // 
-            // ItemNo
-            // 
-            ItemNo.Frozen = true;
-            ItemNo.HeaderText = "رقم البند";
-            ItemNo.Name = "ItemNo";
-            ItemNo.ReadOnly = true;
-            // 
-            // ItemQty
-            // 
-            ItemQty.Frozen = true;
-            ItemQty.HeaderText = "كمية أو نسبة البند";
-            ItemQty.Name = "ItemQty";
-            ItemQty.ReadOnly = true;
-            // 
-            // Unit
-            // 
-            Unit.Frozen = true;
-            Unit.HeaderText = "وحده البند";
-            Unit.Name = "Unit";
-            // 
-            // ItemPrice
-            // 
-            ItemPrice.HeaderText = "قيمة البند";
-            ItemPrice.Name = "ItemPrice";
-            // 
-            // LOL2
-            // 
-            LOL2.HeaderText = "حد الالتزام";
-            LOL2.Name = "LOL2";
-            // 
-            // type
-            // 
-            type.HeaderText = "نوع البند";
-            type.Name = "type";
-            // 
-            // pictureBox21
-            // 
-            pictureBox21.Image = (Image)resources.GetObject("pictureBox21.Image");
-            pictureBox21.Location = new Point(313, 249);
-            pictureBox21.Name = "pictureBox21";
-            pictureBox21.Size = new Size(16, 18);
-            pictureBox21.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox21.TabIndex = 32;
-            pictureBox21.TabStop = false;
-            // 
-            // LabelLOL
-            // 
-            LabelLOL.AutoSize = true;
-            LabelLOL.BackColor = Color.Transparent;
-            LabelLOL.CustomBackground = true;
-            LabelLOL.FontSize = MetroFramework.MetroLabelSize.Medium;
-            LabelLOL.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            LabelLOL.ForeColor = Color.White;
-            LabelLOL.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            LabelLOL.Location = new Point(469, 277);
-            LabelLOL.Name = "LabelLOL";
-            LabelLOL.Size = new Size(26, 19);
-            LabelLOL.Style = MetroFramework.MetroColorStyle.White;
-            LabelLOL.StyleManager = null;
-            LabelLOL.TabIndex = 7;
-            LabelLOL.Text = "0.0";
-            LabelLOL.Theme = MetroFramework.MetroThemeStyle.Dark;
-            LabelLOL.UseStyleColors = true;
-            // 
-            // LabelDownPayment
-            // 
-            LabelDownPayment.AutoSize = true;
-            LabelDownPayment.BackColor = Color.Transparent;
-            LabelDownPayment.CustomBackground = true;
-            LabelDownPayment.FontSize = MetroFramework.MetroLabelSize.Medium;
-            LabelDownPayment.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            LabelDownPayment.ForeColor = Color.White;
-            LabelDownPayment.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            LabelDownPayment.Location = new Point(469, 304);
-            LabelDownPayment.Name = "LabelDownPayment";
-            LabelDownPayment.Size = new Size(26, 19);
-            LabelDownPayment.Style = MetroFramework.MetroColorStyle.White;
-            LabelDownPayment.StyleManager = null;
-            LabelDownPayment.TabIndex = 0;
-            LabelDownPayment.Text = "0.0";
-            LabelDownPayment.Theme = MetroFramework.MetroThemeStyle.Dark;
-            LabelDownPayment.UseStyleColors = true;
-            // 
-            // NUDLOL
-            // 
-            NUDLOL.Location = new Point(549, 275);
-            NUDLOL.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            NUDLOL.Name = "NUDLOL";
-            NUDLOL.Size = new Size(49, 23);
-            NUDLOL.TabIndex = 8;
-            NUDLOL.TextAlign = HorizontalAlignment.Center;
-            NUDLOL.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            NUDLOL.ValueChanged += NUDTotalAmountP_ValueChanged;
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.ForeColor = Color.White;
-            label16.Location = new Point(105, 251);
-            label16.Name = "label16";
-            label16.Size = new Size(202, 15);
-            label16.TabIndex = 31;
-            label16.Text = "إجمالى قيمة التعاقد (قيمة البنود بالجنيه)";
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(718, 304);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(16, 18);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 19;
-            pictureBox2.TabStop = false;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Black;
-            label2.ForeColor = Color.FromArgb(128, 128, 255);
-            label2.Location = new Point(113, 328);
-            label2.Name = "label2";
-            label2.Size = new Size(198, 15);
-            label2.TabIndex = 9;
-            label2.Text = "الحد الاقصى 10 % طبقاً للقانون المصرى";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.BackColor = Color.Black;
-            label9.ForeColor = Color.White;
-            label9.Location = new Point(659, 279);
-            label9.Name = "label9";
-            label9.Size = new Size(57, 15);
-            label9.TabIndex = 16;
-            label9.Text = "نسبة الربح";
-            // 
-            // metroLabel6
-            // 
-            metroLabel6.AutoSize = true;
-            metroLabel6.BackColor = Color.Black;
-            metroLabel6.CustomBackground = true;
-            metroLabel6.FontSize = MetroFramework.MetroLabelSize.Medium;
-            metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            metroLabel6.ForeColor = Color.White;
-            metroLabel6.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            metroLabel6.Location = new Point(197, 275);
-            metroLabel6.Name = "metroLabel6";
-            metroLabel6.Size = new Size(114, 19);
-            metroLabel6.Style = MetroFramework.MetroColorStyle.White;
-            metroLabel6.StyleManager = null;
-            metroLabel6.TabIndex = 0;
-            metroLabel6.Text = "نسبة ضمان الأعمال";
-            metroLabel6.Theme = MetroFramework.MetroThemeStyle.Dark;
-            metroLabel6.UseStyleColors = true;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(718, 277);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(16, 18);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 18;
-            pictureBox1.TabStop = false;
-            // 
-            // LabelBusinessG
-            // 
-            LabelBusinessG.AutoSize = true;
-            LabelBusinessG.BackColor = Color.Transparent;
-            LabelBusinessG.CustomBackground = true;
-            LabelBusinessG.FontSize = MetroFramework.MetroLabelSize.Medium;
-            LabelBusinessG.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            LabelBusinessG.ForeColor = Color.White;
-            LabelBusinessG.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            LabelBusinessG.Location = new Point(64, 275);
-            LabelBusinessG.Name = "LabelBusinessG";
-            LabelBusinessG.Size = new Size(26, 19);
-            LabelBusinessG.Style = MetroFramework.MetroColorStyle.White;
-            LabelBusinessG.StyleManager = null;
-            LabelBusinessG.TabIndex = 0;
-            LabelBusinessG.Text = "0.0";
-            LabelBusinessG.Theme = MetroFramework.MetroThemeStyle.Dark;
-            LabelBusinessG.UseStyleColors = true;
-            // 
-            // LabelDelayP
-            // 
-            LabelDelayP.AutoSize = true;
-            LabelDelayP.BackColor = Color.Transparent;
-            LabelDelayP.CustomBackground = true;
-            LabelDelayP.FontSize = MetroFramework.MetroLabelSize.Medium;
-            LabelDelayP.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            LabelDelayP.ForeColor = Color.White;
-            LabelDelayP.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            LabelDelayP.Location = new Point(64, 302);
-            LabelDelayP.Name = "LabelDelayP";
-            LabelDelayP.Size = new Size(26, 19);
-            LabelDelayP.Style = MetroFramework.MetroColorStyle.White;
-            LabelDelayP.StyleManager = null;
-            LabelDelayP.TabIndex = 0;
-            LabelDelayP.Text = "0.0";
-            LabelDelayP.Theme = MetroFramework.MetroThemeStyle.Dark;
-            LabelDelayP.UseStyleColors = true;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.BackColor = Color.Black;
-            label10.ForeColor = Color.White;
-            label10.Location = new Point(615, 306);
-            label10.Name = "label10";
-            label10.Size = new Size(101, 15);
-            label10.TabIndex = 17;
-            label10.Text = "نسبة الدفه المقدمة";
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(313, 302);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(16, 18);
-            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox4.TabIndex = 21;
-            pictureBox4.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(313, 275);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(16, 18);
-            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox3.TabIndex = 20;
-            pictureBox3.TabStop = false;
-            // 
-            // NUDDownPaymentP
-            // 
-            NUDDownPaymentP.Location = new Point(549, 302);
-            NUDDownPaymentP.Name = "NUDDownPaymentP";
-            NUDDownPaymentP.Size = new Size(49, 23);
-            NUDDownPaymentP.TabIndex = 1;
-            NUDDownPaymentP.TextAlign = HorizontalAlignment.Center;
-            NUDDownPaymentP.ValueChanged += NUDTotalAmountP_ValueChanged;
-            // 
-            // metroLabel8
-            // 
-            metroLabel8.AutoSize = true;
-            metroLabel8.BackColor = Color.Black;
-            metroLabel8.CustomBackground = true;
-            metroLabel8.FontSize = MetroFramework.MetroLabelSize.Medium;
-            metroLabel8.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            metroLabel8.ForeColor = Color.White;
-            metroLabel8.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            metroLabel8.Location = new Point(209, 302);
-            metroLabel8.Name = "metroLabel8";
-            metroLabel8.Size = new Size(102, 19);
-            metroLabel8.Style = MetroFramework.MetroColorStyle.White;
-            metroLabel8.StyleManager = null;
-            metroLabel8.TabIndex = 0;
-            metroLabel8.Text = "نسبة غرامة التأخير";
-            metroLabel8.Theme = MetroFramework.MetroThemeStyle.Light;
-            metroLabel8.UseStyleColors = true;
-            // 
-            // NUDDelayP
-            // 
-            NUDDelayP.Location = new Point(144, 300);
-            NUDDelayP.Name = "NUDDelayP";
-            NUDDelayP.Size = new Size(49, 23);
-            NUDDelayP.TabIndex = 1;
-            NUDDelayP.TextAlign = HorizontalAlignment.Center;
-            NUDDelayP.ValueChanged += NUDTotalAmountP_ValueChanged;
-            // 
-            // NUDGuranteeP
-            // 
-            NUDGuranteeP.Location = new Point(144, 273);
-            NUDGuranteeP.Name = "NUDGuranteeP";
-            NUDGuranteeP.Size = new Size(49, 23);
-            NUDGuranteeP.TabIndex = 1;
-            NUDGuranteeP.TextAlign = HorizontalAlignment.Center;
-            NUDGuranteeP.ValueChanged += NUDTotalAmountP_ValueChanged;
             // 
             // tabPage1
             // 
@@ -1366,17 +1366,6 @@ namespace HORAS.Contracts
             Name = "NewContractorContract";
             Text = "NewContract";
             metroTabControl1.ResumeLayout(false);
-            tabPage3.ResumeLayout(false);
-            tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)PriceNUD).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox15).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox22).EndInit();
-            ((System.ComponentModel.ISupportInitialize)NUDItemQ).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
-            ((System.ComponentModel.ISupportInitialize)DGVItems).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DGVContractItems).EndInit();
@@ -1389,6 +1378,17 @@ namespace HORAS.Contracts
             ((System.ComponentModel.ISupportInitialize)NUDDownPaymentP).EndInit();
             ((System.ComponentModel.ISupportInitialize)NUDDelayP).EndInit();
             ((System.ComponentModel.ISupportInitialize)NUDGuranteeP).EndInit();
+            tabPage3.ResumeLayout(false);
+            tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)PriceNUD).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox15).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox22).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NUDItemQ).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DGVItems).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox23).EndInit();
@@ -1503,17 +1503,17 @@ namespace HORAS.Contracts
         private DataGridViewTextBoxColumn LOL;
         private DataGridViewTextBoxColumn Column7;
         private DataGridViewTextBoxColumn Column6;
-        private DataGridViewTextBoxColumn ItemNo;
-        private DataGridViewTextBoxColumn ItemQty;
-        private DataGridViewTextBoxColumn ItemPrice;
-        private DataGridViewTextBoxColumn LOL2;
-        private DataGridViewTextBoxColumn type;
         private Button buttonchosecontract;
         private PictureBox pictureBox20;
         private PictureBox pictureBox23;
         private Button button3;
         private Button button4;
         private Label label13;
+        private DataGridViewTextBoxColumn ItemNo;
+        private DataGridViewTextBoxColumn ItemQty;
         private DataGridViewTextBoxColumn Unit;
+        private DataGridViewTextBoxColumn ItemPrice;
+        private DataGridViewTextBoxColumn LOL2;
+        private DataGridViewTextBoxColumn type;
     }
 }

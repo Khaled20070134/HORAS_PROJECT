@@ -284,7 +284,7 @@ namespace HORAS.Contracts
             AssItemsRow ItemData = MasterData.assessments.AssItemsAdapter.NotNullContracts().
                 FirstOrDefault(X => X.Contract_ID == ContractID && X.ID == ItemID);
 
-            double MaximumAllowed = ItemData.LOL * ItemData.Total_Price; 
+            double MaximumAllowed = ItemData.LOL * ItemData.Total_Price * ItemData.Qty; 
 
             double TotalExps = (double)MasterData.Contracts.ExpTrDataTable.
                             Where(X => X.ContractID == ContractID 
@@ -305,7 +305,7 @@ namespace HORAS.Contracts
 
             var InterimsList = MasterData.Interim.InterimsHeadDataTable.Where(X => X.ContractID == SelectedContractID && !X.IsConfirm_DateNull());
             foreach (var Interim in InterimsList)
-                Sum += MasterData.Interim.InterimsItemsDataTable.Where(X => X.HeadID == Interim.ID).Sum(Y => Y.Price_Unit);
+                Sum += MasterData.Interim.InterimsItemsDataTable.Where(X => X.HeadID == Interim.ID).Sum(Y => Y.Price_Unit * Y.Qty);
             return Sum;
         }
 

@@ -34,6 +34,7 @@ namespace HORAS
             }
             else
             {
+                MasterData.employees.RefreshList();
                 var Emp = MasterData.employees.EmployeesDataTable.
                      FirstOrDefault(X => X.Username == textBoxUsername.Text && X.Password == textBoxPassword.Text);
                 if (Emp == null)

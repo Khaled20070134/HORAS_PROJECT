@@ -483,10 +483,7 @@
             // 
             // NUDGuranteeP
             // 
-            NUDGuranteeP.DecimalPlaces = 2;
-            NUDGuranteeP.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             NUDGuranteeP.Location = new Point(198, 278);
-            NUDGuranteeP.Maximum = new decimal(new int[] { 1, 0, 0, 0 });
             NUDGuranteeP.Name = "NUDGuranteeP";
             NUDGuranteeP.Size = new Size(49, 23);
             NUDGuranteeP.TabIndex = 1;
@@ -514,11 +511,7 @@
             // 
             // NUDLOL
             // 
-            NUDLOL.DecimalPlaces = 2;
-            NUDLOL.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             NUDLOL.Location = new Point(565, 278);
-            NUDLOL.Maximum = new decimal(new int[] { 1, 0, 0, 0 });
-            NUDLOL.Minimum = new decimal(new int[] { 1, 0, 0, 131072 });
             NUDLOL.Name = "NUDLOL";
             NUDLOL.Size = new Size(49, 23);
             NUDLOL.TabIndex = 8;
@@ -528,10 +521,7 @@
             // 
             // NUDDelayP
             // 
-            NUDDelayP.DecimalPlaces = 2;
-            NUDDelayP.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             NUDDelayP.Location = new Point(198, 305);
-            NUDDelayP.Maximum = new decimal(new int[] { 1, 0, 0, 65536 });
             NUDDelayP.Name = "NUDDelayP";
             NUDDelayP.Size = new Size(49, 23);
             NUDDelayP.TabIndex = 1;
@@ -561,10 +551,7 @@
             // 
             // NUDDownPaymentP
             // 
-            NUDDownPaymentP.DecimalPlaces = 2;
-            NUDDownPaymentP.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             NUDDownPaymentP.Location = new Point(565, 305);
-            NUDDownPaymentP.Maximum = new decimal(new int[] { 1, 0, 0, 0 });
             NUDDownPaymentP.Name = "NUDDownPaymentP";
             NUDDownPaymentP.Size = new Size(49, 23);
             NUDDownPaymentP.TabIndex = 1;

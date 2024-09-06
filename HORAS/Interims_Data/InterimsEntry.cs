@@ -128,19 +128,33 @@ namespace HORAS.Interims_Data
         {
             double Sum = 0;
             for (int i = 0; i < DGV.Rows.Count; i++)
-                Sum += double.Parse(DGV.Rows[i].Cells[2].Value.ToString());
+                Sum += ( double.Parse(DGV.Rows[i].Cells[2].Value.ToString()) * double.Parse(DGV.Rows[i].Cells[1].Value.ToString()) );
             labelTotalGV.Text = MasterData.NumericString(Sum);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // todo check inputs
-            if (NUDQ.Value > 0 && NUDV.Value > 0 && comboBoxItems.SelectedIndex != -1)
+            if (NUDQ.Value > 0 && NUDV.Value > 0 && comboBoxItems.SelectedIndex != -1 && CBContracts.SelectedIndex != -1)
             {
-                if ((NUDV.Value + decimal.Parse(labelTotalDeliveredValue.Text)) > decimal.Parse(labelTotalExps.Text))
+                if ((NUDV.Value * NUDQ.Value) + decimal.Parse(labelTotalDeliveredValue.Text)
+                    > decimal.Parse(labelTotalExps.Text))
                 {
                     setStatus("لايمكن أن تكون قيمة البند أعلى من مصروفاته", 0);
                     return;
+                }
+
+                string ItemNum = comboBoxItems.SelectedItem.ToString();
+
+                if (DGV.Rows.Count > 0)
+                {
+                    DataGridViewRow myrow = DGV.Rows.Cast<DataGridViewRow>().Where
+                        (x => x.Cells[0].Value.ToString().Equals(ItemNum)).First();
+
+                    if (myrow.Index != -1)
+                    {
+                        setStatus("تم إضافة البند مسبقاً", 0);
+                        return;
+                    }
                 }
                 DGV.Rows.Add(comboBoxItems.SelectedItem.ToString(), NUDQ.Value, NUDV.Value);
                 UpdateTotalGV();

@@ -230,11 +230,11 @@
             label19.BackColor = Color.Transparent;
             label19.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label19.ForeColor = Color.White;
-            label19.Location = new Point(218, 55);
+            label19.Location = new Point(227, 55);
             label19.Name = "label19";
-            label19.Size = new Size(73, 15);
+            label19.Size = new Size(64, 15);
             label19.TabIndex = 96;
-            label19.Text = "إجمالى السعر";
+            label19.Text = "سعر الوحدة";
             // 
             // pictureBox11
             // 

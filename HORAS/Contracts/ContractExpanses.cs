@@ -1,4 +1,5 @@
 ﻿using HORAS.Database;
+using HORAS.Interims_Data;
 using HORAS.Properties;
 using System;
 using System.Collections.Generic;
@@ -335,7 +336,7 @@ namespace HORAS.Contracts
                 TrRow.ExpID = MasterData.Contracts.IExpansesDateTable.
                     FirstOrDefault(X => X.Title == CBMinorU.SelectedItem.ToString()).ID;
 
-                double Dif = ((double)OldUpdateAmount -TrRow.Amount);
+                double Dif = ((double)OldUpdateAmount - TrRow.Amount);
 
                 TrRow.NeedConf =
                     !MasterData.Contracts.LOLCheckOK(Dif, CBContract.
@@ -371,6 +372,14 @@ namespace HORAS.Contracts
         private void CBConfirm_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadExpanses();
+            if (CBConfirm.SelectedIndex != -1 && CBContract.SelectedIndex != -1)
+            {
+                string ItemNum = CBConfirm.SelectedItem.ToString();
+                string ContractNum = CBContract.SelectedItem.ToString();
+
+                labelconfirmremainexp.Text =
+                    MasterData.NumericString((double)MasterData.Interim.Get_Item_Status(ContractNum, ItemNum).Remain_Exps);
+            }
         }
 
         private void listBoxExps_SelectedIndexChanged(object sender, EventArgs e)
@@ -489,6 +498,14 @@ namespace HORAS.Contracts
         private void CBItemsdisplay_SelectedIndexChanged(object sender, EventArgs e)
         {
             DisplayExps();
+            if (CBItemsdisplay.SelectedIndex != -1 && CBContract.SelectedIndex != -1)
+            {
+                string ItemNum = CBItemsdisplay.SelectedItem.ToString();
+                string ContractNum = CBContract.SelectedItem.ToString();
+
+                labelRemainexpDisplay.Text =
+                    MasterData.NumericString((double)MasterData.Interim.Get_Item_Status(ContractNum, ItemNum).Remain_Exps);
+            }
         }
 
         private void pictureBox12_Click(object sender, EventArgs e)
@@ -554,6 +571,33 @@ namespace HORAS.Contracts
             CBExpMajor.Items.Clear();
             foreach (var x in MasterData.Contracts.JExpansesDateTable.ToList())
                 CBExpMajor.Items.Add(x.Title);
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CBItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CBItems.SelectedIndex != -1 && CBContract.SelectedIndex != -1)
+            {
+                string ItemNum = CBItems.SelectedItem.ToString();
+                string ContractNum = CBContract.SelectedItem.ToString();
+
+                labelRemainExp.Text =
+                    MasterData.NumericString((double)MasterData.Interim.Get_Item_Status(ContractNum, ItemNum).Remain_Exps);
+            }
+        }
+
+        private void tabPage4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

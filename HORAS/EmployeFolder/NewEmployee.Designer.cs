@@ -541,7 +541,7 @@
             textBoxFirstName.Location = new Point(382, 93);
             textBoxFirstName.Name = "textBoxFirstName";
             textBoxFirstName.Size = new Size(100, 23);
-            textBoxFirstName.TabIndex = 58;
+            textBoxFirstName.TabIndex = 0;
             textBoxFirstName.TextAlign = HorizontalAlignment.Center;
             // 
             // textBoxEmail
@@ -565,7 +565,7 @@
             textBoxLastName.Location = new Point(382, 122);
             textBoxLastName.Name = "textBoxLastName";
             textBoxLastName.Size = new Size(100, 23);
-            textBoxLastName.TabIndex = 62;
+            textBoxLastName.TabIndex = 1;
             textBoxLastName.TextAlign = HorizontalAlignment.Center;
             // 
             // textBoxUserName
@@ -573,7 +573,7 @@
             textBoxUserName.Location = new Point(382, 297);
             textBoxUserName.Name = "textBoxUserName";
             textBoxUserName.Size = new Size(100, 23);
-            textBoxUserName.TabIndex = 63;
+            textBoxUserName.TabIndex = 4;
             textBoxUserName.TextAlign = HorizontalAlignment.Center;
             // 
             // panel2
@@ -608,7 +608,7 @@
             TextboxPhone.Mask = "(9999) 000-0000";
             TextboxPhone.Name = "TextboxPhone";
             TextboxPhone.Size = new Size(100, 23);
-            TextboxPhone.TabIndex = 65;
+            TextboxPhone.TabIndex = 3;
             TextboxPhone.TextAlign = HorizontalAlignment.Center;
             // 
             // toolTipAll

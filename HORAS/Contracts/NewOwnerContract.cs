@@ -42,13 +42,13 @@ namespace HORAS.Contracts
             contract.FI_Completed = false;
             contract.IM_Completed = false;
             contract.Party = SelectedOwner.ID;
-            contract.DelayPenaltyP = (float)NUDDelayP.Value;
+            contract.DelayPenaltyP = (double)NUDDelayP.Value /100;
             contract.CreatedBy = MasterData.LoggedEmployee.ID;
             contract.CreationDate = DTPCreationDate.Value;
             contract.Duration = (int)NUDDuration.Value;
-            contract.BusinessInsuranceP = (float)NUDGuranteeP.Value;
-            contract.DownpaymentP = (float)NUDDownPaymentP.Value;
-            contract.ProfitPercentage = (float)NUDLOL.Value;
+            contract.BusinessInsuranceP = (double)NUDGuranteeP.Value / 100;
+            contract.DownpaymentP = (double)NUDDownPaymentP.Value / 100;
+            contract.ProfitPercentage = (double)NUDLOL.Value / 100;
             contract.Total_Amount = TotalAssessment;
             contract.Number = TextBoxNumber.Text;
             contract.StartedBy = -1;
@@ -76,10 +76,10 @@ namespace HORAS.Contracts
         }
         void UpdateFIData()
         {
-            LabelLOL.Text = ((decimal)TotalAssessment * NUDLOL.Value).ToString("N", new CultureInfo("en-US"));
-            LabelDownPayment.Text = ((decimal)TotalAssessment * NUDDownPaymentP.Value).ToString("N", new CultureInfo("en-US"));
-            LabelBusinessG.Text = ((decimal)TotalAssessment * NUDGuranteeP.Value).ToString("N", new CultureInfo("en-US"));
-            LabelDelayP.Text = ((decimal)TotalAssessment * NUDDelayP.Value).ToString("N", new CultureInfo("en-US"));
+            LabelLOL.Text = ((decimal)TotalAssessment * NUDLOL.Value /100).ToString("N", new CultureInfo("en-US"));
+            LabelDownPayment.Text = ((decimal)TotalAssessment * NUDDownPaymentP.Value / 100).ToString("N", new CultureInfo("en-US"));
+            LabelBusinessG.Text = ((decimal)TotalAssessment * NUDGuranteeP.Value / 100).ToString("N", new CultureInfo("en-US"));
+            LabelDelayP.Text = ((decimal)TotalAssessment * NUDDelayP.Value / 100).ToString("N", new CultureInfo("en-US"));
         }
 
         void LoadContractors()
@@ -96,13 +96,18 @@ namespace HORAS.Contracts
             MasterData.LoadMasterData();
             CBAssessment.Items.Clear();
             // Load Assessments
-            foreach (var ass in MasterData.assessments.AssessmentHeadDataTable.Where(X => X.Confirmed == true).ToList())
-                CBAssessment.Items.Add(ass.About);
-        }
 
-        private void metroButton1_Click(object sender, EventArgs e)
-        {
+            var ASSLIST = from Head in MasterData.assessments.AssessmentHeadDataTable
+                          join
+                          Items in MasterData.assessments.AssItemsDataTable on Head.ID equals Items.AssID
+                          where Items.IsContract_IDNull()
+                          where Head.Confirmed = true
+                          select  Head.About;
 
+            var ASSLIST2 = ASSLIST.Distinct();
+
+            foreach (var ass in ASSLIST2)
+                CBAssessment.Items.Add(ass);
         }
 
         private void ComboBoxOwner_SelectedIndexChanged(object sender, EventArgs e)
@@ -259,24 +264,9 @@ namespace HORAS.Contracts
 
         }
 
-        private void metroButton7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void metroButton6_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void NUDTotalAmountP_ValueChanged(object sender, EventArgs e)
         {
             UpdateFIData();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Close();
         }
 
         List<AssItemsRow> SelectedItems = new List<AssItemsRow>();
@@ -301,14 +291,6 @@ namespace HORAS.Contracts
             labelItemCount.Text = SelectedItems.Count.ToString();
             labelItemTotal.Text = MasterData.NumericString(Sum);
             UpdateFIData();
-        }
-
-        private void RefreshBTN_Click(object sender, EventArgs e)
-        {
-            CBAssessment.Items.Clear();
-            foreach (var ass in MasterData.assessments.AssessmentHeadDataTable.Where(X => X.Confirmed == true).ToList())
-                CBAssessment.Items.Add(ass.About);
-            setStatus("تم تحديث قائمة ارقام المقايسات", 1);
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)

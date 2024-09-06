@@ -216,7 +216,7 @@ namespace HORAS
             AssItemsRow ItemRow = MasterData.assessments.AssItemsAdapter.NotNullContracts().FirstOrDefault
                 (X => X.Contract_ID == ContractID && X.ID == ItemID);
 
-            return (ItemRow.Total_Price * ItemRow.LOL);
+            return (ItemRow.Qty* ItemRow.Total_Price * ItemRow.LOL);
         }
 
         public double GetItemLOLPer(string ContractNumber, string ItemNumber)

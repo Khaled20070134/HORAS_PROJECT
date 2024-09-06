@@ -112,11 +112,13 @@ namespace HORAS.Interims_Data
             int ItemID = MasterData.assessments.AssItemsAdapter.NotNullContracts().
                 FirstOrDefault(X => X.Contract_ID == SelectedContrctID && X.Number == SelectedItemNumber).ID;
 
-            i_Status.Total_Value = MasterData.assessments.AssItemsDataTable.
-                FirstOrDefault(X => X.Contract_ID == SelectedContrctID && X.Number == SelectedItemNumber).Total_Price;
-
             i_Status.Total_QP = MasterData.assessments.AssItemsDataTable.
-                FirstOrDefault(X => X.Contract_ID == SelectedContrctID && X.Number == SelectedItemNumber).Qty;
+    FirstOrDefault(X => X.Contract_ID == SelectedContrctID && X.Number == SelectedItemNumber).Qty;
+
+            i_Status.Total_Value = MasterData.assessments.AssItemsDataTable.
+                FirstOrDefault(X => X.Contract_ID == SelectedContrctID && X.Number == SelectedItemNumber).Total_Price * i_Status.Total_QP;
+
+
 
             i_Status.LOL = MasterData.assessments.AssItemsDataTable.
                 FirstOrDefault(X => X.Contract_ID == SelectedContrctID && X.Number == SelectedItemNumber).LOL;
@@ -129,7 +131,7 @@ namespace HORAS.Interims_Data
                 // Set Delivered Total Value
                 i_Status.Delivered_Value +=
                 MasterData.Interim.InterimsItemsDataTable.
-                Where(X => X.HeadID == Interim.ID && X.Number == SelectedItemNumber).Sum(Y => Y.Price_Unit);
+                Where(X => X.HeadID == Interim.ID && X.Number == SelectedItemNumber).Sum(Y => Y.Price_Unit * Y.Qty);
 
                 // Set Delivered Quantity or Percentage
                 i_Status.Delivered_QP +=
@@ -147,17 +149,6 @@ namespace HORAS.Interims_Data
 
 
             i_Status.Remain_Exps = (decimal)(i_Status.LOL * i_Status.Total_Value - (double)i_Status.Total_Exps);
-
-
-
-
-
-
-
-
-
-
-
 
 
 

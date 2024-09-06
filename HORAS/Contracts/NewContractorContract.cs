@@ -45,7 +45,7 @@ namespace HORAS.Contracts
                 ItemRow.Number = DGVContractItems.Rows[i].Cells[0].Value.ToString();
                 ItemRow.Qty = double.Parse(DGVContractItems.Rows[i].Cells[1].Value.ToString());
                 ItemRow.Item_Unit = DGVContractItems.Rows[i].Cells[2].Value.ToString();
-                ItemRow.Total_Price = double.Parse(DGVContractItems.Rows[i].Cells[3].Value.ToString()) / ItemRow.Qty;
+                ItemRow.Total_Price = double.Parse(DGVContractItems.Rows[i].Cells[3].Value.ToString());
                 ItemRow.LOL = double.Parse(DGVContractItems.Rows[i].Cells[4].Value.ToString());
                 ItemRow.Item_Type = (int)(Item_TYPE)Enum.Parse(typeof(Item_TYPE), DGVContractItems.Rows[i].Cells[5].Value.ToString());
                 ItemRow.Description = desriptiondictionary[ItemRow.Number];
@@ -78,13 +78,13 @@ namespace HORAS.Contracts
             contract.FI_Completed = false;
             contract.IM_Completed = false;
             contract.Party = SelectedOwner.ID;
-            contract.DelayPenaltyP = (float)NUDDelayP.Value;
+            contract.DelayPenaltyP = (double)NUDDelayP.Value / 100;
             contract.CreatedBy = MasterData.LoggedEmployee.ID;
             contract.CreationDate = DTPCreationDate.Value;
             contract.Duration = (int)NUDDuration.Value;
-            contract.BusinessInsuranceP = (float)NUDGuranteeP.Value;
-            contract.DownpaymentP = (float)NUDDownPaymentP.Value;
-            contract.ProfitPercentage = (float)NUDLOL.Value;
+            contract.BusinessInsuranceP = (double)NUDGuranteeP.Value / 100;
+            contract.DownpaymentP = (double)NUDDownPaymentP.Value / 100;
+            contract.ProfitPercentage = (double)NUDLOL.Value / 100;
             contract.Total_Amount = TotalAssessment;
             contract.Number = TextBoxNumber.Text;
             contract.StartedBy = -1;
@@ -172,13 +172,14 @@ namespace HORAS.Contracts
             foreach (var Item in ItemsList)
             {
                 double Total = 0;
+                Total = Item.Total_Price * Item.Qty;
                 switch (Item.Item_Type)
                 {
-                    case 0: Type = Item_TYPE.Supply.ToString(); Total = Item.Total_Price * Item.Qty; break;
+                    case 0: Type = Item_TYPE.Supply.ToString();  break;
                     case 1:
                         Type = Item_TYPE.Implementation_Installation.ToString();
-                        Total = Item.Total_Price; break;
-                    case 2: Type = Item_TYPE.Both.ToString(); Total = Item.Total_Price; break;
+                         break;
+                    case 2: Type = Item_TYPE.Both.ToString(); break;
                 }
                 DGVItems.Rows.Add(Item.Number,
                         Item.Item_Unit, Item.Total_Price, Item.Qty, Item.LOL, Type, Total);
@@ -349,7 +350,8 @@ namespace HORAS.Contracts
         {
             MasterData.Contracts.RefreshList();
             CBAssessmentContracts.Items.Clear();
-            var OwnerContracts = MasterData.Contracts.ContractDataTable.Where(X => X.Signed == true && !X.IsStartDateNull() && !X.IM_Completed).ToList();
+            var OwnerContracts = MasterData.Contracts.
+                ContractDataTable.Where(X => X.Signed == true && !X.IsStartDateNull() && !X.IM_Completed && X.IsOwnerContractIDNull()).ToList();
             foreach (var Item in OwnerContracts)
                 CBAssessmentContracts.Items.Add(Item.Number);
         }
@@ -419,7 +421,8 @@ namespace HORAS.Contracts
             MasterData.assessments.AssItemsRow.Qty = (double)NUDItemQ.Value;
             MasterData.assessments.AssItemsRow.Item_Type = (int)(Item_TYPE)Enum.Parse(typeof(Enums.Item_TYPE), ItemTypeCB.SelectedItem.ToString());
             MasterData.assessments.AssItemsRow.LOL = (double)DGVItems.SelectedRows[0].Cells[4].Value;
-            MasterData.assessments.AssItemsRow.Total_Price = (double)PriceNUD.Value * (double) NUDItemQ.Value ;
+            //MasterData.assessments.AssItemsRow.Total_Price = (double)PriceNUD.Value * (double) NUDItemQ.Value ;
+            MasterData.assessments.AssItemsRow.Total_Price = (double)PriceNUD.Value;
             MasterData.assessments.AssItemsRow.Description = DescTxt.Text;
             MasterData.assessments.AssItemsRow.Item_Unit = DGVItems.SelectedRows[0].Cells[1].Value.ToString();
             desriptiondictionary.Add(MasterData.assessments.AssItemsRow.Number, MasterData.assessments.AssItemsRow.Description);
@@ -456,7 +459,8 @@ namespace HORAS.Contracts
         {
             double totalvalue = 0;
             for (int i = 0; i < DGVContractItems.RowCount - 1; i++)
-                totalvalue += double.Parse(DGVContractItems.Rows[i].Cells[3].Value.ToString());
+                totalvalue +=( double.Parse(DGVContractItems.Rows[i].Cells[3].Value.ToString())
+                    * double.Parse(DGVContractItems.Rows[i].Cells[1].Value.ToString()));
             TotalvalueLBL.Text = MasterData.NumericString(totalvalue);
 
             LabelDelayP.Text = MasterData.NumericString((double)(NUDDelayP.Value / 100) * totalvalue);

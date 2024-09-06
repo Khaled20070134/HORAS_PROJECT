@@ -88,6 +88,9 @@ namespace HORAS.Contracts
                     DeliveredSum += MasterData.Interim.InterimsItemsDataTable.
                         Where(X => X.HeadID == interim.ID && X.Number == ContractItem.Number).Sum(Y => Y.Qty);
                 }
+
+                if (DeliveredSum > ContractItem.Qty) DeliveredSum = ContractItem.Qty;
+
                 Percentages.Add(DeliveredSum / ContractItem.Qty);
                 DeliveredSum = 0;
             }

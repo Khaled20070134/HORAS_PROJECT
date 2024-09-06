@@ -34,6 +34,9 @@
             pictureBox2 = new PictureBox();
             CBContract = new ComboBox();
             tabPage2 = new TabPage();
+            labelRemainexpDisplay = new Label();
+            label18 = new Label();
+            pictureBox15 = new PictureBox();
             button3 = new Button();
             textBoxFileUpdate = new TextBox();
             CBItemsdisplay = new ComboBox();
@@ -64,6 +67,9 @@
             label28 = new Label();
             pictureBox23 = new PictureBox();
             tabPage1 = new TabPage();
+            labelRemainExp = new Label();
+            label15 = new Label();
+            pictureBox13 = new PictureBox();
             pictureBox12 = new PictureBox();
             CBItems = new ComboBox();
             label12 = new Label();
@@ -92,6 +98,9 @@
             pictureBox3 = new PictureBox();
             tabControl1 = new TabControl();
             tabPage4 = new TabPage();
+            labelconfirmremainexp = new Label();
+            label17 = new Label();
+            pictureBox14 = new PictureBox();
             LabelCStatus = new Label();
             label11 = new Label();
             pictureBox9 = new PictureBox();
@@ -137,6 +146,7 @@
             buttonchosecontract = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox15).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NUDAmountU).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox17).BeginInit();
@@ -147,6 +157,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox22).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox23).BeginInit();
             tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox24).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
@@ -158,6 +169,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             tabControl1.SuspendLayout();
             tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox33).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox32).BeginInit();
@@ -220,6 +232,9 @@
             // tabPage2
             // 
             tabPage2.BackColor = Color.Black;
+            tabPage2.Controls.Add(labelRemainexpDisplay);
+            tabPage2.Controls.Add(label18);
+            tabPage2.Controls.Add(pictureBox15);
             tabPage2.Controls.Add(button3);
             tabPage2.Controls.Add(textBoxFileUpdate);
             tabPage2.Controls.Add(CBItemsdisplay);
@@ -256,13 +271,47 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "تعديل أو مسح مصروف";
             // 
+            // labelRemainexpDisplay
+            // 
+            labelRemainexpDisplay.AutoSize = true;
+            labelRemainexpDisplay.BackColor = Color.Transparent;
+            labelRemainexpDisplay.ForeColor = Color.White;
+            labelRemainexpDisplay.Location = new Point(413, 165);
+            labelRemainexpDisplay.Name = "labelRemainexpDisplay";
+            labelRemainexpDisplay.Size = new Size(89, 15);
+            labelRemainexpDisplay.TabIndex = 133;
+            labelRemainexpDisplay.Text = "التسجيل بواسطة";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.BackColor = Color.Transparent;
+            label18.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label18.ForeColor = Color.White;
+            label18.Location = new Point(544, 165);
+            label18.Name = "label18";
+            label18.Size = new Size(111, 15);
+            label18.TabIndex = 134;
+            label18.Text = "باقي المصروف المتاح";
+            // 
+            // pictureBox15
+            // 
+            pictureBox15.BackColor = Color.Transparent;
+            pictureBox15.Image = (Image)resources.GetObject("pictureBox15.Image");
+            pictureBox15.Location = new Point(663, 164);
+            pictureBox15.Name = "pictureBox15";
+            pictureBox15.Size = new Size(16, 18);
+            pictureBox15.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox15.TabIndex = 132;
+            pictureBox15.TabStop = false;
+            // 
             // button3
             // 
             button3.BackColor = Color.White;
             button3.FlatAppearance.BorderSize = 0;
             button3.Font = new Font("Segoe Script", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(59, 163);
+            button3.Location = new Point(59, 190);
             button3.Name = "button3";
             button3.RightToLeft = RightToLeft.No;
             button3.Size = new Size(88, 27);
@@ -276,7 +325,7 @@
             // textBoxFileUpdate
             // 
             textBoxFileUpdate.Enabled = false;
-            textBoxFileUpdate.Location = new Point(188, 165);
+            textBoxFileUpdate.Location = new Point(188, 192);
             textBoxFileUpdate.Name = "textBoxFileUpdate";
             textBoxFileUpdate.Size = new Size(309, 23);
             textBoxFileUpdate.TabIndex = 124;
@@ -405,7 +454,7 @@
             button4.FlatAppearance.BorderSize = 0;
             button4.Font = new Font("Segoe Script", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(345, 196);
+            button4.Location = new Point(345, 223);
             button4.Name = "button4";
             button4.RightToLeft = RightToLeft.No;
             button4.Size = new Size(156, 27);
@@ -421,7 +470,7 @@
             labelDateU.AutoSize = true;
             labelDateU.BackColor = Color.Transparent;
             labelDateU.ForeColor = Color.White;
-            labelDateU.Location = new Point(423, 253);
+            labelDateU.Location = new Point(423, 260);
             labelDateU.Name = "labelDateU";
             labelDateU.Size = new Size(74, 15);
             labelDateU.TabIndex = 111;
@@ -433,7 +482,7 @@
             label21.BackColor = Color.Transparent;
             label21.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold);
             label21.ForeColor = Color.White;
-            label21.Location = new Point(570, 254);
+            label21.Location = new Point(570, 261);
             label21.Name = "label21";
             label21.Size = new Size(85, 13);
             label21.TabIndex = 112;
@@ -443,7 +492,7 @@
             // 
             pictureBox18.BackColor = Color.Transparent;
             pictureBox18.Image = (Image)resources.GetObject("pictureBox18.Image");
-            pictureBox18.Location = new Point(663, 251);
+            pictureBox18.Location = new Point(663, 258);
             pictureBox18.Name = "pictureBox18";
             pictureBox18.Size = new Size(16, 18);
             pictureBox18.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -456,7 +505,7 @@
             label22.BackColor = Color.Transparent;
             label22.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold);
             label22.ForeColor = Color.White;
-            label22.Location = new Point(507, 170);
+            label22.Location = new Point(507, 197);
             label22.Name = "label22";
             label22.Size = new Size(148, 13);
             label22.TabIndex = 113;
@@ -466,7 +515,7 @@
             // 
             pictureBox19.BackColor = Color.Transparent;
             pictureBox19.Image = (Image)resources.GetObject("pictureBox19.Image");
-            pictureBox19.Location = new Point(663, 167);
+            pictureBox19.Location = new Point(663, 194);
             pictureBox19.Name = "pictureBox19";
             pictureBox19.Size = new Size(16, 18);
             pictureBox19.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -525,7 +574,7 @@
             listBoxItemsU.ItemHeight = 15;
             listBoxItemsU.Location = new Point(19, 16);
             listBoxItemsU.Name = "listBoxItemsU";
-            listBoxItemsU.Size = new Size(120, 139);
+            listBoxItemsU.Size = new Size(120, 154);
             listBoxItemsU.TabIndex = 102;
             listBoxItemsU.SelectedIndexChanged += listBoxItemsU_SelectedIndexChanged;
             // 
@@ -596,6 +645,9 @@
             // tabPage1
             // 
             tabPage1.BackColor = Color.Black;
+            tabPage1.Controls.Add(labelRemainExp);
+            tabPage1.Controls.Add(label15);
+            tabPage1.Controls.Add(pictureBox13);
             tabPage1.Controls.Add(pictureBox12);
             tabPage1.Controls.Add(CBItems);
             tabPage1.Controls.Add(label12);
@@ -630,6 +682,40 @@
             tabPage1.Size = new Size(691, 318);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "إضافة حركة مصروف";
+            tabPage1.Click += tabPage1_Click;
+            // 
+            // labelRemainExp
+            // 
+            labelRemainExp.AutoSize = true;
+            labelRemainExp.BackColor = Color.Transparent;
+            labelRemainExp.ForeColor = Color.White;
+            labelRemainExp.Location = new Point(221, 285);
+            labelRemainExp.Name = "labelRemainExp";
+            labelRemainExp.Size = new Size(80, 15);
+            labelRemainExp.TabIndex = 85;
+            labelRemainExp.Text = "باقي المصروف";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.BackColor = Color.Transparent;
+            label15.ForeColor = Color.White;
+            label15.Location = new Point(360, 285);
+            label15.Name = "label15";
+            label15.Size = new Size(111, 15);
+            label15.TabIndex = 84;
+            label15.Text = "باقي المصروف المتاح";
+            // 
+            // pictureBox13
+            // 
+            pictureBox13.BackColor = Color.Transparent;
+            pictureBox13.Image = (Image)resources.GetObject("pictureBox13.Image");
+            pictureBox13.Location = new Point(477, 282);
+            pictureBox13.Name = "pictureBox13";
+            pictureBox13.Size = new Size(16, 18);
+            pictureBox13.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox13.TabIndex = 83;
+            pictureBox13.TabStop = false;
             // 
             // pictureBox12
             // 
@@ -651,6 +737,7 @@
             CBItems.RightToLeft = RightToLeft.No;
             CBItems.Size = new Size(151, 23);
             CBItems.TabIndex = 81;
+            CBItems.SelectedIndexChanged += CBItems_SelectedIndexChanged;
             // 
             // label12
             // 
@@ -936,6 +1023,9 @@
             // tabPage4
             // 
             tabPage4.BackColor = Color.Black;
+            tabPage4.Controls.Add(labelconfirmremainexp);
+            tabPage4.Controls.Add(label17);
+            tabPage4.Controls.Add(pictureBox14);
             tabPage4.Controls.Add(LabelCStatus);
             tabPage4.Controls.Add(label11);
             tabPage4.Controls.Add(pictureBox9);
@@ -979,13 +1069,48 @@
             tabPage4.Size = new Size(691, 318);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "عرض و تأكيد المصروفات";
+            tabPage4.Click += tabPage4_Click;
+            // 
+            // labelconfirmremainexp
+            // 
+            labelconfirmremainexp.AutoSize = true;
+            labelconfirmremainexp.BackColor = Color.Transparent;
+            labelconfirmremainexp.ForeColor = Color.White;
+            labelconfirmremainexp.Location = new Point(401, 214);
+            labelconfirmremainexp.Name = "labelconfirmremainexp";
+            labelconfirmremainexp.Size = new Size(89, 15);
+            labelconfirmremainexp.TabIndex = 130;
+            labelconfirmremainexp.Text = "التسجيل بواسطة";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.BackColor = Color.Transparent;
+            label17.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label17.ForeColor = Color.White;
+            label17.Location = new Point(532, 214);
+            label17.Name = "label17";
+            label17.Size = new Size(111, 15);
+            label17.TabIndex = 131;
+            label17.Text = "باقي المصروف المتاح";
+            // 
+            // pictureBox14
+            // 
+            pictureBox14.BackColor = Color.Transparent;
+            pictureBox14.Image = (Image)resources.GetObject("pictureBox14.Image");
+            pictureBox14.Location = new Point(657, 213);
+            pictureBox14.Name = "pictureBox14";
+            pictureBox14.Size = new Size(16, 18);
+            pictureBox14.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox14.TabIndex = 129;
+            pictureBox14.TabStop = false;
             // 
             // LabelCStatus
             // 
             LabelCStatus.AutoSize = true;
             LabelCStatus.BackColor = Color.Transparent;
             LabelCStatus.ForeColor = Color.White;
-            LabelCStatus.Location = new Point(402, 292);
+            LabelCStatus.Location = new Point(402, 289);
             LabelCStatus.Name = "LabelCStatus";
             LabelCStatus.Size = new Size(89, 15);
             LabelCStatus.TabIndex = 127;
@@ -997,17 +1122,18 @@
             label11.BackColor = Color.Transparent;
             label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label11.ForeColor = Color.White;
-            label11.Location = new Point(566, 292);
+            label11.Location = new Point(566, 289);
             label11.Name = "label11";
             label11.Size = new Size(77, 15);
             label11.TabIndex = 128;
             label11.Text = "حاله المصروف";
+            label11.Click += label11_Click;
             // 
             // pictureBox9
             // 
             pictureBox9.BackColor = Color.Transparent;
             pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
-            pictureBox9.Location = new Point(657, 290);
+            pictureBox9.Location = new Point(657, 288);
             pictureBox9.Name = "pictureBox9";
             pictureBox9.Size = new Size(16, 18);
             pictureBox9.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -1048,7 +1174,7 @@
             labelLOLC.AutoSize = true;
             labelLOLC.BackColor = Color.Transparent;
             labelLOLC.ForeColor = Color.White;
-            labelLOLC.Location = new Point(402, 242);
+            labelLOLC.Location = new Point(402, 239);
             labelLOLC.Name = "labelLOLC";
             labelLOLC.Size = new Size(89, 15);
             labelLOLC.TabIndex = 123;
@@ -1060,7 +1186,7 @@
             label24.BackColor = Color.Transparent;
             label24.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label24.ForeColor = Color.White;
-            label24.Location = new Point(588, 242);
+            label24.Location = new Point(588, 239);
             label24.Name = "label24";
             label24.Size = new Size(55, 15);
             label24.TabIndex = 124;
@@ -1070,7 +1196,7 @@
             // 
             pictureBox33.BackColor = Color.Transparent;
             pictureBox33.Image = (Image)resources.GetObject("pictureBox33.Image");
-            pictureBox33.Location = new Point(657, 240);
+            pictureBox33.Location = new Point(657, 238);
             pictureBox33.Name = "pictureBox33";
             pictureBox33.Size = new Size(16, 18);
             pictureBox33.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -1108,7 +1234,7 @@
             labelTotalC.AutoSize = true;
             labelTotalC.BackColor = Color.Transparent;
             labelTotalC.ForeColor = Color.White;
-            labelTotalC.Location = new Point(402, 268);
+            labelTotalC.Location = new Point(402, 264);
             labelTotalC.Name = "labelTotalC";
             labelTotalC.Size = new Size(89, 15);
             labelTotalC.TabIndex = 86;
@@ -1130,7 +1256,7 @@
             // 
             pictureBox32.BackColor = Color.Transparent;
             pictureBox32.Image = (Image)resources.GetObject("pictureBox32.Image");
-            pictureBox32.Location = new Point(657, 12);
+            pictureBox32.Location = new Point(657, 13);
             pictureBox32.Name = "pictureBox32";
             pictureBox32.Size = new Size(16, 18);
             pictureBox32.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -1143,7 +1269,7 @@
             label14.BackColor = Color.Transparent;
             label14.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label14.ForeColor = Color.White;
-            label14.Location = new Point(503, 268);
+            label14.Location = new Point(503, 264);
             label14.Name = "label14";
             label14.Size = new Size(140, 15);
             label14.TabIndex = 87;
@@ -1153,7 +1279,7 @@
             // 
             pictureBox11.BackColor = Color.Transparent;
             pictureBox11.Image = (Image)resources.GetObject("pictureBox11.Image");
-            pictureBox11.Location = new Point(657, 266);
+            pictureBox11.Location = new Point(657, 263);
             pictureBox11.Name = "pictureBox11";
             pictureBox11.Size = new Size(16, 18);
             pictureBox11.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -1165,7 +1291,7 @@
             labelCreatedByC.AutoSize = true;
             labelCreatedByC.BackColor = Color.Transparent;
             labelCreatedByC.ForeColor = Color.White;
-            labelCreatedByC.Location = new Point(401, 203);
+            labelCreatedByC.Location = new Point(401, 189);
             labelCreatedByC.Name = "labelCreatedByC";
             labelCreatedByC.Size = new Size(89, 15);
             labelCreatedByC.TabIndex = 116;
@@ -1177,7 +1303,7 @@
             label23.BackColor = Color.Transparent;
             label23.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label23.ForeColor = Color.White;
-            label23.Location = new Point(554, 203);
+            label23.Location = new Point(554, 189);
             label23.Name = "label23";
             label23.Size = new Size(89, 15);
             label23.TabIndex = 117;
@@ -1187,7 +1313,7 @@
             // 
             pictureBox25.BackColor = Color.Transparent;
             pictureBox25.Image = (Image)resources.GetObject("pictureBox25.Image");
-            pictureBox25.Location = new Point(657, 201);
+            pictureBox25.Location = new Point(657, 188);
             pictureBox25.Name = "pictureBox25";
             pictureBox25.Size = new Size(16, 18);
             pictureBox25.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -1200,7 +1326,7 @@
             button7.FlatAppearance.BorderSize = 0;
             button7.Font = new Font("Segoe Script", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button7.Image = (Image)resources.GetObject("button7.Image");
-            button7.Location = new Point(363, 143);
+            button7.Location = new Point(363, 133);
             button7.Name = "button7";
             button7.RightToLeft = RightToLeft.No;
             button7.Size = new Size(127, 27);
@@ -1216,7 +1342,7 @@
             labelDateC.AutoSize = true;
             labelDateC.BackColor = Color.Transparent;
             labelDateC.ForeColor = Color.White;
-            labelDateC.Location = new Point(416, 176);
+            labelDateC.Location = new Point(416, 164);
             labelDateC.Name = "labelDateC";
             labelDateC.Size = new Size(74, 15);
             labelDateC.TabIndex = 111;
@@ -1228,7 +1354,7 @@
             label29.BackColor = Color.Transparent;
             label29.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label29.ForeColor = Color.White;
-            label29.Location = new Point(569, 176);
+            label29.Location = new Point(569, 164);
             label29.Name = "label29";
             label29.Size = new Size(74, 15);
             label29.TabIndex = 112;
@@ -1238,7 +1364,7 @@
             // 
             pictureBox26.BackColor = Color.Transparent;
             pictureBox26.Image = (Image)resources.GetObject("pictureBox26.Image");
-            pictureBox26.Location = new Point(657, 174);
+            pictureBox26.Location = new Point(657, 163);
             pictureBox26.Name = "pictureBox26";
             pictureBox26.Size = new Size(16, 18);
             pictureBox26.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -1251,7 +1377,7 @@
             label30.BackColor = Color.Transparent;
             label30.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label30.ForeColor = Color.White;
-            label30.Location = new Point(501, 149);
+            label30.Location = new Point(501, 139);
             label30.Name = "label30";
             label30.Size = new Size(142, 15);
             label30.TabIndex = 113;
@@ -1261,7 +1387,7 @@
             // 
             pictureBox27.BackColor = Color.Transparent;
             pictureBox27.Image = (Image)resources.GetObject("pictureBox27.Image");
-            pictureBox27.Location = new Point(657, 147);
+            pictureBox27.Location = new Point(657, 138);
             pictureBox27.Name = "pictureBox27";
             pictureBox27.Size = new Size(16, 18);
             pictureBox27.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -1273,7 +1399,7 @@
             labelAmountC.AutoSize = true;
             labelAmountC.BackColor = Color.Transparent;
             labelAmountC.ForeColor = Color.White;
-            labelAmountC.Location = new Point(417, 122);
+            labelAmountC.Location = new Point(417, 114);
             labelAmountC.Name = "labelAmountC";
             labelAmountC.Size = new Size(73, 15);
             labelAmountC.TabIndex = 107;
@@ -1284,7 +1410,7 @@
             labelExps1C.AutoSize = true;
             labelExps1C.BackColor = Color.Transparent;
             labelExps1C.ForeColor = Color.White;
-            labelExps1C.Location = new Point(417, 41);
+            labelExps1C.Location = new Point(417, 39);
             labelExps1C.Name = "labelExps1C";
             labelExps1C.Size = new Size(73, 15);
             labelExps1C.TabIndex = 106;
@@ -1295,7 +1421,7 @@
             labelExps2C.AutoSize = true;
             labelExps2C.BackColor = Color.Transparent;
             labelExps2C.ForeColor = Color.White;
-            labelExps2C.Location = new Point(417, 68);
+            labelExps2C.Location = new Point(417, 64);
             labelExps2C.Name = "labelExps2C";
             labelExps2C.Size = new Size(73, 15);
             labelExps2C.TabIndex = 106;
@@ -1306,7 +1432,7 @@
             labelDescC.AutoSize = true;
             labelDescC.BackColor = Color.Transparent;
             labelDescC.ForeColor = Color.White;
-            labelDescC.Location = new Point(417, 95);
+            labelDescC.Location = new Point(417, 89);
             labelDescC.Name = "labelDescC";
             labelDescC.Size = new Size(73, 15);
             labelDescC.TabIndex = 106;
@@ -1318,7 +1444,7 @@
             label33.BackColor = Color.Transparent;
             label33.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label33.ForeColor = Color.White;
-            label33.Location = new Point(570, 95);
+            label33.Location = new Point(570, 89);
             label33.Name = "label33";
             label33.Size = new Size(73, 15);
             label33.TabIndex = 105;
@@ -1328,7 +1454,7 @@
             // 
             pictureBox28.BackColor = Color.Transparent;
             pictureBox28.Image = (Image)resources.GetObject("pictureBox28.Image");
-            pictureBox28.Location = new Point(657, 93);
+            pictureBox28.Location = new Point(657, 88);
             pictureBox28.Name = "pictureBox28";
             pictureBox28.Size = new Size(16, 18);
             pictureBox28.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -1341,7 +1467,7 @@
             label34.BackColor = Color.Transparent;
             label34.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label34.ForeColor = Color.White;
-            label34.Location = new Point(607, 122);
+            label34.Location = new Point(607, 114);
             label34.Name = "label34";
             label34.Size = new Size(36, 15);
             label34.TabIndex = 108;
@@ -1351,7 +1477,7 @@
             // 
             pictureBox29.BackColor = Color.Transparent;
             pictureBox29.Image = (Image)resources.GetObject("pictureBox29.Image");
-            pictureBox29.Location = new Point(657, 120);
+            pictureBox29.Location = new Point(657, 113);
             pictureBox29.Name = "pictureBox29";
             pictureBox29.Size = new Size(16, 18);
             pictureBox29.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -1374,7 +1500,7 @@
             label35.BackColor = Color.Transparent;
             label35.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label35.ForeColor = Color.White;
-            label35.Location = new Point(558, 68);
+            label35.Location = new Point(558, 64);
             label35.Name = "label35";
             label35.Size = new Size(85, 15);
             label35.TabIndex = 99;
@@ -1384,7 +1510,7 @@
             // 
             pictureBox30.BackColor = Color.Transparent;
             pictureBox30.Image = (Image)resources.GetObject("pictureBox30.Image");
-            pictureBox30.Location = new Point(657, 66);
+            pictureBox30.Location = new Point(657, 63);
             pictureBox30.Name = "pictureBox30";
             pictureBox30.Size = new Size(16, 18);
             pictureBox30.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -1397,7 +1523,7 @@
             label36.BackColor = Color.Transparent;
             label36.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label36.ForeColor = Color.White;
-            label36.Location = new Point(569, 41);
+            label36.Location = new Point(569, 39);
             label36.Name = "label36";
             label36.Size = new Size(74, 15);
             label36.TabIndex = 97;
@@ -1407,7 +1533,7 @@
             // 
             pictureBox31.BackColor = Color.Transparent;
             pictureBox31.Image = (Image)resources.GetObject("pictureBox31.Image");
-            pictureBox31.Location = new Point(657, 39);
+            pictureBox31.Location = new Point(657, 38);
             pictureBox31.Name = "pictureBox31";
             pictureBox31.Size = new Size(16, 18);
             pictureBox31.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -1505,6 +1631,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox15).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
             ((System.ComponentModel.ISupportInitialize)NUDAmountU).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox17).EndInit();
@@ -1516,6 +1643,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox23).EndInit();
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox24).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
@@ -1528,6 +1656,7 @@
             tabControl1.ResumeLayout(false);
             tabPage4.ResumeLayout(false);
             tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox33).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox32).EndInit();
@@ -1658,5 +1787,14 @@
         private Button button3;
         private TextBox textBoxFileUpdate;
         private Button buttonchosecontract;
+        private Label labelRemainExp;
+        private Label label15;
+        private PictureBox pictureBox13;
+        private Label labelconfirmremainexp;
+        private Label label17;
+        private PictureBox pictureBox14;
+        private Label labelRemainexpDisplay;
+        private Label label18;
+        private PictureBox pictureBox15;
     }
 }
