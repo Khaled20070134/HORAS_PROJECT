@@ -88,6 +88,7 @@ namespace HORAS.Assessments
                     xlapp.Quit();
                     Marshal.ReleaseComObject(xlapp);
                     DataLoaded = true;
+                    setStatus("تم تحميل بنود المقايسة بنجاح", 1);
                 }
                 catch (Exception E)
                 {
@@ -107,7 +108,7 @@ namespace HORAS.Assessments
             for (int i = 0; i < DGV_Data.RowCount; i++)
             {
                 ItemRow = MasterData.assessments.AssItemsDataTable.NewAssItemsRow();
-                ItemRow.ID = StartItemIndex + i;
+                ItemRow.ID = StartItemIndex + i+1;
                 ItemRow.Number = DGV_Data.Rows[i].Cells[0].Value.ToString();
                 ItemRow.Description = itemlist.FirstOrDefault(X => X.Number == ItemRow.Number).Dexcription;
                 ItemRow.Item_Unit = DGV_Data.Rows[i].Cells[1].Value.ToString();

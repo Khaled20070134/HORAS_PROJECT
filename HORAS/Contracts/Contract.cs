@@ -142,7 +142,7 @@ namespace HORAS.Contracts
             MasterData.LogActivity.AddNew(Row);
         }
 
-        public void CLose_FU(int ContractID)
+        public void CLose_FI(int ContractID)
         {
             ContractTableAdapter.Connection.Open();
             var C = ContractDataTable.FindByID(ContractID);

@@ -102,6 +102,7 @@
             pictureBoxStatus = new PictureBox();
             labelStatus = new Label();
             panel2 = new Panel();
+            label15 = new Label();
             metroTabControl1.SuspendLayout();
             tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox21).BeginInit();
@@ -133,6 +134,7 @@
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxStatus).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // metroTabControl1
@@ -360,7 +362,7 @@
             DGVItems.BorderStyle = BorderStyle.None;
             DGVItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DGVItems.Columns.AddRange(new DataGridViewColumn[] { Column1, Column3, Column4, Column5, Column7, Column6 });
-            DGVItems.EditMode = DataGridViewEditMode.EditOnEnter;
+            DGVItems.EditMode = DataGridViewEditMode.EditProgrammatically;
             DGVItems.ImeMode = ImeMode.On;
             DGVItems.Location = new Point(14, 51);
             DGVItems.Name = "DGVItems";
@@ -512,16 +514,18 @@
             // NUDLOL
             // 
             NUDLOL.Location = new Point(565, 278);
+            NUDLOL.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             NUDLOL.Name = "NUDLOL";
             NUDLOL.Size = new Size(49, 23);
             NUDLOL.TabIndex = 8;
             NUDLOL.TextAlign = HorizontalAlignment.Center;
-            NUDLOL.Value = new decimal(new int[] { 1, 0, 0, 131072 });
+            NUDLOL.Value = new decimal(new int[] { 1, 0, 0, 0 });
             NUDLOL.ValueChanged += NUDTotalAmountP_ValueChanged;
             // 
             // NUDDelayP
             // 
             NUDDelayP.Location = new Point(198, 305);
+            NUDDelayP.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
             NUDDelayP.Name = "NUDDelayP";
             NUDDelayP.Size = new Size(49, 23);
             NUDDelayP.TabIndex = 1;
@@ -1089,11 +1093,24 @@
             // panel2
             // 
             panel2.BackColor = Color.Black;
+            panel2.Controls.Add(label15);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(768, 38);
             panel2.TabIndex = 2;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.BackColor = Color.Transparent;
+            label15.Font = new Font("Segoe UI", 15F);
+            label15.ForeColor = Color.White;
+            label15.Location = new Point(304, 4);
+            label15.Name = "label15";
+            label15.Size = new Size(181, 28);
+            label15.TabIndex = 77;
+            label15.Text = "إنشاء عقد مالك جديد";
             // 
             // NewOwnerContract
             // 
@@ -1142,6 +1159,8 @@
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxStatus).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1220,5 +1239,6 @@
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Column7;
         private DataGridViewTextBoxColumn Column6;
+        private Label label15;
     }
 }

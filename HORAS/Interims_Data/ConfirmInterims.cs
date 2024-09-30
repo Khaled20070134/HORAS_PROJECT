@@ -170,7 +170,7 @@ namespace HORAS.Interims_Data
                     default:
                         Qty = MasterData.Interim.InterimsItemsDataTable.
                              FirstOrDefault(X => X.HeadID == SelectedInterimID && X.Number == SelectedItemNumber).Qty;
-                        labelQTy.Text = MasterData.NumericString(Qty / 100);
+                        labelQTy.Text = MasterData.NumericString(Qty);
                         break;
                 }
 

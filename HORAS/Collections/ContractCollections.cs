@@ -68,6 +68,8 @@ namespace HORAS.Collections
         {
             MasterData.Collections.RefreshList();
             listBoxdownpayment.Items.Clear();
+            MasterData.Contracts.RefreshList();
+            MasterData.Collections.RefreshList();
             int id = MasterData.Contracts.ContractDataTable.FirstOrDefault(x => x.Number == (comboBoxContracts.SelectedItem).ToString()).ID;
             var DPlist = MasterData.Collections.CollectionsDataTable.Where(x => x.Contract_ID == id && x.Col_Type == (int)CollectionType.DownPayment).ToList();
             foreach (var X in DPlist)

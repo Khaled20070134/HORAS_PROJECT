@@ -93,6 +93,9 @@
             buttonClose = new Button();
             buttonchosecontract = new Button();
             linkLabel1 = new LinkLabel();
+            pictureBox18 = new PictureBox();
+            label13 = new Label();
+            label18 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox16).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox15).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -113,6 +116,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBoxStatus).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DGVItems).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox18).BeginInit();
             SuspendLayout();
             // 
             // label8
@@ -575,7 +579,7 @@
             labelAmount.BackColor = Color.Transparent;
             labelAmount.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             labelAmount.ForeColor = Color.White;
-            labelAmount.Location = new Point(554, 165);
+            labelAmount.Location = new Point(522, 165);
             labelAmount.Name = "labelAmount";
             labelAmount.RightToLeft = RightToLeft.Yes;
             labelAmount.Size = new Size(13, 15);
@@ -775,6 +779,7 @@
             // 
             // DGVItems
             // 
+            DGVItems.AllowUserToAddRows = false;
             DGVItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DGVItems.Columns.AddRange(new DataGridViewColumn[] { Number, Description, Price, Type, LOL });
             DGVItems.Location = new Point(67, 374);
@@ -850,6 +855,46 @@
             linkLabel1.Visible = false;
             linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
+            // pictureBox18
+            // 
+            pictureBox18.BackColor = Color.Transparent;
+            pictureBox18.Image = Properties.Resources.icons8_paper_32;
+            pictureBox18.Location = new Point(74, 313);
+            pictureBox18.Name = "pictureBox18";
+            pictureBox18.Size = new Size(29, 35);
+            pictureBox18.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox18.TabIndex = 218;
+            pictureBox18.TabStop = false;
+            pictureBox18.Click += pictureBox18_Click;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.BackColor = Color.Transparent;
+            label13.Cursor = Cursors.Hand;
+            label13.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Underline);
+            label13.ForeColor = SystemColors.ActiveCaption;
+            label13.Location = new Point(110, 311);
+            label13.Name = "label13";
+            label13.Size = new Size(106, 15);
+            label13.TabIndex = 219;
+            label13.Text = "عرض ملف التعاقد 1";
+            label13.Click += label13_Click;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.BackColor = Color.Transparent;
+            label18.Cursor = Cursors.Hand;
+            label18.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Underline);
+            label18.ForeColor = SystemColors.ActiveCaption;
+            label18.Location = new Point(110, 329);
+            label18.Name = "label18";
+            label18.Size = new Size(106, 15);
+            label18.TabIndex = 220;
+            label18.Text = "عرض ملف التعاقد 2";
+            label18.Click += label18_Click;
+            // 
             // ContractDisplay
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -858,6 +903,9 @@
             BackgroundImage = Properties.Resources.gr;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(735, 487);
+            Controls.Add(label18);
+            Controls.Add(label13);
+            Controls.Add(pictureBox18);
             Controls.Add(linkLabel1);
             Controls.Add(buttonchosecontract);
             Controls.Add(buttonClose);
@@ -940,6 +988,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBoxStatus).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
             ((System.ComponentModel.ISupportInitialize)DGVItems).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox18).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1010,5 +1059,8 @@
         private Button buttonClose;
         private Button buttonchosecontract;
         private LinkLabel linkLabel1;
+        private PictureBox pictureBox18;
+        private Label label13;
+        private Label label18;
     }
 }

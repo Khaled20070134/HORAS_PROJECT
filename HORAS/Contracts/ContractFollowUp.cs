@@ -27,7 +27,7 @@ namespace HORAS.Contracts
         {
             CBContract.Items.Clear();
             MasterData.LoadMasterData();
-            foreach (var Contract in MasterData.Contracts.ContractDataTable.Where(x=> x.Signed==true).ToList())
+            foreach (var Contract in MasterData.Contracts.ContractDataTable.Where(x => x.Signed == true).ToList())
                 CBContract.Items.Add(Contract.Number);
         }
 
@@ -116,6 +116,54 @@ namespace HORAS.Contracts
             Con.ShowDialog();
             CBContract.SelectedIndex = CBContract.FindStringExact(Displayallcontracts.ContractNumber);
             if (CBContract.SelectedIndex != -1) LoadContractData();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (CBContract.SelectedIndex == -1)
+            {
+                setStatus("يجب إختيار تعاقد أولاً", 0);
+                return;
+            }
+
+           if (MasterData.LoggedEmployee.Role == Enums.Job_Roles.FIManager ||
+                MasterData.LoggedEmployee.Role == Enums.Job_Roles.Manager)
+            {
+               DialogResult R = MessageBox.Show("هل أنت متأكد من إغلاق التعاقد ماليا ؟", "تأكيدإغلاق مالياً",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (R == DialogResult.Yes)
+                {
+                    string ContractNumber = CBContract.SelectedItem.ToString();
+                    MasterData.Contracts.CLose_FI(MasterData.Contracts.ContractDataTable.FirstOrDefault(X => X.Number == ContractNumber).ID);
+                    setStatus("تم إغلاق التعاقد مالياً", 1);
+                }
+            }
+           else
+                setStatus("ليس لديك الصلاحية لاغلاق التعاقد مالياً", 0);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (CBContract.SelectedIndex == -1)
+            {
+                setStatus("يجب إختيار تعاقد أولاً", 0);
+                return;
+            }
+
+            if (MasterData.LoggedEmployee.Role == Enums.Job_Roles.FIManager ||
+                 MasterData.LoggedEmployee.Role == Enums.Job_Roles.Manager)
+            {
+                DialogResult R = MessageBox.Show("هل أنت متأكد من إغلاق التعاقد فنياً ؟", "تأكيدإغلاق فنياً",
+                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (R == DialogResult.Yes)
+                {
+                    string ContractNumber = CBContract.SelectedItem.ToString();
+                    MasterData.Contracts.CLose_Technical(MasterData.Contracts.ContractDataTable.FirstOrDefault(X => X.Number == ContractNumber).ID);
+                    setStatus("تم إغلاق التعاقد فنياً", 1);
+                }
+            }
+            else
+                setStatus("ليس لديك الصلاحية لاغلاق التعاقد فنياً", 0);
         }
     }
 }

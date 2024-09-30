@@ -38,7 +38,6 @@
             textBoxBGLFile = new TextBox();
             pictureBox8 = new PictureBox();
             metroLabel8 = new MetroFramework.Controls.MetroLabel();
-            labelEndDate = new Label();
             BGLSerial = new TextBox();
             ContractNoLBL = new ComboBox();
             pictureBox3 = new PictureBox();
@@ -73,6 +72,7 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             pictureBoxStatus = new PictureBox();
             labelStatus = new Label();
+            DTPEnd = new DateTimePicker();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NUDBGLAmount).BeginInit();
@@ -109,6 +109,7 @@
             // 
             tabPage1.BackgroundImage = Properties.Resources.gr;
             tabPage1.BackgroundImageLayout = ImageLayout.Stretch;
+            tabPage1.Controls.Add(DTPEnd);
             tabPage1.Controls.Add(NUDBGLAmount);
             tabPage1.Controls.Add(metroButton1);
             tabPage1.Controls.Add(pictureBox9);
@@ -116,7 +117,6 @@
             tabPage1.Controls.Add(textBoxBGLFile);
             tabPage1.Controls.Add(pictureBox8);
             tabPage1.Controls.Add(metroLabel8);
-            tabPage1.Controls.Add(labelEndDate);
             tabPage1.Controls.Add(BGLSerial);
             tabPage1.Controls.Add(ContractNoLBL);
             tabPage1.Controls.Add(pictureBox3);
@@ -140,10 +140,10 @@
             // NUDBGLAmount
             // 
             NUDBGLAmount.DecimalPlaces = 2;
-            NUDBGLAmount.Location = new Point(294, 104);
+            NUDBGLAmount.Location = new Point(269, 106);
             NUDBGLAmount.Maximum = new decimal(new int[] { -1530494976, 232830, 0, 0 });
             NUDBGLAmount.Name = "NUDBGLAmount";
-            NUDBGLAmount.Size = new Size(174, 23);
+            NUDBGLAmount.Size = new Size(200, 23);
             NUDBGLAmount.TabIndex = 45;
             NUDBGLAmount.TextAlign = HorizontalAlignment.Center;
             // 
@@ -222,30 +222,20 @@
             metroLabel8.Theme = MetroFramework.MetroThemeStyle.Dark;
             metroLabel8.UseStyleColors = true;
             // 
-            // labelEndDate
-            // 
-            labelEndDate.AutoSize = true;
-            labelEndDate.ForeColor = SystemColors.ButtonFace;
-            labelEndDate.Location = new Point(316, 145);
-            labelEndDate.Name = "labelEndDate";
-            labelEndDate.Size = new Size(38, 15);
-            labelEndDate.TabIndex = 38;
-            labelEndDate.Text = "label1";
-            // 
             // BGLSerial
             // 
-            BGLSerial.Location = new Point(294, 67);
+            BGLSerial.Location = new Point(269, 69);
             BGLSerial.Name = "BGLSerial";
-            BGLSerial.Size = new Size(175, 23);
+            BGLSerial.Size = new Size(200, 23);
             BGLSerial.TabIndex = 36;
             BGLSerial.Leave += BGLSerial_Leave;
             // 
             // ContractNoLBL
             // 
             ContractNoLBL.FormattingEnabled = true;
-            ContractNoLBL.Location = new Point(294, 30);
+            ContractNoLBL.Location = new Point(269, 32);
             ContractNoLBL.Name = "ContractNoLBL";
-            ContractNoLBL.Size = new Size(175, 23);
+            ContractNoLBL.Size = new Size(200, 23);
             ContractNoLBL.TabIndex = 35;
             ContractNoLBL.DropDown += ContractNoLBL_DropDown;
             ContractNoLBL.SelectedIndexChanged += ContractNoLBL_SelectedIndexChanged;
@@ -399,7 +389,6 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "عرض او مسح خطاب ضمان";
             tabPage2.UseVisualStyleBackColor = true;
-            //tabPage2.Click += tabPage2_Click;
             // 
             // labelStatusU
             // 
@@ -412,7 +401,6 @@
             labelStatusU.Size = new Size(45, 19);
             labelStatusU.TabIndex = 65;
             labelStatusU.Text = "بيانات";
-            //labelStatusU.Click += labelStatusU_Click;
             // 
             // labelDateU
             // 
@@ -716,6 +704,13 @@
             labelStatus.Text = ".";
             labelStatus.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // DTPEnd
+            // 
+            DTPEnd.Location = new Point(269, 141);
+            DTPEnd.Name = "DTPEnd";
+            DTPEnd.Size = new Size(200, 23);
+            DTPEnd.TabIndex = 46;
+            // 
             // NewBGL
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -768,7 +763,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private PictureBox pictureBox11;
         private MetroFramework.Controls.MetroLabel metroLabel9;
-        private Label labelEndDate;
         private TextBox BGLSerial;
         private ComboBox ContractNoLBL;
         private ComboBox ContractNoVLBL;
@@ -800,5 +794,6 @@
         private Label labelDateU;
         private Label labelAmountU;
         private Label labelSerialU;
+        private DateTimePicker DTPEnd;
     }
 }

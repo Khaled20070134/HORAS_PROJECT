@@ -48,7 +48,7 @@ namespace HORAS.Contracts
             MasterData.Contracts.RefreshList();
 
             var contratclist = MasterData.Contracts.ContractDataTable.Where(X => X.Signed == true
-            && X.Contract_type == (int)ContractType.OwnerContract).ToList();
+            && !X.FI_Completed &&  X.Contract_type == (int)ContractType.OwnerContract).ToList();
 
             foreach (var x in contratclist)
             {
@@ -96,7 +96,7 @@ namespace HORAS.Contracts
             DateTime ContractEndDate = MasterData.Contracts.ContractDataTable.FindByID(ID).CreationDate;
             int Duration = MasterData.Contracts.ContractDataTable.FindByID(ID).Duration;
             EndDate = ContractEndDate.AddMonths(Duration);
-            labelEndDate.Text = EndDate.ToString();
+            //labelEndDate.Text = EndDate.ToString();
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
@@ -123,6 +123,7 @@ namespace HORAS.Contracts
             NewBGL.Amount = (double)NUDBGLAmount.Value;
             NewBGL.Serial = BGLSerial.Text;
             NewBGL.Status = (int)Enums.BGLStatus.Active;
+            NewBGL.EndDate = DTPEnd.Value;
             NewBGL.ContractID = MasterData.Contracts.ContractDataTable.
                 FirstOrDefault(X => X.Number == ContractNoLBL.SelectedItem.ToString()).ID;
 
@@ -134,7 +135,7 @@ namespace HORAS.Contracts
                 MasterData.CopyFile(textBoxBGLFile.Text, FileName);
             }
             setStatus("تم ستجيل خطاب الضمان", 1);
-            labelEndDate.Text = BGLSerial.Text = textBoxBGLFile.Text = string.Empty;
+            BGLSerial.Text = textBoxBGLFile.Text = string.Empty;
             NUDBGLAmount.Value = 0;
             ContractNoLBL.SelectedItem = string.Empty;
         }
@@ -155,6 +156,7 @@ namespace HORAS.Contracts
                 FirstOrDefault(X => X.Number == ContractNoVLBL.SelectedItem.ToString()).ID;
             var ContractData = MasterData.Contracts.BGLDataTable.FirstOrDefault(X => X.ContractID == ContractID);
 
+            labelDateU.Text = ContractData.EndDate.ToShortDateString();
             labelSerialU.Text = ContractData.Serial;
             labelAmountU.Text = MasterData.NumericString(ContractData.Amount);
             switch (ContractData.Status)
@@ -184,7 +186,7 @@ namespace HORAS.Contracts
             int ID = MasterData.Contracts.BGLDataTable.FirstOrDefault(X => X.Serial == labelSerialU.Text).ID;
             MasterData.Contracts.DeleteBGL(ID);
             setStatus("تم مسح خطاب الضمان", 1);
-            labelStatusU.Text = labelSerialU.Text = labelDateU.Text = string.Empty;
+            labelStatusU.Text = labelSerialU.Text = labelDateU.Text = labelAmountU.Text = string.Empty;
         }
 
         private void ContractNoLBL_DropDown(object sender, EventArgs e)

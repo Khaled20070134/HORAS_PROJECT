@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static HORAS.Enums;
 
 namespace HORAS.Contracts
 {
@@ -61,7 +62,7 @@ namespace HORAS.Contracts
 
             labelDesc.Text = ContractRow.Short_Desc;
             labelAmount.Text = MasterData.NumericString(ContractRow.Total_Amount);
-            labelDownPayment.Text = MasterData.NumericString(ContractRow.Total_Amount * ContractRow.DownpaymentP/100);
+            labelDownPayment.Text = MasterData.NumericString(ContractRow.Total_Amount * ContractRow.DownpaymentP / 100);
             labelProfit.Text = MasterData.NumericString(ContractRow.Total_Amount * ContractRow.ProfitPercentage / 100);
             labelDelay.Text = MasterData.NumericString(ContractRow.Total_Amount * ContractRow.DelayPenaltyP / 100);
             labelGurantee.Text = MasterData.NumericString(ContractRow.Total_Amount * ContractRow.BusinessInsuranceP / 100);
@@ -103,7 +104,7 @@ namespace HORAS.Contracts
             {
                 string ItemType = MasterData.GetItemTypeString(Item.Item_Type);
                 string LOL = MasterData.NumericString(Item.LOL) + " %";
-                DGVItems.Rows.Add(Item.Number, Item.Description, MasterData.NumericString(Item.Total_Price* Item.Qty), ItemType, LOL);
+                DGVItems.Rows.Add(Item.Number, Item.Description, MasterData.NumericString(Item.Total_Price * Item.Qty), ItemType, LOL);
             }
 
 
@@ -153,6 +154,54 @@ namespace HORAS.Contracts
             }
             Displayallcontracts Form = new Displayallcontracts(comboBox1.SelectedItem.ToString());
             Form.ShowDialog();
+        }
+
+        private void pictureBox18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex == -1)
+            {
+                setStatus("يجب إختيار تعاقد أولاً", 0);
+                return;
+            }
+
+            string FileName = (char)Document_Type.Contract + "_" + comboBox1.SelectedItem.ToString() + "_1";
+            string Output = MasterData.GetFile(FileName);
+            if (Output == string.Empty)
+            {
+                setStatus("لا يوجد ملف محفوظ للتعاقد", 0);
+                return;
+            }
+            else
+            {
+                MasterData.OpenFile(Output);
+            }
+
+        }
+
+        private void label18_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex == -1)
+            {
+                setStatus("يجب إختيار تعاقد أولاً", 0);
+                return;
+            }
+
+            string FileName = (char)Document_Type.Contract + "_" + comboBox1.SelectedItem.ToString() + "_2";
+            string Output = MasterData.GetFile(FileName);
+            if (Output == string.Empty)
+            {
+                setStatus("لا يوجد ملف محفوظ للتعاقد", 0);
+                return;
+            }
+            else
+            {
+                MasterData.OpenFile(Output);
+            }
         }
     }
 }

@@ -35,6 +35,7 @@
             // 
             // ViewPartyDGV
             // 
+            ViewPartyDGV.AllowUserToAddRows = false;
             ViewPartyDGV.BackgroundColor = SystemColors.ActiveBorder;
             ViewPartyDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             ViewPartyDGV.Location = new Point(27, 90);

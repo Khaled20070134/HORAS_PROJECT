@@ -31,7 +31,8 @@ namespace HORAS.Contracts
             InitializeComponent();
 
             // Load Contracts
-            var ContractsList = MasterData.Contracts.ContractDataTable.Where(X => X.FI_Completed == false).ToList();
+            var ContractsList = MasterData.Contracts.ContractDataTable.Where(X => X.FI_Completed == false
+            && X.Signed && !X.IsStartDateNull()).ToList();
             foreach (var Cont in ContractsList)
                 CBContract.Items.Add(Cont.Number);
 

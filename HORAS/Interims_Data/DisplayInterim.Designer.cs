@@ -238,7 +238,7 @@
             labelPOC.AutoSize = true;
             labelPOC.BackColor = Color.Transparent;
             labelPOC.ForeColor = Color.White;
-            labelPOC.Location = new Point(93, 416);
+            labelPOC.Location = new Point(129, 416);
             labelPOC.Name = "labelPOC";
             labelPOC.Size = new Size(56, 15);
             labelPOC.TabIndex = 192;
@@ -261,11 +261,11 @@
             label15.BackColor = Color.Transparent;
             label15.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label15.ForeColor = Color.SkyBlue;
-            label15.Location = new Point(160, 413);
+            label15.Location = new Point(218, 413);
             label15.Name = "label15";
-            label15.Size = new Size(277, 19);
+            label15.Size = new Size(219, 19);
             label15.TabIndex = 190;
-            label15.Text = "نسبة إتمام أو كمية التوريد لهذا البند  حتى الان";
+            label15.Text = "نسبة إتمام توريد هذا البند  حتى الان";
             // 
             // labelPriceAss
             // 
@@ -337,6 +337,7 @@
             // 
             // DGVItems
             // 
+            DGVItems.AllowUserToAddRows = false;
             DGVItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DGVItems.Columns.AddRange(new DataGridViewColumn[] { Number, Description, Price, Type, LOL });
             DGVItems.Location = new Point(174, 251);

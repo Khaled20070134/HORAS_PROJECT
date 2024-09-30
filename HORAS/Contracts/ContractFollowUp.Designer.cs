@@ -170,6 +170,7 @@
             button5.TextAlign = ContentAlignment.MiddleRight;
             button5.TextImageRelation = TextImageRelation.ImageBeforeText;
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // label1
             // 
@@ -209,6 +210,7 @@
             button1.TextAlign = ContentAlignment.MiddleRight;
             button1.TextImageRelation = TextImageRelation.ImageBeforeText;
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // labelDesc
             // 

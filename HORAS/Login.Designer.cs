@@ -151,7 +151,6 @@
             textBoxPassword.RightToLeft = RightToLeft.Yes;
             textBoxPassword.Size = new Size(124, 23);
             textBoxPassword.TabIndex = 7;
-            textBoxPassword.Text = "20080134";
             textBoxPassword.TextAlign = HorizontalAlignment.Center;
             textBoxPassword.KeyPress += textBoxPassword_KeyPress;
             // 
@@ -161,7 +160,6 @@
             textBoxUsername.Name = "textBoxUsername";
             textBoxUsername.Size = new Size(124, 23);
             textBoxUsername.TabIndex = 7;
-            textBoxUsername.Text = "Maro";
             textBoxUsername.TextAlign = HorizontalAlignment.Center;
             textBoxUsername.KeyPress += textBoxPassword_KeyPress;
             // 
