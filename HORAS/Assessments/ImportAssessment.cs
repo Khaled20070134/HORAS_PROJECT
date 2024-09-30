@@ -79,6 +79,7 @@ namespace HORAS.Assessments
                         itemlist.Add(NewItem);
 
                     }
+
                     LabelTotal.Text = MasterData.NumericString(Total);
 
                     Marshal.ReleaseComObject(Range);
