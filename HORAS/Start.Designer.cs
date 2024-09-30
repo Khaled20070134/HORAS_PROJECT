@@ -353,7 +353,7 @@
             labelDate.BackColor = Color.Transparent;
             labelDate.Font = new Font("Segoe UI", 10F);
             labelDate.ForeColor = Color.White;
-            labelDate.Location = new Point(604, 14);
+            labelDate.Location = new Point(520, 14);
             labelDate.Name = "labelDate";
             labelDate.RightToLeft = RightToLeft.Yes;
             labelDate.Size = new Size(71, 19);
