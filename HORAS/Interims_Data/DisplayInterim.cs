@@ -41,7 +41,7 @@ namespace HORAS.Interims_Data
             var List = MasterData.Interim.InterimsHeadDataTable.ToList();
             foreach (var item in List)
             {
-                comboBox1.Items.Add(item.Number);
+                comboBoxIntNum.Items.Add(item.Number);
             }
         }
 
@@ -51,22 +51,22 @@ namespace HORAS.Interims_Data
 
             // Load Header Data
             labelInDate.Text =
-                MasterData.Interim.InterimsHeadDataTable.FirstOrDefault(x => x.Number == comboBox1.SelectedItem.ToString()).In_Date.ToLongDateString();
+                MasterData.Interim.InterimsHeadDataTable.FirstOrDefault(x => x.Number == comboBoxIntNum.SelectedItem.ToString()).In_Date.ToLongDateString();
 
-            int ContractID = MasterData.Interim.InterimsHeadDataTable.FirstOrDefault(x => x.Number == comboBox1.SelectedItem.ToString()).ContractID;
+            int ContractID = MasterData.Interim.InterimsHeadDataTable.FirstOrDefault(x => x.Number == comboBoxIntNum.SelectedItem.ToString()).ContractID;
 
             LinkContract.Text = MasterData.Contracts.ContractDataTable.FindByID(ContractID).Number;
 
-            if (MasterData.Interim.InterimsHeadDataTable.FirstOrDefault(x => x.Number == comboBox1.SelectedItem.ToString()).IsConfirm_DateNull())
+            if (MasterData.Interim.InterimsHeadDataTable.FirstOrDefault(x => x.Number == comboBoxIntNum.SelectedItem.ToString()).IsConfirm_DateNull())
                 labelConfirmDate.Text = "لم يتم تأكيد المستخلص";
             else
                 labelConfirmDate.Text =
-                    MasterData.Interim.InterimsHeadDataTable.FirstOrDefault(x => x.Number == comboBox1.SelectedItem.ToString()).Confirm_Date.ToLongDateString();
+                    MasterData.Interim.InterimsHeadDataTable.FirstOrDefault(x => x.Number == comboBoxIntNum.SelectedItem.ToString()).Confirm_Date.ToLongDateString();
 
 
 
             // Load Items Data
-            int ID = MasterData.Interim.InterimsHeadDataTable.FirstOrDefault(x => x.Number == comboBox1.SelectedItem.ToString()).ID;
+            int ID = MasterData.Interim.InterimsHeadDataTable.FirstOrDefault(x => x.Number == comboBoxIntNum.SelectedItem.ToString()).ID;
             var ItemsList = MasterData.Interim.InterimsItemsDataTable.Where(X => X.HeadID == ID).ToList();
 
             DGVItems.Rows.Clear();
@@ -87,7 +87,7 @@ namespace HORAS.Interims_Data
             string SelectedItemNumber = DGVItems.SelectedRows[0].Cells[0].Value.ToString();
             string SelectedContractNumber = LinkContract.Text;
             int SelectedInterimID = MasterData.Interim.InterimsHeadDataTable.
-                FirstOrDefault(x => x.Number == comboBox1.SelectedItem.ToString()).ID;
+                FirstOrDefault(x => x.Number == comboBoxIntNum.SelectedItem.ToString()).ID;
 
             double Qty;
             Qty = MasterData.Interim.InterimsItemsDataTable.
@@ -132,7 +132,7 @@ namespace HORAS.Interims_Data
             //}
             ///////////////////////////////////////////////////////////////////////////////
             I_Status Status = MasterData.Interim.Get_Item_Status(SelectedContractNumber, SelectedItemNumber);
-            labelPOC.Text = ((Status.Delivered_QP / Status.Total_QP) *100).ToString() + " %";
+            labelPOC.Text = ((Status.Delivered_QP / Status.Total_QP) * 100).ToString() + " %";
             labelPriceAss.Text = MasterData.NumericString(Status.Total_Value);
             labelRemain.Text = (Status.Total_QP - Status.Delivered_QP).ToString();
 
@@ -141,7 +141,7 @@ namespace HORAS.Interims_Data
         private void LinkContract_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
-            if (comboBox1.SelectedIndex == -1)
+            if (comboBoxIntNum.SelectedIndex == -1)
                 setStatus("برجاء ادخال رقم المستخلص", 0);
 
             else
@@ -156,6 +156,27 @@ namespace HORAS.Interims_Data
         private void DisplayInterim_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (comboBoxIntNum.SelectedIndex == -1)
+            {
+                setStatus("يجب إختيار رقم المستخلص أولاً", 0);
+                return;
+            }
+
+            string FileName = (char)Document_Type.Interim + "_" + comboBoxIntNum.SelectedItem.ToString();
+            string Output = MasterData.GetFile(FileName);
+            if (Output == string.Empty)
+            {
+                setStatus("لا يوجد ملف محفوظ للمستخلص", 0);
+                return;
+            }
+            else
+            {
+                MasterData.OpenFile(Output);
+            }
         }
     }
 }

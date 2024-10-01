@@ -80,6 +80,11 @@
             pictureBoxStatus = new PictureBox();
             labelStatus = new Label();
             buttonchosecontract = new Button();
+            pictureBox10 = new PictureBox();
+            button4 = new Button();
+            pictureBox14 = new PictureBox();
+            label11 = new Label();
+            TextBoxOrigIntfile = new MetroFramework.Controls.MetroTextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -100,6 +105,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxStatus).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
             SuspendLayout();
             // 
             // CBContracts
@@ -138,7 +145,7 @@
             // 
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
-            tabControl1.Location = new Point(28, 160);
+            tabControl1.Location = new Point(26, 192);
             tabControl1.Name = "tabControl1";
             tabControl1.RightToLeft = RightToLeft.Yes;
             tabControl1.RightToLeftLayout = true;
@@ -566,7 +573,7 @@
             // 
             button3.Image = Properties.Resources.SAve_16;
             button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(35, 429);
+            button3.Location = new Point(33, 461);
             button3.Name = "button3";
             button3.Size = new Size(143, 23);
             button3.TabIndex = 100;
@@ -662,7 +669,7 @@
             tableLayoutPanel1.Controls.Add(pictureBoxStatus, 1, 0);
             tableLayoutPanel1.Controls.Add(labelStatus, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Bottom;
-            tableLayoutPanel1.Location = new Point(0, 461);
+            tableLayoutPanel1.Location = new Point(0, 542);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
@@ -701,13 +708,85 @@
             buttonchosecontract.UseVisualStyleBackColor = true;
             buttonchosecontract.Click += buttonchosecontract_Click;
             // 
+            // pictureBox10
+            // 
+            pictureBox10.BackColor = Color.Transparent;
+            pictureBox10.Image = Properties.Resources.Close_16;
+            pictureBox10.Location = new Point(365, 140);
+            pictureBox10.Name = "pictureBox10";
+            pictureBox10.Size = new Size(20, 20);
+            pictureBox10.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox10.TabIndex = 106;
+            pictureBox10.TabStop = false;
+            pictureBox10.Click += pictureBox10_Click;
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.Transparent;
+            button4.FlatAppearance.BorderSize = 0;
+            button4.Font = new Font("Segoe Script", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button4.Image = (Image)resources.GetObject("button4.Image");
+            button4.Location = new Point(390, 137);
+            button4.Name = "button4";
+            button4.RightToLeft = RightToLeft.No;
+            button4.Size = new Size(27, 27);
+            button4.TabIndex = 105;
+            button4.TextAlign = ContentAlignment.MiddleRight;
+            button4.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
+            // 
+            // pictureBox14
+            // 
+            pictureBox14.BackColor = Color.Transparent;
+            pictureBox14.Image = (Image)resources.GetObject("pictureBox14.Image");
+            pictureBox14.Location = new Point(848, 141);
+            pictureBox14.Name = "pictureBox14";
+            pictureBox14.Size = new Size(16, 18);
+            pictureBox14.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox14.TabIndex = 104;
+            pictureBox14.TabStop = false;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.BackColor = Color.Black;
+            label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label11.ForeColor = Color.White;
+            label11.Location = new Point(762, 146);
+            label11.Name = "label11";
+            label11.Size = new Size(88, 15);
+            label11.TabIndex = 102;
+            label11.Text = "اصل المستخلص";
+            // 
+            // TextBoxOrigIntfile
+            // 
+            TextBoxOrigIntfile.Enabled = false;
+            TextBoxOrigIntfile.FontSize = MetroFramework.MetroTextBoxSize.Small;
+            TextBoxOrigIntfile.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
+            TextBoxOrigIntfile.Location = new Point(462, 141);
+            TextBoxOrigIntfile.Multiline = false;
+            TextBoxOrigIntfile.Name = "TextBoxOrigIntfile";
+            TextBoxOrigIntfile.SelectedText = "";
+            TextBoxOrigIntfile.Size = new Size(291, 23);
+            TextBoxOrigIntfile.Style = MetroFramework.MetroColorStyle.Blue;
+            TextBoxOrigIntfile.StyleManager = null;
+            TextBoxOrigIntfile.TabIndex = 103;
+            TextBoxOrigIntfile.Theme = MetroFramework.MetroThemeStyle.Light;
+            TextBoxOrigIntfile.UseStyleColors = false;
+            // 
             // InterimsEntry
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.gr;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(891, 488);
+            ClientSize = new Size(891, 569);
+            Controls.Add(pictureBox10);
+            Controls.Add(button4);
+            Controls.Add(pictureBox14);
+            Controls.Add(label11);
+            Controls.Add(TextBoxOrigIntfile);
             Controls.Add(buttonchosecontract);
             Controls.Add(button3);
             Controls.Add(tableLayoutPanel1);
@@ -748,6 +827,8 @@
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxStatus).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -805,5 +886,10 @@
         private Label labelTotalGV;
         private Button button3;
         private Button buttonchosecontract;
+        private PictureBox pictureBox10;
+        private Button button4;
+        private PictureBox pictureBox14;
+        private Label label11;
+        private MetroFramework.Controls.MetroTextBox TextBoxOrigIntfile;
     }
 }

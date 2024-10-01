@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static HORAS.Database.HorasDataSet;
 using HORAS.Contracts;
+using static HORAS.Enums;
 
 namespace HORAS.Interims_Data
 {
@@ -25,7 +26,20 @@ namespace HORAS.Interims_Data
             InitializeComponent();
             LoadContracts();
         }
-        void LoadContracts()
+        void CopyFiles(int IntID)
+        {
+            if (!Path.Exists(Settings1.Default.DB_Files))
+            {
+                FilesPath Filepath = new FilesPath();
+                Filepath.ShowDialog();
+            }
+            if (TextBoxOrigIntfile.Text != string.Empty)
+            {
+                string File1Name = (char)Document_Type.Interim + "_" + IntID.ToString();
+                MasterData.CopyFile(TextBoxOrigIntfile.Text, File1Name);
+            }
+        }
+            void LoadContracts()
         {
             var LoadContracts = MasterData.Contracts.ContractDataTable.
                 Where(X => X.IM_Completed == false && X.Signed && !X.IsStartedByNull()).ToList();
@@ -81,7 +95,7 @@ namespace HORAS.Interims_Data
             labelTotalQty.Text = MasterData.NumericString(Item_Status.Total_QP);
             labelTotalValue.Text = MasterData.NumericString(Item_Status.Total_Value);
             labelTotalDeliveredQ.Text = MasterData.NumericString(Item_Status.Delivered_QP);
-            labelTotalDeliveredValue.Text = MasterData.NumericString(Item_Status.Delivered_Value );
+            labelTotalDeliveredValue.Text = MasterData.NumericString(Item_Status.Delivered_Value);
             labelTotalExps.Text = MasterData.NumericString((double)Item_Status.Total_Exps);
         }
 
@@ -128,7 +142,7 @@ namespace HORAS.Interims_Data
         {
             double Sum = 0;
             for (int i = 0; i < DGV.Rows.Count; i++)
-                Sum += ( double.Parse(DGV.Rows[i].Cells[2].Value.ToString()) * double.Parse(DGV.Rows[i].Cells[1].Value.ToString()) );
+                Sum += (double.Parse(DGV.Rows[i].Cells[2].Value.ToString()) * double.Parse(DGV.Rows[i].Cells[1].Value.ToString()));
             labelTotalGV.Text = MasterData.NumericString(Sum);
         }
 
@@ -190,6 +204,8 @@ namespace HORAS.Interims_Data
                 MasterData.Interim.InterimsHeadRow.ID = -1;
                 LoadItems();
                 MasterData.Interim.AddNew(ListToSave);
+              
+                CopyFiles(int.Parse(textBoxInterimNumber.Text));
                 setStatus("تم حفظ بيانات المستخلص بنجاح", 1);
                 Reset();
             }
@@ -205,6 +221,20 @@ namespace HORAS.Interims_Data
             CBContracts.SelectedIndex = CBContracts.FindStringExact(Displayallcontracts.ContractNumber);
             //if (CBContract.SelectedIndex != -1) LoadContractData();
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog FileDialoge = new OpenFileDialog();
+            FileDialoge.InitialDirectory = Application.StartupPath;
+            FileDialoge.Filter = "pdf files (*.pdf)|*.pdf";
+            if (FileDialoge.ShowDialog() == DialogResult.OK)
+                TextBoxOrigIntfile.Text = FileDialoge.FileName;
+        }
+
+        private void pictureBox10_Click(object sender, EventArgs e)
+        {
+            TextBoxOrigIntfile.Text = string.Empty;
         }
     }
 }

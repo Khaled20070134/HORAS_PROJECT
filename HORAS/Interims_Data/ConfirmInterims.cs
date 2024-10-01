@@ -195,7 +195,7 @@ namespace HORAS.Interims_Data
                 //}
                 ///////////////////////////////////////////////////////////////////////////////
                 I_Status Status = MasterData.Interim.Get_Item_Status(SelectedContractNumber, SelectedItemNumber);
-                labelPOC.Text = ((Status.Delivered_QP / Status.Total_QP) * 100).ToString()+" %";
+                labelPOC.Text = ((Status.Delivered_QP / Status.Total_QP) * 100).ToString() + " %";
                 labelPriceAss.Text = Status.Total_Value.ToString();
                 labelRemain.Text = (Status.Total_QP - Status.Delivered_QP).ToString();
 
@@ -219,6 +219,27 @@ namespace HORAS.Interims_Data
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadContractData();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (listBoxInterims.SelectedIndex == -1)
+            {
+                setStatus("يجب إختيار رقم المستخلص أولاً", 0);
+                return;
+            }
+
+            string FileName = (char)Document_Type.Interim + "_" + listBoxInterims.SelectedItem.ToString();
+            string Output = MasterData.GetFile(FileName);
+            if (Output == string.Empty)
+            {
+                setStatus("لا يوجد ملف محفوظ للمستخلص", 0);
+                return;
+            }
+            else
+            {
+                MasterData.OpenFile(Output);
+            }
         }
     }
 }

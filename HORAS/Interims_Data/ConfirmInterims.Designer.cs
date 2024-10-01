@@ -76,6 +76,7 @@
             button2 = new Button();
             buttonchosecontract = new Button();
             comboBoxContracts = new ComboBox();
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -633,6 +634,23 @@
             comboBoxContracts.TabIndex = 219;
             comboBoxContracts.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
+            // button3
+            // 
+            button3.BackColor = Color.White;
+            button3.FlatAppearance.BorderSize = 0;
+            button3.Font = new Font("Segoe Script", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button3.Image = (Image)resources.GetObject("button3.Image");
+            button3.Location = new Point(89, 241);
+            button3.Name = "button3";
+            button3.RightToLeft = RightToLeft.No;
+            button3.Size = new Size(152, 29);
+            button3.TabIndex = 220;
+            button3.Text = "أصل المستخلص";
+            button3.TextAlign = ContentAlignment.MiddleRight;
+            button3.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
+            // 
             // ConfirmInterims
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -640,6 +658,7 @@
             BackgroundImage = Properties.Resources.gr;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(907, 527);
+            Controls.Add(button3);
             Controls.Add(comboBoxContracts);
             Controls.Add(buttonchosecontract);
             Controls.Add(button2);
@@ -758,5 +777,6 @@
         private Button button2;
         private Button buttonchosecontract;
         private ComboBox comboBoxContracts;
+        private Button button3;
     }
 }

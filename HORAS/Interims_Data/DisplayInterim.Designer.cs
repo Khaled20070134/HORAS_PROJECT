@@ -32,7 +32,7 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             pictureBoxStatus = new PictureBox();
             labelStatus = new Label();
-            comboBox1 = new ComboBox();
+            comboBoxIntNum = new ComboBox();
             label30 = new Label();
             pictureBox16 = new PictureBox();
             label8 = new Label();
@@ -68,6 +68,7 @@
             labelInDate = new Label();
             labelConfirmDate = new Label();
             LinkContract = new LinkLabel();
+            button3 = new Button();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxStatus).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox16).BeginInit();
@@ -121,14 +122,14 @@
             labelStatus.Text = ".";
             labelStatus.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // comboBox1
+            // comboBoxIntNum
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(586, 82);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(176, 23);
-            comboBox1.TabIndex = 180;
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            comboBoxIntNum.FormattingEnabled = true;
+            comboBoxIntNum.Location = new Point(586, 82);
+            comboBoxIntNum.Name = "comboBoxIntNum";
+            comboBoxIntNum.Size = new Size(176, 23);
+            comboBoxIntNum.TabIndex = 180;
+            comboBoxIntNum.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // label30
             // 
@@ -510,6 +511,23 @@
             LinkContract.Text = "linkLabel1";
             LinkContract.LinkClicked += LinkContract_LinkClicked;
             // 
+            // button3
+            // 
+            button3.BackColor = Color.White;
+            button3.FlatAppearance.BorderSize = 0;
+            button3.Font = new Font("Segoe Script", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button3.Image = (Image)resources.GetObject("button3.Image");
+            button3.Location = new Point(285, 84);
+            button3.Name = "button3";
+            button3.RightToLeft = RightToLeft.No;
+            button3.Size = new Size(152, 29);
+            button3.TabIndex = 227;
+            button3.Text = "أصل المستخلص";
+            button3.TextAlign = ContentAlignment.MiddleRight;
+            button3.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
+            // 
             // DisplayInterim
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -517,6 +535,7 @@
             BackgroundImage = Properties.Resources.gr;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(907, 527);
+            Controls.Add(button3);
             Controls.Add(LinkContract);
             Controls.Add(labelConfirmDate);
             Controls.Add(labelInDate);
@@ -544,7 +563,7 @@
             Controls.Add(labelPriceInter);
             Controls.Add(pictureBox7);
             Controls.Add(label12);
-            Controls.Add(comboBox1);
+            Controls.Add(comboBoxIntNum);
             Controls.Add(label30);
             Controls.Add(pictureBox16);
             Controls.Add(label8);
@@ -576,7 +595,7 @@
         private TableLayoutPanel tableLayoutPanel1;
         private PictureBox pictureBoxStatus;
         private Label labelStatus;
-        private ComboBox comboBox1;
+        private ComboBox comboBoxIntNum;
         private Label label30;
         private PictureBox pictureBox16;
         private Label label8;
@@ -612,5 +631,6 @@
         private DataGridViewTextBoxColumn Price;
         private DataGridViewTextBoxColumn Type;
         private DataGridViewTextBoxColumn LOL;
+        private Button button3;
     }
 }

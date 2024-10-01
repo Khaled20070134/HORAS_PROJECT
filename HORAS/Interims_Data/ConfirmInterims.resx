@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
-    Microsoft ResX Schema 
+    Microsoft ResX Schema
 
     Version 2.0
 
@@ -48,7 +48,7 @@
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
@@ -255,6 +255,27 @@
         llf4FcrpGN4kVeZ65p+RHHAkqT60zetIXuG7RPpklRs4rSI54FgifYw9LUM5DZ2JRPpQ54tIbt1UIn34
         uQ7lJbiZRGkoKzcPC0ja/Y0/u1DhB88CidPwEEXwqM1fBI3cugiGR3D+ImgU10Uw/F7IWwTJ6J6wYRG0
         En2UBvCYvsrdrrfxLbmcENqJfD8mNf+iKM5h/UzH7BPIvwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="button3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        /9j/4AAQSkZJRgABAQEAAAAAAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZ
+        WiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAA
+        ACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAA
+        AChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAA
+        AAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAA
+        AAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAA
+        E9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBu
+        AGMALgAgADIAMAAxADb/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsO
+        CwkJDRENDg8QEBEQCgwSExIQEw8QEBD/2wBDAQMDAwQDBAgEBAgQCwkLEBAQEBAQEBAQEBAQEBAQEBAQ
+        EBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBD/wAARCAAQABADASIAAhEBAxEB/8QAFwAAAwEA
+        AAAAAAAAAAAAAAAAAwUGCP/EACQQAAICAgIBAwUAAAAAAAAAAAECAwQFBgcRIQAIEyIxMmGB/8QAFAEB
+        AAAAAAAAAAAAAAAAAAAAB//EACIRAAIBAgUFAAAAAAAAAAAAAAECEQMEAAUSMUEGIWGBkf/aAAwDAQAC
+        EQMRAD8A0l7itk3+Dl2nrOobPmqbXqtSKCpTyMldHmkdlHgMFBJ6HZ/p9Vft75Zv5vKQcf5STKW71enN
+        JdsX5/mImjcD6HLFiCG6KnwCoI68gqObdfzJ5hXa62kbFm1x+NrS0BQoSS15LaSEqJpFB6RfyIXyegPA
+        PYFwPitsflYZzNcYT6zG2PtCedMfbgimld1bz8zMqn79Beh+vRvSe6o56zKzQ1SIgkaZHiB92w6XFLLr
+        rpBEdElKIYEFQ2uDv31Hjjf3H//Z
 </value>
   </data>
 </root>

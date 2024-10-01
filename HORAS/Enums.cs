@@ -30,7 +30,8 @@ namespace HORAS
             Expanses = 'E',
             Assessment = 'A',
             BankGuranteeLetter = 'B',
-            Collections = 'L'
+            Collections = 'L',
+            Interim = 'T'
         }
         public enum WizardMode
         {

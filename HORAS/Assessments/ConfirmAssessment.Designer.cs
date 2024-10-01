@@ -406,7 +406,7 @@
             button2.RightToLeft = RightToLeft.No;
             button2.Size = new Size(152, 27);
             button2.TabIndex = 78;
-            button2.Text = "عرض المقايسه";
+            button2.Text = "أصل المقايسه";
             button2.TextAlign = ContentAlignment.MiddleRight;
             button2.TextImageRelation = TextImageRelation.ImageBeforeText;
             button2.UseVisualStyleBackColor = false;
