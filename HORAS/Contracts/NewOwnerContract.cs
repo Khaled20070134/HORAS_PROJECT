@@ -65,12 +65,12 @@ namespace HORAS.Contracts
             }
             if (TextBoxFile1.Text != string.Empty)
             {
-                string File1Name = "C_" + contract.Number + "_1";
+                string File1Name = (char)Document_Type.Contract+"_" + contract.Number + "_1";
                 MasterData.CopyFile(TextBoxFile1.Text, File1Name);
             }
             if (TextBoxFile2.Text != string.Empty)
             {
-                string File1Name = "C_" + contract.Number + "_2";
+                string File1Name = (char)Document_Type.Contract + "_" + contract.Number + "_2";
                 MasterData.CopyFile(TextBoxFile2.Text, File1Name);
             }
         }

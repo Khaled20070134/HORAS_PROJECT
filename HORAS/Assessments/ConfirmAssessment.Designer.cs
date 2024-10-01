@@ -58,6 +58,7 @@
             labelAbout = new Label();
             button1 = new Button();
             richTextBox1 = new RichTextBox();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)DGV_Data).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxStatus).BeginInit();
@@ -76,7 +77,7 @@
             DGV_Data.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DGV_Data.Columns.AddRange(new DataGridViewColumn[] { Column1, Column3, Column4, Column5, Column7, Column6 });
             DGV_Data.EditMode = DataGridViewEditMode.EditOnEnter;
-            DGV_Data.Location = new Point(16, 234);
+            DGV_Data.Location = new Point(17, 268);
             DGV_Data.MultiSelect = false;
             DGV_Data.Name = "DGV_Data";
             DGV_Data.ReadOnly = true;
@@ -150,7 +151,7 @@
             tableLayoutPanel1.Controls.Add(pictureBoxStatus, 1, 0);
             tableLayoutPanel1.Controls.Add(labelStatus, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Bottom;
-            tableLayoutPanel1.Location = new Point(0, 500);
+            tableLayoutPanel1.Location = new Point(0, 527);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
@@ -196,7 +197,7 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             label2.ForeColor = Color.SkyBlue;
-            label2.Location = new Point(470, 200);
+            label2.Location = new Point(471, 234);
             label2.Name = "label2";
             label2.Size = new Size(163, 25);
             label2.TabIndex = 29;
@@ -207,7 +208,7 @@
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.Image = Properties.Resources.leftArrow2_32;
-            pictureBox1.Location = new Point(635, 197);
+            pictureBox1.Location = new Point(636, 231);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(30, 31);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -220,7 +221,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             label1.ForeColor = Color.SkyBlue;
-            label1.Location = new Point(535, 100);
+            label1.Location = new Point(536, 134);
             label1.Name = "label1";
             label1.Size = new Size(98, 25);
             label1.TabIndex = 31;
@@ -231,7 +232,7 @@
             pictureBox2.BackColor = Color.Transparent;
             pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox2.Image = Properties.Resources.leftArrow2_32;
-            pictureBox2.Location = new Point(635, 97);
+            pictureBox2.Location = new Point(636, 131);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(30, 31);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -254,7 +255,7 @@
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.ForeColor = Color.White;
-            label3.Location = new Point(575, 134);
+            label3.Location = new Point(576, 168);
             label3.Name = "label3";
             label3.Size = new Size(52, 15);
             label3.TabIndex = 35;
@@ -265,7 +266,7 @@
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
             label4.ForeColor = Color.White;
-            label4.Location = new Point(575, 162);
+            label4.Location = new Point(576, 196);
             label4.Name = "label4";
             label4.Size = new Size(52, 15);
             label4.TabIndex = 36;
@@ -275,7 +276,7 @@
             // 
             pictureBox3.BackColor = Color.Transparent;
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(633, 132);
+            pictureBox3.Location = new Point(634, 166);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(16, 18);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -286,7 +287,7 @@
             // 
             pictureBox4.BackColor = Color.Transparent;
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(633, 160);
+            pictureBox4.Location = new Point(634, 194);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(16, 18);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -350,7 +351,7 @@
             labelSubject.AutoSize = true;
             labelSubject.BackColor = Color.Transparent;
             labelSubject.ForeColor = Color.White;
-            labelSubject.Location = new Point(488, 135);
+            labelSubject.Location = new Point(489, 169);
             labelSubject.Name = "labelSubject";
             labelSubject.Size = new Size(52, 15);
             labelSubject.TabIndex = 45;
@@ -361,7 +362,7 @@
             labelAbout.AutoSize = true;
             labelAbout.BackColor = Color.Transparent;
             labelAbout.ForeColor = Color.White;
-            labelAbout.Location = new Point(488, 163);
+            labelAbout.Location = new Point(489, 197);
             labelAbout.Name = "labelAbout";
             labelAbout.Size = new Size(52, 15);
             labelAbout.TabIndex = 46;
@@ -373,7 +374,7 @@
             button1.FlatStyle = FlatStyle.Popup;
             button1.Image = Properties.Resources.Confirm_16;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(25, 412);
+            button1.Location = new Point(26, 446);
             button1.Name = "button1";
             button1.Size = new Size(88, 27);
             button1.TabIndex = 47;
@@ -386,7 +387,7 @@
             richTextBox1.BackColor = Color.Black;
             richTextBox1.BorderStyle = BorderStyle.None;
             richTextBox1.ForeColor = Color.White;
-            richTextBox1.Location = new Point(133, 384);
+            richTextBox1.Location = new Point(134, 418);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.ReadOnly = true;
             richTextBox1.RightToLeft = RightToLeft.Yes;
@@ -394,13 +395,31 @@
             richTextBox1.TabIndex = 77;
             richTextBox1.Text = "";
             // 
+            // button2
+            // 
+            button2.BackColor = Color.White;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.Font = new Font("Segoe Script", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button2.Image = (Image)resources.GetObject("button2.Image");
+            button2.Location = new Point(105, 109);
+            button2.Name = "button2";
+            button2.RightToLeft = RightToLeft.No;
+            button2.Size = new Size(152, 27);
+            button2.TabIndex = 78;
+            button2.Text = "عرض المقايسه";
+            button2.TextAlign = ContentAlignment.MiddleRight;
+            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
             // ConfirmAssessment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.gr;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(679, 527);
+            ClientSize = new Size(679, 554);
+            Controls.Add(button2);
             Controls.Add(richTextBox1);
             Controls.Add(button1);
             Controls.Add(labelAbout);
@@ -470,5 +489,6 @@
         private DataGridViewTextBoxColumn Column7;
         private DataGridViewTextBoxColumn Column6;
         private RichTextBox richTextBox1;
+        private Button button2;
     }
 }

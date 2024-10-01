@@ -16,6 +16,7 @@ using System.Windows.Forms;
 using Windows.Devices.Lights;
 using static HORAS.Database.HorasDataSet;
 using static HORAS.Enums;
+using Application = System.Windows.Forms.Application;
 
 namespace HORAS.Assessments
 {
@@ -109,7 +110,7 @@ namespace HORAS.Assessments
             for (int i = 0; i < DGV_Data.RowCount; i++)
             {
                 ItemRow = MasterData.assessments.AssItemsDataTable.NewAssItemsRow();
-                ItemRow.ID = StartItemIndex + i+1;
+                ItemRow.ID = StartItemIndex + i + 1;
                 ItemRow.Number = DGV_Data.Rows[i].Cells[0].Value.ToString();
                 ItemRow.Description = itemlist.FirstOrDefault(X => X.Number == ItemRow.Number).Dexcription;
                 ItemRow.Item_Unit = DGV_Data.Rows[i].Cells[1].Value.ToString();
@@ -117,10 +118,10 @@ namespace HORAS.Assessments
                 ItemRow.LOL = float.Parse(DGV_Data.Rows[i].Cells[5].Value.ToString());
                 ItemRow.Item_Type = ((int)(Item_TYPE)Enum.Parse(typeof(Item_TYPE), DGV_Data.Rows[i].Cells[4].Value.ToString()));
                 ItemRow.Qty = float.Parse(DGV_Data.Rows[i].Cells[3].Value.ToString());
-               // if (ItemRow.Item_Type == 1 || ItemRow.Item_Type == 2) ItemRow.Qty = 100;
+                // if (ItemRow.Item_Type == 1 || ItemRow.Item_Type == 2) ItemRow.Qty = 100;
                 ListToSave.Add(ItemRow);
             }
-           // TotalAssessment();
+            // TotalAssessment();
         }
 
         void TotalAssessment()
@@ -145,14 +146,14 @@ namespace HORAS.Assessments
             return DataOk;
         }
 
-        
+
 
         void ResetSave()
         {
             DataLoaded = false;
             DGV_Data.Rows.Clear();
             LabelTotal.Text = MasterData.NumericString(0);
-            TextBoxURL.Text = TextBoxSubject.Text = TextBoxAbout.Text = string.Empty;
+            TextBoxURL.Text = TextBoxSubject.Text = TextBoxAbout.Text = TextBoxOrigAssFile.Text = string.Empty;
         }
 
         private void metroButton4_Click(object sender, EventArgs e)
@@ -166,7 +167,8 @@ namespace HORAS.Assessments
                 MasterData.assessments.AssessmentRow.About = TextBoxAbout.Text;
                 MasterData.assessments.AssessmentRow.ID = -1;
                 LoadItems();
-                MasterData.assessments.AddNew(ListToSave);
+                int AssID = MasterData.assessments.AddNew(ListToSave);
+                CopyFiles(AssID);
                 setStatus("تم حفظ بيانات المقايسة بنجاح", 1);
                 ResetSave();
 
@@ -202,12 +204,44 @@ namespace HORAS.Assessments
 
         }
 
-      
+
 
         private void DGV_Data_SelectionChanged(object sender, EventArgs e)
-        { if (DataLoaded == false) return;
+        {
+            if (DataLoaded == false) return;
             string ItemNo = DGV_Data.SelectedRows[0].Cells[0].Value.ToString();
             richTextBox1.Text = itemlist.FirstOrDefault(X => X.Number == ItemNo).Dexcription;
+        }
+
+
+
+        private void button3_Click_2(object sender, EventArgs e)
+        {
+            OpenFileDialog FileDialoge = new OpenFileDialog();
+            FileDialoge.InitialDirectory = Application.StartupPath;
+            FileDialoge.Filter = "pdf files (*.pdf)|*.pdf";
+            if (FileDialoge.ShowDialog() == DialogResult.OK)
+                TextBoxOrigAssFile.Text = FileDialoge.FileName;
+        }
+
+        private void pictureBox12_Click(object sender, EventArgs e)
+        {
+            TextBoxOrigAssFile.Text = string.Empty;
+        }
+
+        void CopyFiles(int AssID)
+        {
+            if (!Path.Exists(Settings1.Default.DB_Files))
+            {
+                FilesPath Filepath = new FilesPath();
+                Filepath.ShowDialog();
+            }
+            if (TextBoxOrigAssFile.Text != string.Empty)
+            {
+                string File1Name = (char)Document_Type.Assessment+"_" + AssID.ToString();
+                MasterData.CopyFile(TextBoxOrigAssFile.Text, File1Name);
+            }
+           
         }
     }
 }

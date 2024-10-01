@@ -31,7 +31,7 @@ namespace HORAS.Assessments
         {
             InitializeComponent();
             DGV_Data.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-           // LoadAssessments();
+            // LoadAssessments();
 
 
         }
@@ -82,7 +82,7 @@ namespace HORAS.Assessments
             }
         }
 
-   
+
         void Reset()
         {
             richTextBox1.Text = labelAbout.Text = labelSubject.Text = string.Empty;
@@ -115,7 +115,7 @@ namespace HORAS.Assessments
         {
             if (ComboAssIDS.SelectedIndex != null)
             {
-                
+
                 //DGV_Data.Rows.Clear();
                 SelectedAssID = int.Parse(ComboAssIDS.SelectedItem.ToString());
 
@@ -184,6 +184,30 @@ namespace HORAS.Assessments
         private void ComboAssIDS_DropDown(object sender, EventArgs e)
         {
             LoadAssessments();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+           
+
+            if (ComboAssIDS.SelectedIndex == -1)
+            {
+                setStatus("يجب إختيار رقم المقايسة أولاً", 0);
+                return;
+            }
+
+            string FileName = (char)Document_Type.Assessment + "_" + ComboAssIDS.SelectedItem.ToString();
+            string Output = MasterData.GetFile(FileName);
+            if (Output == string.Empty)
+            {
+                setStatus("لا يوجد ملف محفوظ للمقايسة", 0);
+                return;
+            }
+            else
+            {
+                MasterData.OpenFile(Output);
+            }
+
         }
     }
 }
