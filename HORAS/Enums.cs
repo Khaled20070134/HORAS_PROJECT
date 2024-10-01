@@ -88,7 +88,8 @@ namespace HORAS
         public enum ContractType
         {
             OwnerContract = 0,
-            ContractorContract = 1
+            ContractorContract = 1,
+            AttachedContract = 2
         }
 
         public enum BGLStatus
