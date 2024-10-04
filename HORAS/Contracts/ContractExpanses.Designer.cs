@@ -144,6 +144,10 @@
             pictureBoxStatus = new PictureBox();
             labelStatus = new Label();
             buttonchosecontract = new Button();
+            label16 = new Label();
+            label20 = new Label();
+            pictureBox16 = new PictureBox();
+            labelConPer = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox15).BeginInit();
@@ -184,6 +188,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxStatus).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox16).BeginInit();
             SuspendLayout();
             // 
             // label8
@@ -223,9 +228,9 @@
             // CBContract
             // 
             CBContract.FormattingEnabled = true;
-            CBContract.Location = new Point(449, 69);
+            CBContract.Location = new Point(489, 69);
             CBContract.Name = "CBContract";
-            CBContract.Size = new Size(167, 23);
+            CBContract.Size = new Size(127, 23);
             CBContract.TabIndex = 50;
             CBContract.SelectedIndexChanged += CBContracts_SelectedIndexChanged;
             // 
@@ -278,9 +283,9 @@
             labelRemainexpDisplay.ForeColor = Color.White;
             labelRemainexpDisplay.Location = new Point(413, 165);
             labelRemainexpDisplay.Name = "labelRemainexpDisplay";
-            labelRemainexpDisplay.Size = new Size(89, 15);
+            labelRemainexpDisplay.Size = new Size(49, 15);
             labelRemainexpDisplay.TabIndex = 133;
-            labelRemainexpDisplay.Text = "التسجيل بواسطة";
+            labelRemainexpDisplay.Text = "..............";
             // 
             // label18
             // 
@@ -369,7 +374,7 @@
             button6.FlatAppearance.BorderSize = 0;
             button6.Font = new Font("Segoe Script", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button6.Image = Properties.Resources.Close_16;
-            button6.Location = new Point(14, 254);
+            button6.Location = new Point(14, 279);
             button6.Name = "button6";
             button6.RightToLeft = RightToLeft.No;
             button6.Size = new Size(93, 30);
@@ -386,7 +391,7 @@
             UpDatebutton.FlatAppearance.BorderSize = 0;
             UpDatebutton.Font = new Font("Segoe Script", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             UpDatebutton.Image = Properties.Resources.Update_161;
-            UpDatebutton.Location = new Point(113, 254);
+            UpDatebutton.Location = new Point(113, 279);
             UpDatebutton.Name = "UpDatebutton";
             UpDatebutton.RightToLeft = RightToLeft.No;
             UpDatebutton.Size = new Size(93, 30);
@@ -421,9 +426,9 @@
             labelCreatedU.ForeColor = Color.White;
             labelCreatedU.Location = new Point(407, 284);
             labelCreatedU.Name = "labelCreatedU";
-            labelCreatedU.Size = new Size(89, 15);
+            labelCreatedU.Size = new Size(49, 15);
             labelCreatedU.TabIndex = 116;
-            labelCreatedU.Text = "التسجيل بواسطة";
+            labelCreatedU.Text = "..............";
             // 
             // label13
             // 
@@ -472,9 +477,9 @@
             labelDateU.ForeColor = Color.White;
             labelDateU.Location = new Point(423, 260);
             labelDateU.Name = "labelDateU";
-            labelDateU.Size = new Size(74, 15);
+            labelDateU.Size = new Size(49, 15);
             labelDateU.TabIndex = 111;
-            labelDateU.Text = "تاريخ التسجيل";
+            labelDateU.Text = "..............";
             // 
             // label21
             // 
@@ -691,9 +696,9 @@
             labelRemainExp.ForeColor = Color.White;
             labelRemainExp.Location = new Point(221, 285);
             labelRemainExp.Name = "labelRemainExp";
-            labelRemainExp.Size = new Size(80, 15);
+            labelRemainExp.Size = new Size(52, 15);
             labelRemainExp.TabIndex = 85;
-            labelRemainExp.Text = "باقي المصروف";
+            labelRemainExp.Text = "...............";
             // 
             // label15
             // 
@@ -780,7 +785,7 @@
             button1.FlatAppearance.BorderSize = 0;
             button1.Font = new Font("Segoe Script", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(25, 241);
+            button1.Location = new Point(11, 277);
             button1.Name = "button1";
             button1.RightToLeft = RightToLeft.No;
             button1.Size = new Size(99, 30);
@@ -829,9 +834,9 @@
             labelDate.ForeColor = Color.White;
             labelDate.Location = new Point(419, 185);
             labelDate.Name = "labelDate";
-            labelDate.Size = new Size(74, 15);
+            labelDate.Size = new Size(52, 15);
             labelDate.TabIndex = 56;
-            labelDate.Text = "تاريخ التسجيل";
+            labelDate.Text = "...............";
             // 
             // labelUserName
             // 
@@ -840,9 +845,9 @@
             labelUserName.ForeColor = Color.White;
             labelUserName.Location = new Point(404, 218);
             labelUserName.Name = "labelUserName";
-            labelUserName.Size = new Size(89, 15);
+            labelUserName.Size = new Size(52, 15);
             labelUserName.TabIndex = 56;
-            labelUserName.Text = "التسجيل بواسطة";
+            labelUserName.Text = "...............";
             // 
             // label10
             // 
@@ -1078,9 +1083,9 @@
             labelconfirmremainexp.ForeColor = Color.White;
             labelconfirmremainexp.Location = new Point(401, 214);
             labelconfirmremainexp.Name = "labelconfirmremainexp";
-            labelconfirmremainexp.Size = new Size(89, 15);
+            labelconfirmremainexp.Size = new Size(61, 15);
             labelconfirmremainexp.TabIndex = 130;
-            labelconfirmremainexp.Text = "التسجيل بواسطة";
+            labelconfirmremainexp.Text = "..................";
             // 
             // label17
             // 
@@ -1112,9 +1117,9 @@
             LabelCStatus.ForeColor = Color.White;
             LabelCStatus.Location = new Point(402, 289);
             LabelCStatus.Name = "LabelCStatus";
-            LabelCStatus.Size = new Size(89, 15);
+            LabelCStatus.Size = new Size(61, 15);
             LabelCStatus.TabIndex = 127;
-            LabelCStatus.Text = "التسجيل بواسطة";
+            LabelCStatus.Text = "..................";
             // 
             // label11
             // 
@@ -1176,9 +1181,9 @@
             labelLOLC.ForeColor = Color.White;
             labelLOLC.Location = new Point(402, 239);
             labelLOLC.Name = "labelLOLC";
-            labelLOLC.Size = new Size(89, 15);
+            labelLOLC.Size = new Size(61, 15);
             labelLOLC.TabIndex = 123;
-            labelLOLC.Text = "التسجيل بواسطة";
+            labelLOLC.Text = "..................";
             // 
             // label24
             // 
@@ -1236,9 +1241,9 @@
             labelTotalC.ForeColor = Color.White;
             labelTotalC.Location = new Point(402, 264);
             labelTotalC.Name = "labelTotalC";
-            labelTotalC.Size = new Size(89, 15);
+            labelTotalC.Size = new Size(61, 15);
             labelTotalC.TabIndex = 86;
-            labelTotalC.Text = "التسجيل بواسطة";
+            labelTotalC.Text = "..................";
             // 
             // label39
             // 
@@ -1293,9 +1298,9 @@
             labelCreatedByC.ForeColor = Color.White;
             labelCreatedByC.Location = new Point(401, 189);
             labelCreatedByC.Name = "labelCreatedByC";
-            labelCreatedByC.Size = new Size(89, 15);
+            labelCreatedByC.Size = new Size(61, 15);
             labelCreatedByC.TabIndex = 116;
-            labelCreatedByC.Text = "التسجيل بواسطة";
+            labelCreatedByC.Text = "..................";
             // 
             // label23
             // 
@@ -1344,9 +1349,9 @@
             labelDateC.ForeColor = Color.White;
             labelDateC.Location = new Point(416, 164);
             labelDateC.Name = "labelDateC";
-            labelDateC.Size = new Size(74, 15);
+            labelDateC.Size = new Size(61, 15);
             labelDateC.TabIndex = 111;
-            labelDateC.Text = "تاريخ التسجيل";
+            labelDateC.Text = "..................";
             // 
             // label29
             // 
@@ -1401,9 +1406,9 @@
             labelAmountC.ForeColor = Color.White;
             labelAmountC.Location = new Point(417, 114);
             labelAmountC.Name = "labelAmountC";
-            labelAmountC.Size = new Size(73, 15);
+            labelAmountC.Size = new Size(61, 15);
             labelAmountC.TabIndex = 107;
-            labelAmountC.Text = "توصيــــــــــــــف";
+            labelAmountC.Text = "..................";
             // 
             // labelExps1C
             // 
@@ -1412,9 +1417,9 @@
             labelExps1C.ForeColor = Color.White;
             labelExps1C.Location = new Point(417, 39);
             labelExps1C.Name = "labelExps1C";
-            labelExps1C.Size = new Size(73, 15);
+            labelExps1C.Size = new Size(61, 15);
             labelExps1C.TabIndex = 106;
-            labelExps1C.Text = "توصيــــــــــــــف";
+            labelExps1C.Text = "..................";
             // 
             // labelExps2C
             // 
@@ -1423,9 +1428,9 @@
             labelExps2C.ForeColor = Color.White;
             labelExps2C.Location = new Point(417, 64);
             labelExps2C.Name = "labelExps2C";
-            labelExps2C.Size = new Size(73, 15);
+            labelExps2C.Size = new Size(61, 15);
             labelExps2C.TabIndex = 106;
-            labelExps2C.Text = "توصيــــــــــــــف";
+            labelExps2C.Text = "..................";
             // 
             // labelDescC
             // 
@@ -1434,9 +1439,9 @@
             labelDescC.ForeColor = Color.White;
             labelDescC.Location = new Point(417, 89);
             labelDescC.Name = "labelDescC";
-            labelDescC.Size = new Size(73, 15);
+            labelDescC.Size = new Size(61, 15);
             labelDescC.TabIndex = 106;
-            labelDescC.Text = "توصيــــــــــــــف";
+            labelDescC.Text = "..................";
             // 
             // label33
             // 
@@ -1603,13 +1608,60 @@
             // 
             // buttonchosecontract
             // 
-            buttonchosecontract.Location = new Point(327, 66);
+            buttonchosecontract.Location = new Point(409, 68);
             buttonchosecontract.Name = "buttonchosecontract";
             buttonchosecontract.Size = new Size(75, 23);
             buttonchosecontract.TabIndex = 218;
             buttonchosecontract.Text = "اختيار عقد";
             buttonchosecontract.UseVisualStyleBackColor = true;
             buttonchosecontract.Click += buttonchosecontract_Click_1;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.BackColor = Color.Transparent;
+            label16.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label16.ForeColor = Color.White;
+            label16.Location = new Point(53, 109);
+            label16.Name = "label16";
+            label16.Size = new Size(260, 15);
+            label16.TabIndex = 219;
+            label16.Text = "برجاء مراعاه نسبة ربح التعاقد عند تسجيل المصروفات";
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.BackColor = Color.Transparent;
+            label20.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label20.ForeColor = Color.White;
+            label20.Location = new Point(211, 72);
+            label20.Name = "label20";
+            label20.Size = new Size(57, 15);
+            label20.TabIndex = 221;
+            label20.Text = "نسبة الربح";
+            // 
+            // pictureBox16
+            // 
+            pictureBox16.BackColor = Color.Transparent;
+            pictureBox16.Image = (Image)resources.GetObject("pictureBox16.Image");
+            pictureBox16.Location = new Point(277, 70);
+            pictureBox16.Name = "pictureBox16";
+            pictureBox16.Size = new Size(16, 18);
+            pictureBox16.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox16.TabIndex = 220;
+            pictureBox16.TabStop = false;
+            // 
+            // labelConPer
+            // 
+            labelConPer.AutoSize = true;
+            labelConPer.BackColor = Color.Transparent;
+            labelConPer.Font = new Font("Segoe UI", 9F);
+            labelConPer.ForeColor = Color.White;
+            labelConPer.Location = new Point(185, 72);
+            labelConPer.Name = "labelConPer";
+            labelConPer.Size = new Size(22, 15);
+            labelConPer.TabIndex = 222;
+            labelConPer.Text = ".....";
             // 
             // ContractExpanses
             // 
@@ -1618,6 +1670,10 @@
             BackgroundImage = Properties.Resources.gr;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(735, 487);
+            Controls.Add(labelConPer);
+            Controls.Add(label20);
+            Controls.Add(pictureBox16);
+            Controls.Add(label16);
             Controls.Add(buttonchosecontract);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(label2);
@@ -1672,6 +1728,7 @@
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxStatus).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox16).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1796,5 +1853,9 @@
         private Label labelRemainexpDisplay;
         private Label label18;
         private PictureBox pictureBox15;
+        private Label label16;
+        private Label label20;
+        private PictureBox pictureBox16;
+        private Label labelConPer;
     }
 }

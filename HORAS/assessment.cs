@@ -112,7 +112,28 @@ namespace HORAS
             AssessmentHeadTableAdapter.Connection.Close();
         }
 
-        public Items GetItemData(int ContractID,string ItemNumber,Items NewItem)
+        public void Delete_Ass(int AssID)
+        {
+            // Delete Ass. Items First
+
+            AssItemsAdapter.Connection.Open();
+            AssItemsAdapter.DeleteAssItems(AssID);
+            AssItemsAdapter.Update(MasterData.Database);
+            AssItemsAdapter.Adapter.Update(MasterData.assessments.AssItemsDataTable);
+            AssItemsDataTable.AcceptChanges();
+            MasterData.Database.AcceptChanges();
+            AssItemsAdapter.Connection.Close();
+
+            AssessmentHeadTableAdapter.Connection.Open();
+            AssessmentHeadTableAdapter.Delete_Ass_Head(AssID);
+            AssessmentHeadTableAdapter.Update(MasterData.Database);
+            AssessmentHeadTableAdapter.Adapter.Update(MasterData.assessments.AssessmentHeadDataTable);
+            AssessmentHeadDataTable.AcceptChanges();
+            MasterData.Database.AcceptChanges();
+            AssessmentHeadTableAdapter.Connection.Close();
+        }
+
+        public Items GetItemData(int ContractID, string ItemNumber, Items NewItem)
         {
             //Items NewItem = new Items();
             NewItem.ContractID = ContractID;
@@ -135,7 +156,7 @@ namespace HORAS
 
             }
 
-            
+
 
             return NewItem;
 
@@ -162,9 +183,11 @@ namespace HORAS
             AssItemsAdapter.GetData();
             foreach (AssItemsRow ItemRow in ItemList)
             {
-                var C = AssItemsDataTable.FirstOrDefault
-                    (x => x.AssID == ItemRow.AssID && x.Number == ItemRow.Number);
-                C.Contract_ID = ContractID;
+                var List = AssItemsDataTable.
+                    Where(x => x.AssID == ItemRow.AssID && x.Number == ItemRow.Number).ToList();
+
+                foreach (var item in List)
+                    item.Contract_ID = ContractID;
             }
 
             AssItemsAdapter.Update(MasterData.Database);
@@ -175,11 +198,20 @@ namespace HORAS
 
         }
 
-      
+        public void Reset_AssItems(int ContractID)
+        {
+            MasterData.assessments.AssItemsAdapter.Connection.Open();
+            MasterData.assessments.AssItemsAdapter.Reset_Items(ContractID);
+            MasterData.assessments.AssItemsAdapter.Update(MasterData.Database);
+            MasterData.assessments.AssItemsAdapter.Adapter.Update(MasterData.assessments.AssItemsDataTable);
+            MasterData.assessments.AssItemsDataTable.AcceptChanges();
+            MasterData.Database.AcceptChanges();
+            MasterData.assessments.AssItemsAdapter.Connection.Close();
+        }
 
-       
 
-      
+
+
 
         public void Confirm(int ID)
         {
@@ -204,7 +236,7 @@ namespace HORAS
             MasterData.LogActivity.AddNew(Row);
         }
 
-        public double GetItemLOLValue(string ContractNumber,string ItemNumber)
+        public double GetItemLOLValue(string ContractNumber, string ItemNumber)
         {
             double Value = 0;
             int ContractID = MasterData.Contracts.ContractDataTable.
@@ -216,7 +248,7 @@ namespace HORAS
             AssItemsRow ItemRow = MasterData.assessments.AssItemsAdapter.NotNullContracts().FirstOrDefault
                 (X => X.Contract_ID == ContractID && X.ID == ItemID);
 
-            return (ItemRow.Qty* ItemRow.Total_Price * ItemRow.LOL);
+            return (ItemRow.Qty * ItemRow.Total_Price * ItemRow.LOL);
         }
 
         public double GetItemLOLPer(string ContractNumber, string ItemNumber)
@@ -228,8 +260,8 @@ namespace HORAS
             int ItemID = MasterData.assessments.AssItemsDataTable.FirstOrDefault
                 (X => X.Contract_ID == ContractID && X.Number == ItemNumber).ID;
 
-           return MasterData.assessments.AssItemsDataTable.FirstOrDefault
-                (X => X.Contract_ID == ContractID && X.ID == ItemID).LOL;
+            return MasterData.assessments.AssItemsDataTable.FirstOrDefault
+                 (X => X.Contract_ID == ContractID && X.ID == ItemID).LOL;
         }
         #endregion
     }

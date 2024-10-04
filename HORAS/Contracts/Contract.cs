@@ -139,6 +139,50 @@ namespace HORAS.Contracts
             return ContractID;
         }
 
+        public void DeleteContractorContract(int ContractID)
+        {
+            int AssID = MasterData.assessments.AssItemsDataTable.First(X => X.Contract_ID == ContractID).AssID;
+            MasterData.assessments.Delete_Ass(AssID);
+
+            ContractTableAdapter.Connection.Open();
+            ContractTableAdapter.Delete_Owner_Contract(ContractID);
+            ContractTableAdapter.Update(MasterData.Database);
+            ContractTableAdapter.Adapter.Update(ContractDataTable);
+            ContractDataTable.AcceptChanges();
+            MasterData.Database.AcceptChanges();
+            ContractTableAdapter.Connection.Close();
+
+            // Insert Log Activity
+            HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
+            Row.Description = "Draft Contract : " + ContractID + " was Deleted";
+            Row.User_ID = MasterData.LoggedEmployee.ID;
+            Row.Mode = (int)ActivityMode.Update;
+            Row.ActivityDate = DateTime.Now;
+            MasterData.LogActivity.AddNew(Row);
+        }
+
+        public void DeleteOwnerContract(int ContractID)
+        {
+            // Re-Assign Items of AssItems. to NULL
+            MasterData.assessments.Reset_AssItems(ContractID);
+
+            ContractTableAdapter.Connection.Open();
+            ContractTableAdapter.Delete_Owner_Contract(ContractID);
+            ContractTableAdapter.Update(MasterData.Database);
+            ContractTableAdapter.Adapter.Update(ContractDataTable);
+            ContractDataTable.AcceptChanges();
+            MasterData.Database.AcceptChanges();
+            ContractTableAdapter.Connection.Close();
+
+            // Insert Log Activity
+            HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
+            Row.Description = "Draft Contract : " + ContractID + " was Deleted";
+            Row.User_ID = MasterData.LoggedEmployee.ID;
+            Row.Mode = (int)ActivityMode.Update;
+            Row.ActivityDate = DateTime.Now;
+            MasterData.LogActivity.AddNew(Row);
+        }
+
         public void Start(HorasDataSet.ContractRow Contract)
         {
             ContractTableAdapter.Connection.Open();

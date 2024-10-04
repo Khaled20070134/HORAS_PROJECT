@@ -10217,7 +10217,7 @@ SELECT ID, Duration, DelayPenaltyP, CreationDate, StartDate, StartedBy, CreatedB
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT ID, Duration, DelayPenaltyP, CreationDate, StartDate, StartedBy, CreatedBy, DownpaymentP, BusinessInsuranceP, Number, Short_Desc, FI_Completed, IM_Completed, Signed, ProfitPercentage, Party, Contract_type, OwnerContractID, Total_Amount FROM Contract";
@@ -10230,19 +10230,24 @@ SELECT ID, Duration, DelayPenaltyP, CreationDate, StartDate, StartedBy, CreatedB
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = @"SELECT BusinessInsuranceP, Contract_type, CreatedBy, CreationDate, DelayPenaltyP, DownpaymentP, Duration, FI_Completed, ID, IM_Completed, Number, OwnerContractID, Party, ProfitPercentage, Short_Desc, Signed, StartDate, StartedBy, Total_Amount FROM Contract WHERE (OwnerContractID = @OwnerID)";
+            this._commandCollection[2].CommandText = "Delete from Contract where ID = @ID";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OwnerID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OwnerContractID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = @"SELECT ID, Duration, DelayPenaltyP, CreationDate, StartDate, StartedBy, CreatedBy, DownpaymentP, BusinessInsuranceP, Number, Short_Desc, FI_Completed, IM_Completed, Signed, ProfitPercentage, Party, Contract_type, OwnerContractID, Total_Amount FROM Contract
-WHERE OwnerContractID = @ID";
+            this._commandCollection[3].CommandText = @"SELECT BusinessInsuranceP, Contract_type, CreatedBy, CreationDate, DelayPenaltyP, DownpaymentP, Duration, FI_Completed, ID, IM_Completed, Number, OwnerContractID, Party, ProfitPercentage, Short_Desc, Signed, StartDate, StartedBy, Total_Amount FROM Contract WHERE (OwnerContractID = @OwnerID)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OwnerContractID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OwnerID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OwnerContractID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = @"SELECT BusinessInsuranceP, Contract_type, CreatedBy, CreationDate, DelayPenaltyP, DownpaymentP, Duration, FI_Completed, ID, IM_Completed, Number, OwnerContractID, Party, ProfitPercentage, Short_Desc, Signed, StartDate, StartedBy, Total_Amount FROM Contract WHERE (StartDate IS NULL) AND (Signed = 1)";
+            this._commandCollection[4].CommandText = @"SELECT ID, Duration, DelayPenaltyP, CreationDate, StartDate, StartedBy, CreatedBy, DownpaymentP, BusinessInsuranceP, Number, Short_Desc, FI_Completed, IM_Completed, Signed, ProfitPercentage, Party, Contract_type, OwnerContractID, Total_Amount FROM Contract
+WHERE OwnerContractID = @ID";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OwnerContractID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = @"SELECT BusinessInsuranceP, Contract_type, CreatedBy, CreationDate, DelayPenaltyP, DownpaymentP, Duration, FI_Completed, ID, IM_Completed, Number, OwnerContractID, Party, ProfitPercentage, Short_Desc, Signed, StartDate, StartedBy, Total_Amount FROM Contract WHERE (StartDate IS NULL) AND (Signed = 1)";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10285,7 +10290,7 @@ WHERE OwnerContractID = @ID";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillBy(HorasDataSet.ContractDataTable dataTable, global::System.Nullable<int> OwnerID) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((OwnerID.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(OwnerID.Value));
             }
@@ -10304,7 +10309,7 @@ WHERE OwnerContractID = @ID";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual HorasDataSet.ContractDataTable GetOwnerContractors(global::System.Nullable<int> OwnerID) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((OwnerID.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(OwnerID.Value));
             }
@@ -10321,7 +10326,7 @@ WHERE OwnerContractID = @ID";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillBy1(HorasDataSet.ContractDataTable dataTable, global::System.Nullable<int> ID) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             if ((ID.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(ID.Value));
             }
@@ -10340,7 +10345,7 @@ WHERE OwnerContractID = @ID";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual HorasDataSet.ContractDataTable GetOwnerContracts(global::System.Nullable<int> ID) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             if ((ID.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(ID.Value));
             }
@@ -10357,7 +10362,7 @@ WHERE OwnerContractID = @ID";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual HorasDataSet.ContractDataTable GetNotStartedContracts() {
-            this.Adapter.SelectCommand = this.CommandCollection[4];
+            this.Adapter.SelectCommand = this.CommandCollection[5];
             HorasDataSet.ContractDataTable dataTable = new HorasDataSet.ContractDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -10390,6 +10395,30 @@ WHERE OwnerContractID = @ID";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
+        public virtual int Delete_Owner_Contract(int ID) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            command.Parameters[0].Value = ((int)(ID));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     
@@ -10580,12 +10609,17 @@ SELECT ID, Confirmed, ConfirmationDate, ConfirmedBy, Subject, About FROM Assessm
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID, Confirmed, ConfirmationDate, ConfirmedBy, Subject, About FROM Assessme" +
                 "ntHead";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "DELETE FROM AssessmentHead WHERE ID = @ID";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10853,6 +10887,30 @@ SELECT ID, Confirmed, ConfirmationDate, ConfirmedBy, Subject, About FROM Assessm
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(global::System.Nullable<bool> Confirmed, global::System.Nullable<global::System.DateTime> ConfirmationDate, global::System.Nullable<int> ConfirmedBy, string Subject, string About, int Original_ID, global::System.Nullable<bool> Original_Confirmed, global::System.Nullable<global::System.DateTime> Original_ConfirmationDate, global::System.Nullable<int> Original_ConfirmedBy, string Original_Subject, string Original_About) {
             return this.Update(Confirmed, ConfirmationDate, ConfirmedBy, Subject, About, Original_ID, Original_Confirmed, Original_ConfirmationDate, Original_ConfirmedBy, Original_Subject, Original_About, Original_ID);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
+        public virtual int Delete_Ass_Head(int ID) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            command.Parameters[0].Value = ((int)(ID));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     
@@ -11536,7 +11594,7 @@ SELECT ID, Number, Description, Qty, AssID, Item_Unit, Contract_ID, Item_Type, L
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[7];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[9];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        ID, Number, Description, Qty, AssID, Item_Unit, Contract_ID, Item_T" +
@@ -11544,38 +11602,48 @@ SELECT ID, Number, Description, Qty, AssID, Item_Unit, Contract_ID, Item_Type, L
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "DELETE FROM AssItems WHERE AssID = @ID";
+            this._commandCollection[1].CommandText = "delete from AssItems where AssID = @ID";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "AssID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT AssID, Contract_ID, Description, ID, Item_Type, Item_Unit, LOL, Number, Qt" +
-                "y, Total_Price FROM AssItems WHERE (Contract_ID = @ID)";
+            this._commandCollection[2].CommandText = "DELETE FROM AssItems WHERE AssID = @ID";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Contract_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "AssID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
             this._commandCollection[3].CommandText = "SELECT AssID, Contract_ID, Description, ID, Item_Type, Item_Unit, LOL, Number, Qt" +
-                "y, Total_Price FROM AssItems WHERE (Contract_ID = @CID) AND (Number = @Num)";
+                "y, Total_Price FROM AssItems WHERE (Contract_ID = @ID)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Contract_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Num", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Number", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Contract_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
             this._commandCollection[4].CommandText = "SELECT AssID, Contract_ID, Description, ID, Item_Type, Item_Unit, LOL, Number, Qt" +
-                "y, Total_Price FROM AssItems WHERE (Contract_ID IS NULL) AND (AssID = @AssID)";
+                "y, Total_Price FROM AssItems WHERE (Contract_ID = @CID) AND (Number = @Num)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AssID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "AssID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Contract_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Num", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Number", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
             this._commandCollection[5].CommandText = "SELECT AssID, Contract_ID, Description, ID, Item_Type, Item_Unit, LOL, Number, Qt" +
-                "y, Total_Price FROM AssItems WHERE (Contract_ID IS NOT NULL)";
+                "y, Total_Price FROM AssItems WHERE (Contract_ID IS NULL) AND (AssID = @AssID)";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AssID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "AssID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "SELECT SUM(QTY*Price_Unit) FROM AssItems WHERE ASSID = @ID";
+            this._commandCollection[6].CommandText = "SELECT AssID, Contract_ID, Description, ID, Item_Type, Item_Unit, LOL, Number, Qt" +
+                "y, Total_Price FROM AssItems WHERE (Contract_ID IS NOT NULL)";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "AssID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[7].Connection = this.Connection;
+            this._commandCollection[7].CommandText = "update AssItems set Contract_ID = NULL where Contract_ID = @ID";
+            this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Contract_ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[8] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[8].Connection = this.Connection;
+            this._commandCollection[8].CommandText = "SELECT SUM(QTY*Price_Unit) FROM AssItems WHERE ASSID = @ID";
+            this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "AssID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11607,7 +11675,7 @@ SELECT ID, Number, Description, Qty, AssID, Item_Unit, Contract_ID, Item_Type, L
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual HorasDataSet.AssItemsDataTable GetContractItems(global::System.Nullable<int> ID) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((ID.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(ID.Value));
             }
@@ -11624,7 +11692,7 @@ SELECT ID, Number, Description, Qty, AssID, Item_Unit, Contract_ID, Item_Type, L
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual HorasDataSet.AssItemsDataTable GetItemType(global::System.Nullable<int> CID, string Num) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             if ((CID.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CID.Value));
             }
@@ -11647,7 +11715,7 @@ SELECT ID, Number, Description, Qty, AssID, Item_Unit, Contract_ID, Item_Type, L
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual HorasDataSet.AssItemsDataTable GetNotAssignedItems(global::System.Nullable<int> AssID) {
-            this.Adapter.SelectCommand = this.CommandCollection[4];
+            this.Adapter.SelectCommand = this.CommandCollection[5];
             if ((AssID.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(AssID.Value));
             }
@@ -11664,7 +11732,7 @@ SELECT ID, Number, Description, Qty, AssID, Item_Unit, Contract_ID, Item_Type, L
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual HorasDataSet.AssItemsDataTable NotNullContracts() {
-            this.Adapter.SelectCommand = this.CommandCollection[5];
+            this.Adapter.SelectCommand = this.CommandCollection[6];
             HorasDataSet.AssItemsDataTable dataTable = new HorasDataSet.AssItemsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -12068,7 +12136,7 @@ SELECT ID, Number, Description, Qty, AssID, Item_Unit, Contract_ID, Item_Type, L
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
-        public virtual int DeleteItem(global::System.Nullable<int> ID) {
+        public virtual int DeleteAssItems(global::System.Nullable<int> ID) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
             if ((ID.HasValue == true)) {
                 command.Parameters[0].Value = ((int)(ID.Value));
@@ -12096,8 +12164,66 @@ SELECT ID, Number, Description, Qty, AssID, Item_Unit, Contract_ID, Item_Type, L
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
+        public virtual int DeleteItem(global::System.Nullable<int> ID) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            if ((ID.HasValue == true)) {
+                command.Parameters[0].Value = ((int)(ID.Value));
+            }
+            else {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int Reset_Items(global::System.Nullable<int> ID) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[7];
+            if ((ID.HasValue == true)) {
+                command.Parameters[0].Value = ((int)(ID.Value));
+            }
+            else {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual global::System.Nullable<double> TotalAssessments(global::System.Nullable<int> ID) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[6];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[8];
             if ((ID.HasValue == true)) {
                 command.Parameters[0].Value = ((int)(ID.Value));
             }

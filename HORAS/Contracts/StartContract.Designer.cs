@@ -67,6 +67,7 @@
             RBStart = new RadioButton();
             groupBoxStart = new Panel();
             buttonchosecontract = new Button();
+            button8 = new Button();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxStatus).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
@@ -108,9 +109,9 @@
             CBNumber.FontWeight = MetroFramework.MetroLinkWeight.Regular;
             CBNumber.FormattingEnabled = true;
             CBNumber.ItemHeight = 23;
-            CBNumber.Location = new Point(492, 90);
+            CBNumber.Location = new Point(546, 90);
             CBNumber.Name = "CBNumber";
-            CBNumber.Size = new Size(176, 29);
+            CBNumber.Size = new Size(135, 29);
             CBNumber.Style = MetroFramework.MetroColorStyle.Blue;
             CBNumber.StyleManager = null;
             CBNumber.TabIndex = 1;
@@ -593,10 +594,10 @@
             button3.FlatAppearance.BorderSize = 0;
             button3.Font = new Font("Segoe Script", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button3.Image = Properties.Resources.Money2_161;
-            button3.Location = new Point(258, 90);
+            button3.Location = new Point(368, 92);
             button3.Name = "button3";
             button3.RightToLeft = RightToLeft.No;
-            button3.Size = new Size(115, 25);
+            button3.Size = new Size(95, 25);
             button3.TabIndex = 38;
             button3.Text = "البيانات المالية";
             button3.TextAlign = ContentAlignment.MiddleRight;
@@ -664,13 +665,30 @@
             // 
             // buttonchosecontract
             // 
-            buttonchosecontract.Location = new Point(391, 94);
+            buttonchosecontract.Location = new Point(465, 93);
             buttonchosecontract.Name = "buttonchosecontract";
             buttonchosecontract.Size = new Size(75, 23);
             buttonchosecontract.TabIndex = 218;
             buttonchosecontract.Text = "اختيار عقد";
             buttonchosecontract.UseVisualStyleBackColor = true;
             buttonchosecontract.Click += buttonchosecontract_Click;
+            // 
+            // button8
+            // 
+            button8.BackColor = Color.White;
+            button8.FlatAppearance.BorderSize = 0;
+            button8.Font = new Font("Segoe Script", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button8.Image = Properties.Resources.Close_16;
+            button8.Location = new Point(12, 347);
+            button8.Name = "button8";
+            button8.RightToLeft = RightToLeft.No;
+            button8.Size = new Size(115, 30);
+            button8.TabIndex = 219;
+            button8.Text = "مسح التعاقد";
+            button8.TextAlign = ContentAlignment.MiddleRight;
+            button8.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button8.UseVisualStyleBackColor = false;
+            button8.Click += button8_Click;
             // 
             // StartContract
             // 
@@ -679,6 +697,7 @@
             BackgroundImage = Properties.Resources.gr;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(797, 447);
+            Controls.Add(button8);
             Controls.Add(buttonchosecontract);
             Controls.Add(groupBoxStart);
             Controls.Add(RBStart);
@@ -768,5 +787,6 @@
         private RadioButton RBStart;
         private Panel groupBoxStart;
         private Button buttonchosecontract;
+        private Button button8;
     }
 }

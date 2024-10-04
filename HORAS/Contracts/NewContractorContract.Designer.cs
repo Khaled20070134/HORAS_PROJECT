@@ -255,7 +255,7 @@ namespace HORAS.Contracts
             // pictureBox15
             // 
             pictureBox15.Image = (Image)resources.GetObject("pictureBox15.Image");
-            pictureBox15.Location = new Point(350, 278);
+            pictureBox15.Location = new Point(308, 278);
             pictureBox15.Name = "pictureBox15";
             pictureBox15.Size = new Size(16, 18);
             pictureBox15.SizeMode = PictureBoxSizeMode.StretchImage;

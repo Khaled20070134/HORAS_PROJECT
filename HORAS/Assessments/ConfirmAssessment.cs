@@ -188,7 +188,7 @@ namespace HORAS.Assessments
 
         private void button2_Click(object sender, EventArgs e)
         {
-           
+
 
             if (ComboAssIDS.SelectedIndex == -1)
             {
@@ -207,6 +207,24 @@ namespace HORAS.Assessments
             {
                 MasterData.OpenFile(Output);
             }
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (ComboAssIDS.SelectedIndex == -1)
+            {
+                setStatus("يجب إختيار مقايسة لمسحها", 0);
+                return;
+            }
+            int AssID = int.Parse(ComboAssIDS.SelectedItem.ToString());
+            MasterData.assessments.Delete_Ass(AssID);
+            labelSubject.Text = labelAbout.Text = LabelTotal.Text = string.Empty;
+            DGV_Data.Rows.Clear();
+
+            string Path = MasterData.GetFile((char)Document_Type.Assessment + AssID.ToString());
+            if (Path != null) MasterData.DeleteFile(Path);
+            setStatus("تم مسح المقايسة من قاعدة البيانات", 1);
 
         }
     }

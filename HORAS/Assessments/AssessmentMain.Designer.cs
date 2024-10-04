@@ -57,7 +57,7 @@
             panel1.Dock = DockStyle.Right;
             panel1.Location = new Point(666, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(167, 516);
+            panel1.Size = new Size(167, 590);
             panel1.TabIndex = 9;
             // 
             // metroButton2
@@ -131,7 +131,7 @@
             metroButton4.Highlight = true;
             metroButton4.Image = Properties.Resources.plus___480px;
             metroButton4.ImageAlign = ContentAlignment.MiddleRight;
-            metroButton4.Location = new Point(5, 484);
+            metroButton4.Location = new Point(5, 548);
             metroButton4.Name = "metroButton4";
             metroButton4.Size = new Size(159, 27);
             metroButton4.Style = MetroFramework.MetroColorStyle.Black;
@@ -178,14 +178,14 @@
             MasterPanel.Dock = DockStyle.Left;
             MasterPanel.Location = new Point(0, 0);
             MasterPanel.Name = "MasterPanel";
-            MasterPanel.Size = new Size(666, 516);
+            MasterPanel.Size = new Size(666, 590);
             MasterPanel.TabIndex = 10;
             // 
             // AssessmentMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(833, 516);
+            ClientSize = new Size(833, 590);
             Controls.Add(panel1);
             Controls.Add(MasterPanel);
             FormBorderStyle = FormBorderStyle.None;

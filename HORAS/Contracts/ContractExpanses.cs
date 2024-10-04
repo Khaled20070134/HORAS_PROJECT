@@ -188,6 +188,9 @@ namespace HORAS.Contracts
 
             UpdateTotalExps();
 
+            labelConPer.Text = (MasterData.Contracts.ContractDataTable.FirstOrDefault
+                (X=>X.ID == SelectedContractID).ProfitPercentage * 100) .ToString() + " %";
+
             ContractItems.Clear();
 
             CBItems.Items.Clear();

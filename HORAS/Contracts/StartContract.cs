@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.Drawing;
 using System.Globalization;
@@ -14,6 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static HORAS.Database.HorasDataSet;
+using static HORAS.Enums;
 //using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace HORAS.Contracts
@@ -21,7 +23,7 @@ namespace HORAS.Contracts
     public partial class StartContract : Form
     {
 
-       
+
         Contract Selected_Contract;
         public StartContract()
         {
@@ -43,7 +45,7 @@ namespace HORAS.Contracts
 
         void LoadContractData()
         {
-            
+
             //LabelAssNumber.Text = Selected_Contract.assessment.ID.ToString();
             LabelContractDate.Text = Selected_Contract.CreationDate.ToShortDateString();
             DTPStartDate.MinDate = Selected_Contract.CreationDate;
@@ -229,12 +231,42 @@ namespace HORAS.Contracts
                 Con2.ShowDialog();
                 if (MasterData.Contracts.ContractDataTable.FirstOrDefault(x => x.Number == Displayallcontracts.ContractNumber).IsStartDateNull() == false)
                 { setStatus("هذا العقد تم بدءه بالفعل", 0); }
-                else { 
-                CBNumber.SelectedIndex = CBNumber.FindStringExact(Displayallcontracts.ContractNumber);
-                if (CBNumber.SelectedIndex != -1) LoadData();
-            }
+                else
+                {
+                    CBNumber.SelectedIndex = CBNumber.FindStringExact(Displayallcontracts.ContractNumber);
+                    if (CBNumber.SelectedIndex != -1) LoadData();
+                }
             }
 
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (CBNumber.SelectedIndex == -1)
+            {
+                setStatus("يجب إختيار تعاقد لمسحة", 0);
+                return;
+            }
+
+            var ContractObject = MasterData.Contracts.ContractDataTable.FirstOrDefault(X => X.Number == CBNumber.SelectedItem.ToString());
+            switch (ContractObject.Contract_type)
+            {
+                case (int)ContractType.OwnerContract:
+                    MasterData.Contracts.DeleteOwnerContract(ContractObject.ID);
+                    break;
+                case (int)ContractType.ContractorContract:
+                    MasterData.Contracts.DeleteContractorContract(ContractObject.ID);
+                    break;
+            }
+            MasterData.Contracts.RefreshList();
+            MasterData.assessments.RefreshList();
+
+            string Path = MasterData.GetFile((char)Document_Type.Contract + ContractObject.ID.ToString());
+
+            if (Path != null) MasterData.DeleteFile(Path);
+
+            setStatus("تم مسح التعاقد من قاعدة البيانات", 1);
 
         }
     }

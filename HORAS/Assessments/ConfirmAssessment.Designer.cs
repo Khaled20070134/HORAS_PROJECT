@@ -59,6 +59,7 @@
             button1 = new Button();
             richTextBox1 = new RichTextBox();
             button2 = new Button();
+            button8 = new Button();
             ((System.ComponentModel.ISupportInitialize)DGV_Data).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxStatus).BeginInit();
@@ -353,9 +354,9 @@
             labelSubject.ForeColor = Color.White;
             labelSubject.Location = new Point(489, 169);
             labelSubject.Name = "labelSubject";
-            labelSubject.Size = new Size(52, 15);
+            labelSubject.Size = new Size(25, 15);
             labelSubject.TabIndex = 45;
-            labelSubject.Text = "الموضوع";
+            labelSubject.Text = "......";
             // 
             // labelAbout
             // 
@@ -364,9 +365,9 @@
             labelAbout.ForeColor = Color.White;
             labelAbout.Location = new Point(489, 197);
             labelAbout.Name = "labelAbout";
-            labelAbout.Size = new Size(52, 15);
+            labelAbout.Size = new Size(25, 15);
             labelAbout.TabIndex = 46;
-            labelAbout.Text = "بخصوص";
+            labelAbout.Text = "......";
             // 
             // button1
             // 
@@ -401,16 +402,33 @@
             button2.FlatAppearance.BorderSize = 0;
             button2.Font = new Font("Segoe Script", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(105, 109);
+            button2.Location = new Point(180, 107);
             button2.Name = "button2";
             button2.RightToLeft = RightToLeft.No;
-            button2.Size = new Size(152, 27);
+            button2.Size = new Size(126, 27);
             button2.TabIndex = 78;
             button2.Text = "أصل المقايسه";
             button2.TextAlign = ContentAlignment.MiddleRight;
             button2.TextImageRelation = TextImageRelation.ImageBeforeText;
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
+            // 
+            // button8
+            // 
+            button8.BackColor = Color.White;
+            button8.FlatAppearance.BorderSize = 0;
+            button8.Font = new Font("Segoe Script", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button8.Image = Properties.Resources.Close_16;
+            button8.Location = new Point(48, 107);
+            button8.Name = "button8";
+            button8.RightToLeft = RightToLeft.No;
+            button8.Size = new Size(126, 27);
+            button8.TabIndex = 220;
+            button8.Text = "مسح المقايسة";
+            button8.TextAlign = ContentAlignment.MiddleRight;
+            button8.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button8.UseVisualStyleBackColor = false;
+            button8.Click += button8_Click;
             // 
             // ConfirmAssessment
             // 
@@ -419,6 +437,7 @@
             BackgroundImage = Properties.Resources.gr;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(679, 554);
+            Controls.Add(button8);
             Controls.Add(button2);
             Controls.Add(richTextBox1);
             Controls.Add(button1);
@@ -490,5 +509,6 @@
         private DataGridViewTextBoxColumn Column6;
         private RichTextBox richTextBox1;
         private Button button2;
+        private Button button8;
     }
 }
