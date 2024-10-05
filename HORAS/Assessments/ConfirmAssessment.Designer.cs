@@ -185,7 +185,7 @@
             // 
             pictureBox7.BackColor = Color.Transparent;
             pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
-            pictureBox7.Location = new Point(633, 61);
+            pictureBox7.Location = new Point(639, 61);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(16, 18);
             pictureBox7.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -371,7 +371,7 @@
             // 
             // button1
             // 
-            button1.BackColor = SystemColors.ControlDark;
+            button1.BackColor = Color.White;
             button1.FlatStyle = FlatStyle.Popup;
             button1.Image = Properties.Resources.Confirm_16;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
@@ -463,7 +463,6 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "ConfirmAssessment";
             Text = "ImportAssessment";
-            Load += ConfirmAssessment_Load;
             ((System.ComponentModel.ISupportInitialize)DGV_Data).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();

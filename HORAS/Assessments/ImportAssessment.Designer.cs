@@ -38,7 +38,6 @@
             Column7 = new DataGridViewTextBoxColumn();
             LOL = new DataGridViewTextBoxColumn();
             Column6 = new DataGridViewTextBoxColumn();
-            metroButton3 = new MetroFramework.Controls.MetroButton();
             TextBoxSubject = new MetroFramework.Controls.MetroTextBox();
             TextBoxAbout = new MetroFramework.Controls.MetroTextBox();
             LabelDate = new MetroFramework.Controls.MetroLabel();
@@ -162,18 +161,6 @@
             Column6.HeaderText = "الاجمالى";
             Column6.Name = "Column6";
             // 
-            // metroButton3
-            // 
-            metroButton3.Highlight = false;
-            metroButton3.Location = new Point(16, 59);
-            metroButton3.Name = "metroButton3";
-            metroButton3.Size = new Size(83, 23);
-            metroButton3.Style = MetroFramework.MetroColorStyle.Blue;
-            metroButton3.StyleManager = null;
-            metroButton3.TabIndex = 1;
-            metroButton3.Text = "تنزيل الملف";
-            metroButton3.Theme = MetroFramework.MetroThemeStyle.Light;
-            // 
             // TextBoxSubject
             // 
             TextBoxSubject.BackColor = Color.White;
@@ -217,7 +204,7 @@
             LabelDate.FontWeight = MetroFramework.MetroLabelWeight.Light;
             LabelDate.ForeColor = Color.White;
             LabelDate.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            LabelDate.Location = new Point(490, 219);
+            LabelDate.Location = new Point(490, 221);
             LabelDate.Name = "LabelDate";
             LabelDate.Size = new Size(62, 19);
             LabelDate.Style = MetroFramework.MetroColorStyle.White;
@@ -236,7 +223,7 @@
             LabelTotal.FontWeight = MetroFramework.MetroLabelWeight.Light;
             LabelTotal.ForeColor = Color.White;
             LabelTotal.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            LabelTotal.Location = new Point(171, 247);
+            LabelTotal.Location = new Point(171, 222);
             LabelTotal.Name = "LabelTotal";
             LabelTotal.Size = new Size(21, 19);
             LabelTotal.Style = MetroFramework.MetroColorStyle.White;
@@ -407,7 +394,7 @@
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(555, 221);
+            label6.Location = new Point(555, 223);
             label6.Name = "label6";
             label6.Size = new Size(68, 15);
             label6.TabIndex = 39;
@@ -419,7 +406,7 @@
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(271, 249);
+            label7.Location = new Point(271, 224);
             label7.Name = "label7";
             label7.Size = new Size(87, 15);
             label7.TabIndex = 40;
@@ -441,7 +428,7 @@
             // 
             pictureBox5.BackColor = Color.Transparent;
             pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(629, 220);
+            pictureBox5.Location = new Point(629, 222);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(16, 18);
             pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -452,7 +439,7 @@
             // 
             pictureBox6.BackColor = Color.Transparent;
             pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
-            pictureBox6.Location = new Point(364, 221);
+            pictureBox6.Location = new Point(364, 222);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(16, 18);
             pictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -512,7 +499,7 @@
             label9.BackColor = Color.Black;
             label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label9.ForeColor = Color.White;
-            label9.Location = new Point(547, 94);
+            label9.Location = new Point(547, 95);
             label9.Name = "label9";
             label9.Size = new Size(76, 15);
             label9.TabIndex = 78;
@@ -523,7 +510,7 @@
             TextBoxOrigAssFile.Enabled = false;
             TextBoxOrigAssFile.FontSize = MetroFramework.MetroTextBoxSize.Small;
             TextBoxOrigAssFile.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
-            TextBoxOrigAssFile.Location = new Point(234, 94);
+            TextBoxOrigAssFile.Location = new Point(234, 91);
             TextBoxOrigAssFile.Multiline = false;
             TextBoxOrigAssFile.Name = "TextBoxOrigAssFile";
             TextBoxOrigAssFile.SelectedText = "";
@@ -538,7 +525,7 @@
             // 
             pictureBox9.BackColor = Color.Transparent;
             pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
-            pictureBox9.Location = new Point(633, 89);
+            pictureBox9.Location = new Point(633, 93);
             pictureBox9.Name = "pictureBox9";
             pictureBox9.Size = new Size(16, 18);
             pictureBox9.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -549,7 +536,7 @@
             // 
             pictureBox12.BackColor = Color.Transparent;
             pictureBox12.Image = Properties.Resources.Close_16;
-            pictureBox12.Location = new Point(147, 97);
+            pictureBox12.Location = new Point(147, 92);
             pictureBox12.Name = "pictureBox12";
             pictureBox12.Size = new Size(20, 20);
             pictureBox12.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -563,7 +550,7 @@
             button3.FlatAppearance.BorderSize = 0;
             button3.Font = new Font("Segoe Script", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(172, 94);
+            button3.Location = new Point(172, 89);
             button3.Name = "button3";
             button3.RightToLeft = RightToLeft.No;
             button3.Size = new Size(27, 27);
@@ -609,7 +596,6 @@
             Controls.Add(TextBoxAbout);
             Controls.Add(TextBoxSubject);
             Controls.Add(DGV_Data);
-            Controls.Add(metroButton3);
             Controls.Add(TextBoxURL);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ImportAssessment";
@@ -635,7 +621,6 @@
 
         private MetroFramework.Controls.MetroTextBox TextBoxURL;
         private DataGridView DGV_Data;
-        private MetroFramework.Controls.MetroButton metroButton3;
         private MetroFramework.Controls.MetroTextBox TextBoxSubject;
         private MetroFramework.Controls.MetroTextBox TextBoxAbout;
         private MetroFramework.Controls.MetroLabel LabelDate;

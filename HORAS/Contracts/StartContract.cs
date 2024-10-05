@@ -259,12 +259,14 @@ namespace HORAS.Contracts
                     MasterData.Contracts.DeleteContractorContract(ContractObject.ID);
                     break;
             }
-            MasterData.Contracts.RefreshList();
-            MasterData.assessments.RefreshList();
+            //  MasterData.Contracts.RefreshList();
+            //  MasterData.assessments.RefreshList();
 
-            string Path = MasterData.GetFile((char)Document_Type.Contract + ContractObject.ID.ToString());
+            string Path = MasterData.GetFile((char)Document_Type.Contract + "_" + ContractObject.Number.ToString() + "_1");
+            if (Path != string.Empty) MasterData.DeleteFile(Path);
 
-            if (Path != null) MasterData.DeleteFile(Path);
+            Path = MasterData.GetFile((char)Document_Type.Contract + "_" + ContractObject.Number.ToString() + "_2");
+            if (Path != string.Empty) MasterData.DeleteFile(Path);
 
             setStatus("تم مسح التعاقد من قاعدة البيانات", 1);
 

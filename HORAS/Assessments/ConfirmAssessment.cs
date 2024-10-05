@@ -2,8 +2,6 @@
 using HORAS.Interims_Data;
 using HORAS.Properties;
 using Microsoft.Office.Interop.Excel;
-
-//using IronXL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,8 +30,6 @@ namespace HORAS.Assessments
             InitializeComponent();
             DGV_Data.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             // LoadAssessments();
-
-
         }
 
         void LoadAssessments()
@@ -76,12 +72,9 @@ namespace HORAS.Assessments
                         NewItem.Type, (NewItem.Total_PRice * NewItem.Qty));
                     Total += (NewItem.Total_PRice * NewItem.Qty);
                 }
-
-
                 LabelTotal.Text = Total.ToString();
             }
         }
-
 
         void Reset()
         {
@@ -115,7 +108,6 @@ namespace HORAS.Assessments
         {
             if (ComboAssIDS.SelectedIndex != null)
             {
-
                 //DGV_Data.Rows.Clear();
                 SelectedAssID = int.Parse(ComboAssIDS.SelectedItem.ToString());
 
@@ -126,12 +118,9 @@ namespace HORAS.Assessments
                 // Load Assessment Items
                 LoadedItemsList = MasterData.assessments.AssItemsDataTable.Where(X => X.AssID == SelectedAssID).ToList();
 
-
-
                 // itemlist.Clear();
                 DataLoaded = false;
                 DGV_Data.Rows.Clear();
-
 
                 foreach (var Item in LoadedItemsList)
                 {
@@ -155,11 +144,6 @@ namespace HORAS.Assessments
                 DataLoaded = true;
                 MasterData.styleGridView(DGV_Data);
             }
-        }
-
-        private void ConfirmAssessment_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -188,8 +172,6 @@ namespace HORAS.Assessments
 
         private void button2_Click(object sender, EventArgs e)
         {
-
-
             if (ComboAssIDS.SelectedIndex == -1)
             {
                 setStatus("يجب إختيار رقم المقايسة أولاً", 0);
@@ -204,10 +186,7 @@ namespace HORAS.Assessments
                 return;
             }
             else
-            {
                 MasterData.OpenFile(Output);
-            }
-
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -220,10 +199,11 @@ namespace HORAS.Assessments
             int AssID = int.Parse(ComboAssIDS.SelectedItem.ToString());
             MasterData.assessments.Delete_Ass(AssID);
             labelSubject.Text = labelAbout.Text = LabelTotal.Text = string.Empty;
+            DataLoaded = false;
             DGV_Data.Rows.Clear();
 
-            string Path = MasterData.GetFile((char)Document_Type.Assessment + AssID.ToString());
-            if (Path != null) MasterData.DeleteFile(Path);
+            string Path = MasterData.GetFile((char)Document_Type.Assessment + "_" + AssID.ToString());
+            if (Path != string.Empty) MasterData.DeleteFile(Path);
             setStatus("تم مسح المقايسة من قاعدة البيانات", 1);
 
         }
