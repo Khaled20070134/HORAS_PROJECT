@@ -65,7 +65,7 @@ namespace HORAS
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Assessment ID : " + ID + " was created";
+            Row.Description = "تم انشاء مقايسة رقم: " + ID ";
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Create;
             Row.ActivityDate = DateTime.Now;
@@ -229,7 +229,7 @@ namespace HORAS
 
             // Insert Log Activity
             Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Assessment : " + ID + " was Confirmed ";
+            Row.Description = "تم تأكيد مقايسة رقم" + ID ;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Update;
             Row.ActivityDate = DateTime.Now;

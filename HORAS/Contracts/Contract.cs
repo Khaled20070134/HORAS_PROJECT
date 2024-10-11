@@ -89,7 +89,7 @@ namespace HORAS.Contracts
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Attached Contract : " + Contract.Number + " was created";
+            Row.Description = "تم انشاء ملحق لتعاقد رقم " + Contract.Number ;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Create;
             Row.ActivityDate = DateTime.Now;
@@ -110,7 +110,7 @@ namespace HORAS.Contracts
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Contract : " + Contract.Number + " was created";
+            Row.Description = "تم انشاء تعاقد رقم: " + Contract.Number ;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Create;
             Row.ActivityDate = DateTime.Now;
@@ -130,7 +130,7 @@ namespace HORAS.Contracts
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Contract : " + Contract.Number + " was created";
+            Row.Description = "تم انشاء تعاقد رقم :" + Contract.Number ;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Create;
             Row.ActivityDate = DateTime.Now;
@@ -154,7 +154,7 @@ namespace HORAS.Contracts
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Draft Contract : " + ContractID + " was Deleted";
+            Row.Description = "تم مسح مسودة تعاقد رقم  " + ContractID ;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Update;
             Row.ActivityDate = DateTime.Now;
@@ -176,7 +176,7 @@ namespace HORAS.Contracts
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Draft Contract : " + ContractID + " was Deleted";
+            Row.Description = "تم مسح مسودة تعاقد رقم " + ContractID ;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Update;
             Row.ActivityDate = DateTime.Now;
@@ -197,7 +197,7 @@ namespace HORAS.Contracts
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Contract : " + Contract.ID + " was Started Implementation";
+            Row.Description = "تم بدء تنفيذ تعاقد رقم  " + Contract.ID ;
             Row.ActivityDate = DateTime.Now;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Update;
@@ -217,7 +217,7 @@ namespace HORAS.Contracts
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Contract : " + ContractID + " was Signed";
+            Row.Description = "تم توقيع تعاقد رقم " + ContractID ;
             Row.ActivityDate = DateTime.Now;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Update;
@@ -237,7 +237,7 @@ namespace HORAS.Contracts
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Contract : " + ContractID + " was Financialy Closed";
+            Row.Description = "تم انهاء تعاقد رقم " + ContractID + " ماليا";
             Row.ActivityDate = DateTime.Now;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Update;
@@ -257,7 +257,7 @@ namespace HORAS.Contracts
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Contract : " + ContractID + " implementation finished";
+            Row.Description = "تم انهاء تنفيذ تعاقد رقم " + ContractID ;
             Row.ActivityDate = DateTime.Now;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Update;
@@ -285,7 +285,7 @@ namespace HORAS.Contracts
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Expanses for contract : " + ContractNumber + " was created";
+            Row.Description = "تم اضافه مصروف خاص بتعاقد رقم : " + ContractNumber ;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Create;
             Row.ActivityDate = DateTime.Now;
@@ -307,7 +307,7 @@ namespace HORAS.Contracts
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Expanses related to contract : " + ContratNumber + " was Deleted";
+            Row.Description = "تم مسح مصروف خاص بتعاقد رقم : " + ContratNumber ;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Update;
             Row.ActivityDate = DateTime.Now;
@@ -330,7 +330,7 @@ namespace HORAS.Contracts
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Expanses related to Contract : " + ContractNumber + " was Updated";
+            Row.Description = "تم تحديث بيانات مصروف خاص بتعاقد رقم: " + ContractNumber ;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Update;
             Row.ActivityDate = DateTime.Now;
@@ -350,7 +350,7 @@ namespace HORAS.Contracts
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Expanses with ID"+ ExpID + " was Confirmed";
+            Row.Description = "تم تأكيد بيانات مصروف رقم:" + ExpID ;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Update;
             Row.ActivityDate = DateTime.Now;
@@ -430,7 +430,7 @@ namespace HORAS.Contracts
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Bank Gurantee Letter : " + BGL_Contract.Serial + " was created";
+            Row.Description = "تم انشاء خطاب ضمان بنكي رقم : " + BGL_Contract.Serial ;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Create;
             Row.ActivityDate = DateTime.Now;
@@ -448,7 +448,7 @@ namespace HORAS.Contracts
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Bank Gurantee Letter : " + C.Serial + " was Deleted";
+            Row.Description = "تم مسح خطاب ضمان بنكي رقم  : " + C.Serial ;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Update;
             Row.ActivityDate = DateTime.Now;
@@ -475,7 +475,7 @@ namespace HORAS.Contracts
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Expanses Category : " + MajorRow.Title + " was Added";
+            Row.Description = "تم اضافه  مصروف بعنوان : " + MajorRow.Title ;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Update;
             Row.ActivityDate = DateTime.Now;
@@ -495,7 +495,7 @@ namespace HORAS.Contracts
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Expanses Category was Updated";
+            Row.Description = "تم تعديل نوع مصروف";
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Update;
             Row.ActivityDate = DateTime.Now;
@@ -516,7 +516,7 @@ namespace HORAS.Contracts
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Expanses Title was Updated";
+            Row.Description = "تم تعديل موضوع مصروف";
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Update;
             Row.ActivityDate = DateTime.Now;
@@ -535,7 +535,7 @@ namespace HORAS.Contracts
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Expanses Title : " + MinorRow.Title + " was Added";
+            Row.Description = "تم انشاء مصروف بعنوان:  " + MinorRow.Title ;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Update;
             Row.ActivityDate = DateTime.Now;

@@ -201,7 +201,7 @@ namespace HORAS.Interims_Data
 
             // Insert Log Activity
             Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Interims ID : " + ID + " was created";
+            Row.Description = "تم انشاء المستخلص رقم  " + ID ;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Create;
             Row.ActivityDate = DateTime.Now;
@@ -237,7 +237,7 @@ namespace HORAS.Interims_Data
 
             // Insert Log Activity
             Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Interim : " + IntermID + " was Confirmed";
+            Row.Description = "تم تأكيد المستخلص رقم " + IntermID ;
             Row.ActivityDate = DateTime.Now;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Update;

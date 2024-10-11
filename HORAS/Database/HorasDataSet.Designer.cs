@@ -10211,7 +10211,7 @@ SELECT ID, Duration, DelayPenaltyP, CreationDate, StartDate, StartedBy, CreatedB
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
+            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10603,7 +10603,7 @@ SELECT ID, Confirmed, ConfirmationDate, ConfirmedBy, Subject, About FROM Assessm
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
+            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11097,7 +11097,7 @@ SELECT ID, Name, Address, TaxRegNumber, Phone, TaxDocument FROM Party WHERE (ID 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
+            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11588,7 +11588,7 @@ SELECT ID, Number, Description, Qty, AssID, Item_Unit, Contract_ID, Item_Type, L
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
+            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12437,7 +12437,7 @@ SELECT ID, User_ID, Description, ActivityDate, Note, Mode FROM Log_Table WHERE (
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
+            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12935,7 +12935,7 @@ SELECT ID, In_Date, ContractID, Confirm_Date, Number FROM InterimsHead WHERE (ID
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
+            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13392,7 +13392,7 @@ SELECT ID, Number, Qty, Price_Unit, HeadID, IsBilled FROM InterimsItems WHERE (I
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
+            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13904,7 +13904,7 @@ SELECT ID, ExpID, CreatedBy, Tr_Date, Description, ContractID, AttachFile, ItemN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
+            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15259,7 +15259,7 @@ SELECT ID, Serial, Amount, ContractID, Status, EndDate FROM BGL WHERE (ID = @ID)
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
+            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15725,7 +15725,7 @@ SELECT ID, Serial, Amount, ContractID, Status, EndDate FROM BGL WHERE (ID = @ID)
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
+            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -16097,7 +16097,7 @@ SELECT ID, HeadID, Title, Direct_InDirect FROM ExpansesMinor WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
+            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -16539,7 +16539,7 @@ SELECT ID, Amount, Contract_ID, Bank_Name, TransferNum, Col_Type, Col_Date FROM 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
+            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17024,7 +17024,7 @@ SELECT ID, Inv_Num, Inv_date, Interim_ID, Inv_Type FROM Invoice_Head WHERE (ID =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
+            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17414,8 +17414,7 @@ SELECT ID, Inv_Num, Inv_date, Interim_ID, Inv_Type FROM Invoice_Head WHERE (ID =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;User ID=Log2;Password=20080134;Encrypt=F" +
-                "alse;TrustServerCertificate=True";
+            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

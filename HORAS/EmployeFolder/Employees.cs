@@ -42,7 +42,7 @@ namespace HORAS.EmployeFolder
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Employee : " + Emp.ID + " was created";
+            Row.Description = "تم انشاء حساب موظف رقم :" + Emp.ID ;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Create;
             Row.ActivityDate = DateTime.Now;
@@ -68,7 +68,7 @@ namespace HORAS.EmployeFolder
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Employee : " + Emp.ID + " was Updated";
+            Row.Description = "تم تحديث بيانات موظف رقم : " + Emp.ID ;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Update;
             Row.ActivityDate = DateTime.Now;
@@ -89,7 +89,7 @@ namespace HORAS.EmployeFolder
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Employee : " + ID + " was Deleted";
+            Row.Description = "تم مسح موظف رقم : " + ID ;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Update;
             Row.ActivityDate = DateTime.Now;

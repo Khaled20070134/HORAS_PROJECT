@@ -60,7 +60,7 @@ namespace HORAS.Collections
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Collection to Contract : " + ContractNumber + " was Added";
+            Row.Description = "تم اضافة تحصيل خاص بتعاقد رقم" + ContractNumber ;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Create;
             Row.ActivityDate = DateTime.Now;

@@ -37,7 +37,7 @@ namespace HORAS.SuppliersAndClients
 
             // Insert Log Activity
             Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Party : " + Party.ID + " was created";
+            Row.Description = "تم انشاء مورد\عميل رقم" + Party.ID ;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Create;
             Row.ActivityDate = DateTime.Now;
@@ -61,7 +61,7 @@ namespace HORAS.SuppliersAndClients
 
             // Insert Log Activity
             Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Party : " + Party.ID + " was Updated";
+            Row.Description = "تم تحديث بيانات مورد/عميل رقم:  " + Party.ID ;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Update;
             Row.ActivityDate = DateTime.Now;
@@ -82,7 +82,7 @@ namespace HORAS.SuppliersAndClients
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "Party : " + ID + " was Deleted";
+            Row.Description = "تم مسح مورد/ عميل رقم : " + ID ;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Update;
             Row.ActivityDate = DateTime.Now;
