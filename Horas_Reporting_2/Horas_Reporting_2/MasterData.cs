@@ -11,6 +11,14 @@ namespace Horas_Reporting_2
 {
     public static class MasterData
     {
+        public static ExpansesMajorTableAdapter JExpansesAdapter = new ExpansesMajorTableAdapter();
+        public static ExpansesMajorDataTable JExpansesDateTable = new ExpansesMajorDataTable();
+
+        public static ExpansesMinorTableAdapter IExpansesAdapter = new ExpansesMinorTableAdapter();
+        public static ExpansesMinorDataTable IExpansesDateTable = new ExpansesMinorDataTable();
+
+        public static ExpTransTableAdapter ExpTrAdapter = new ExpTransTableAdapter();
+        public static ExpTransDataTable ExpTrDataTable = new ExpTransDataTable();
 
         public static EmployeesTableAdapter EmployeesTableAdapter = new EmployeesTableAdapter();
         public static EmployeesDataTable EmployeesDataTable = new EmployeesDataTable();
@@ -27,6 +35,15 @@ namespace Horas_Reporting_2
         public static InterimsItemsDataTable InterimsItemsDataTable = new InterimsItemsDataTable();
         public static InterimsItemsTableAdapter InterimsItemsTableAdapter = new InterimsItemsTableAdapter();
 
+
+        public static AssessmentHeadTableAdapter AssessmentHeadTableAdapter = new AssessmentHeadTableAdapter();
+        public static AssessmentHeadDataTable AssessmentHeadDataTable = new AssessmentHeadDataTable();
+
+        public static AssItemsTableAdapter AssItemsAdapter = new AssItemsTableAdapter();
+        public static AssItemsDataTable AssItemsDataTable = new AssItemsDataTable();
+
+        public static PartyTableAdapter PartyTableAdapter = new PartyTableAdapter();
+        public static PartyDataTable PartyDataTable = new PartyDataTable();
 
         public static void RefreshInterimsList()
         {
@@ -48,38 +65,53 @@ namespace Horas_Reporting_2
 
         public static void RefreshContractsList()
         {
-            //JExpansesAdapter.Connection.Open();
-            //JExpansesAdapter.GetData();
-            //JExpansesAdapter.Fill(JExpansesDateTable);
-            //JExpansesAdapter.Connection.Close();
+            JExpansesAdapter.Connection.Open();
+            JExpansesAdapter.GetData();
+            JExpansesAdapter.Fill(JExpansesDateTable);
+            JExpansesAdapter.Connection.Close();
 
-            //IExpansesAdapter.Connection.Open();
-            //IExpansesAdapter.GetData();
-            //IExpansesAdapter.Fill(IExpansesDateTable);
-            //IExpansesAdapter.Connection.Close();
+            IExpansesAdapter.Connection.Open();
+            IExpansesAdapter.GetData();
+            IExpansesAdapter.Fill(IExpansesDateTable);
+            IExpansesAdapter.Connection.Close();
 
             ContractTableAdapter.Connection.Open();
             ContractTableAdapter.GetData();
             ContractTableAdapter.Fill(ContractDataTable);
             ContractTableAdapter.Connection.Close();
 
-            //ExpTrAdapter.Connection.Open();
-            //ExpTrAdapter.GetData();
-            //ExpTrAdapter.Fill(ExpTrDataTable);
-            //ExpTrAdapter.Connection.Close();
+            ExpTrAdapter.Connection.Open();
+            ExpTrAdapter.GetData();
+            ExpTrAdapter.Fill(ExpTrDataTable);
+            ExpTrAdapter.Connection.Close();
 
             //BGLAdapter.Connection.Open();
             //BGLAdapter.GetData();
             //BGLAdapter.Fill(BGLDataTable);
             //BGLAdapter.Connection.Close();
-
-            //AttachContTableAdapter.Connection.Open();
-            //AttachContTableAdapter.GetData();
-            //AttachContTableAdapter.Fill(AttachContDataTable);
-            //AttachContTableAdapter.Connection.Close();
         }
 
-       
+        public static void RefreshPartyList()
+        {
+            PartyTableAdapter.Connection.Open();
+            PartyTableAdapter.GetData();
+            PartyTableAdapter.Fill(PartyDataTable);
+            PartyTableAdapter.Connection.Close();
+        }
+
+        public static void RefreshAssList()
+        {
+            AssessmentHeadTableAdapter.Connection.Open();
+            AssessmentHeadTableAdapter.GetData();
+            AssessmentHeadTableAdapter.Fill(AssessmentHeadDataTable);
+            AssessmentHeadTableAdapter.Connection.Close();
+
+            AssItemsAdapter.Connection.Open();
+            AssItemsAdapter.GetData();
+            AssItemsAdapter.Fill(AssItemsDataTable);
+            AssItemsAdapter.Connection.Close();
+        }
+
         public static void RefreshEmployeeList()
         {
             EmployeesTableAdapter.Connection.Open();

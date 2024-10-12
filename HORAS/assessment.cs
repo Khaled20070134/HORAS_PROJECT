@@ -65,7 +65,7 @@ namespace HORAS
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
-            Row.Description = "تم انشاء مقايسة رقم: " + ID ";
+            Row.Description = "تم انشاء مقايسة رقم: " + ID ;
             Row.User_ID = MasterData.LoggedEmployee.ID;
             Row.Mode = (int)ActivityMode.Create;
             Row.ActivityDate = DateTime.Now;

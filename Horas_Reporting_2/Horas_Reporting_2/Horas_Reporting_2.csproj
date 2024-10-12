@@ -78,6 +78,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS_Int_Date.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Datasets\DS_Items.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Items.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Forms\EmployeeActivity.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +100,12 @@
     </Compile>
     <Compile Include="Employees\Frm_Emp_Activity.Designer.cs">
       <DependentUpon>Frm_Emp_Activity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FRMContract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FRMContract.Designer.cs">
+      <DependentUpon>FRMContract.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FRMInterim.cs">
       <SubType>Form</SubType>
@@ -135,6 +146,12 @@
       <DependentUpon>CREmpActivity.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\CR_Contract.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CR_Contract.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\CR_INT_CONTRACT.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -161,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Employees\Frm_Emp_Activity.resx">
       <DependentUpon>Frm_Emp_Activity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FRMContract.resx">
+      <DependentUpon>FRMContract.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FRMInterim.resx">
       <DependentUpon>FRMInterim.cs</DependentUpon>
@@ -191,6 +211,10 @@
     <EmbeddedResource Include="Reports\CREmpActivity.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CREmpActivity.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\CR_Contract.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CR_Contract.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\CR_INT_CONTRACT.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -246,6 +270,17 @@
     </None>
     <None Include="Datasets\DS_Int_Date.xss">
       <DependentUpon>DS_Int_Date.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\DS_Items.xsc">
+      <DependentUpon>DS_Items.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\DS_Items.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Items.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Datasets\DS_Items.xss">
+      <DependentUpon>DS_Items.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
