@@ -22,6 +22,7 @@ namespace HORAS.Contracts
         List<HorasDataSet.AssItemsRow> ContractItems = new List<HorasDataSet.AssItemsRow>();
         bool TransNeedConfirm = false;
         decimal OldUpdateAmount = 0;
+        public static int SelectedItemID = 0;
 
         List<HorasDataSet.ExpTransRow> LoadedExpanses = new List<HorasDataSet.ExpTransRow>();
         List<HorasDataSet.ExpTransRow> DisplayExpanses = new List<HorasDataSet.ExpTransRow>();
@@ -88,24 +89,23 @@ namespace HORAS.Contracts
             return true;
         }
 
-        bool checkItemLOL(string ItemNumber, decimal Amount)
+        bool checkItemLOL(int ItemID, decimal Amount)
         {
             return
                  MasterData.Contracts.LOLCheckOK((double)Amount,
-                 CBContract.SelectedItem.ToString(), ItemNumber);
+                 CBContract.SelectedItem.ToString(), ItemID);
         }
 
 
 
-        int AddExps(string ItemNumber, decimal Amount, bool NC)
+        int AddExps(int  MyItemID, decimal Amount, bool NC)
         {
             int ID = 0;
             HorasDataSet.ExpTransRow NewExpRow = MasterData.Contracts.ExpTrDataTable.NewExpTransRow();
             int EXPID = MasterData.Contracts.IExpansesDateTable.
                 FirstOrDefault(X => X.Title == CBExpMinor.SelectedItem.ToString()).ID;
 
-            int ItemID = MasterData.assessments.AssItemsAdapter.NotNullContracts().FirstOrDefault
-                (X => X.Contract_ID == SelectedContractID && X.Number == ItemNumber).ID;
+            int ItemID = MyItemID;
 
             NewExpRow.ID = 0;
             NewExpRow.ExpID = EXPID;
@@ -146,8 +146,8 @@ namespace HORAS.Contracts
                 if (checkBox.Checked)
                 {
                     decimal Amount = NUDAmount.Value;
-                    TransNeedConfirm = checkItemLOL(CBItems.SelectedItem.ToString(), Amount);
-                    int ExpID = AddExps(CBItems.SelectedItem.ToString(), NUDAmount.Value, TransNeedConfirm);
+                    TransNeedConfirm = checkItemLOL(SelectedItemID, Amount);
+                    int ExpID = AddExps(SelectedItemID, NUDAmount.Value, TransNeedConfirm);
                     CopyFiles(ExpID);
                 }
                 else
@@ -155,8 +155,8 @@ namespace HORAS.Contracts
                     decimal Amount = NUDAmount.Value / ContractItems.Count;
                     foreach (var Item in ContractItems)
                     {
-                        TransNeedConfirm = checkItemLOL(Item.Number, Amount);
-                        int ExpID = AddExps(Item.Number, Amount, TransNeedConfirm);
+                        TransNeedConfirm = checkItemLOL(SelectedItemID, Amount);
+                        int ExpID = AddExps(SelectedItemID, Amount, TransNeedConfirm);
                         CopyFiles(ExpID);
                     }
                 }
@@ -189,11 +189,11 @@ namespace HORAS.Contracts
             UpdateTotalExps();
 
             labelConPer.Text = (MasterData.Contracts.ContractDataTable.FirstOrDefault
-                (X=>X.ID == SelectedContractID).ProfitPercentage * 100) .ToString() + " %";
+                (X => X.ID == SelectedContractID).ProfitPercentage * 100).ToString() + " %";
 
             ContractItems.Clear();
 
-            CBItems.Items.Clear();
+            //CBItems.Items.Clear();
             CBConfirm.Items.Clear();
             CBItemsdisplay.Items.Clear();
 
@@ -201,7 +201,7 @@ namespace HORAS.Contracts
                 Where(X => X.Contract_ID == SelectedContractID).ToList();
             foreach (var Item in ContractItems)
             {
-                CBItems.Items.Add(Item.Number);
+                //CBItems.Items.Add(Item.Number);
                 CBConfirm.Items.Add(Item.Number);
                 CBItemsdisplay.Items.Add(Item.Number);
             }
@@ -344,7 +344,7 @@ namespace HORAS.Contracts
 
                 TrRow.NeedConf =
                     !MasterData.Contracts.LOLCheckOK(Dif, CBContract.
-                    SelectedItem.ToString(), CBItemsdisplay.SelectedItem.ToString());
+                    SelectedItem.ToString(), SelectedItemID);
 
 
                 MasterData.Contracts.UpdateExps(TrRow, CBContract.SelectedItem.ToString());
@@ -370,7 +370,9 @@ namespace HORAS.Contracts
 
         private void checkBox_CheckedChanged(object sender, EventArgs e)
         {
-            CBItems.Enabled = checkBox.Checked;
+            button5.Visible=true;
+            label12.Visible=true;
+            label31.Visible=true;
         }
 
         private void CBConfirm_SelectedIndexChanged(object sender, EventArgs e)
@@ -603,5 +605,22 @@ namespace HORAS.Contracts
         {
 
         }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            if (CBContract.SelectedIndex == -1) return;
+            DisplayAllItems Con = new DisplayAllItems(CBContract.SelectedItem.ToString());
+            Con.ShowDialog();
+            SelectedItemID = DisplayAllItems.ItemID;
+            label31.Text = SelectedItemID.ToString();
+
+        }
+
+        private void ContractExpanses_Load(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }

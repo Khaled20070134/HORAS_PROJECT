@@ -355,11 +355,10 @@ namespace HORAS.Contracts
             MasterData.LogActivity.AddNew(Row);
         }
 
-        public bool LOLCheckOK(double Amount, string ContractNumber , string ItemNumber)
+        public bool LOLCheckOK(double Amount, string ContractNumber , int MyItemID)
         {
             int ContractID = ContractDataTable.FirstOrDefault(X => X.Number == ContractNumber).ID;
-            int ItemID = MasterData.assessments.AssItemsAdapter.NotNullContracts().FirstOrDefault
-               (X => X.Contract_ID == ContractID && X.Number == ItemNumber).ID;
+            int ItemID = MyItemID;
 
             AssItemsRow ItemData = MasterData.assessments.AssItemsAdapter.NotNullContracts().
                 FirstOrDefault(X => X.Contract_ID == ContractID && X.ID == ItemID);

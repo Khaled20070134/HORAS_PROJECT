@@ -98,7 +98,7 @@ namespace HORAS.Interims_Data
         public List<Items> Contract_Items = new List<Items>();
         public string Number { set; get; }
 
-        public I_Status Get_Item_Status(string SelectedContractNumber, string SelectedItemNumber)
+        public I_Status Get_Item_Status(string SelectedContractNumber, int MyItemID)
         {
             I_Status i_Status = new I_Status();
 
@@ -109,8 +109,7 @@ namespace HORAS.Interims_Data
             int SelectedContrctID = MasterData.Contracts.ContractDataTable.
                 FirstOrDefault(X => X.Number == SelectedContractNumber).ID;
 
-            int ItemID = MasterData.assessments.AssItemsAdapter.NotNullContracts().
-                FirstOrDefault(X => X.Contract_ID == SelectedContrctID && X.Number == SelectedItemNumber).ID;
+            int ItemID = MyItemID;
 
             i_Status.Total_QP = MasterData.assessments.AssItemsDataTable.
     FirstOrDefault(X => X.Contract_ID == SelectedContrctID && X.Number == SelectedItemNumber).Qty;
