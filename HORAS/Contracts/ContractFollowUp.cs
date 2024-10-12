@@ -86,7 +86,7 @@ namespace HORAS.Contracts
                 foreach (var interim in Interims)
                 {
                     DeliveredSum += MasterData.Interim.InterimsItemsDataTable.
-                        Where(X => X.HeadID == interim.ID && X.Number == ContractItem.Number).Sum(Y => Y.Qty);
+                        Where(X => X.HeadID == interim.ID && X.ItemID == ContractItem.ID).Sum(Y => Y.Qty);
                 }
 
                 if (DeliveredSum > ContractItem.Qty) DeliveredSum = ContractItem.Qty;

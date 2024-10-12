@@ -380,11 +380,11 @@ namespace HORAS.Contracts
             LoadExpanses();
             if (CBConfirm.SelectedIndex != -1 && CBContract.SelectedIndex != -1)
             {
-                string ItemNum = CBConfirm.SelectedItem.ToString();
+                int ItemID = SelectedItemID;
                 string ContractNum = CBContract.SelectedItem.ToString();
 
                 labelconfirmremainexp.Text =
-                    MasterData.NumericString((double)MasterData.Interim.Get_Item_Status(ContractNum, ItemNum).Remain_Exps);
+                    MasterData.NumericString((double)MasterData.Interim.Get_Item_Status(ContractNum, ItemID).Remain_Exps);
             }
         }
 
@@ -506,11 +506,11 @@ namespace HORAS.Contracts
             DisplayExps();
             if (CBItemsdisplay.SelectedIndex != -1 && CBContract.SelectedIndex != -1)
             {
-                string ItemNum = CBItemsdisplay.SelectedItem.ToString();
+                int ItemID = SelectedItemID;
                 string ContractNum = CBContract.SelectedItem.ToString();
 
                 labelRemainexpDisplay.Text =
-                    MasterData.NumericString((double)MasterData.Interim.Get_Item_Status(ContractNum, ItemNum).Remain_Exps);
+                    MasterData.NumericString((double)MasterData.Interim.Get_Item_Status(ContractNum, ItemID).Remain_Exps);
             }
         }
 
@@ -584,17 +584,17 @@ namespace HORAS.Contracts
 
         }
 
-        private void CBItems_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (CBItems.SelectedIndex != -1 && CBContract.SelectedIndex != -1)
-            {
-                string ItemNum = CBItems.SelectedItem.ToString();
-                string ContractNum = CBContract.SelectedItem.ToString();
+        //private void CBItems_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (CBItems.SelectedIndex != -1 && CBContract.SelectedIndex != -1)
+        //    {
+        //        string ItemNum = CBItems.SelectedItem.ToString();
+        //        string ContractNum = CBContract.SelectedItem.ToString();
 
-                labelRemainExp.Text =
-                    MasterData.NumericString((double)MasterData.Interim.Get_Item_Status(ContractNum, ItemNum).Remain_Exps);
-            }
-        }
+        //        labelRemainExp.Text =
+        //            MasterData.NumericString((double)MasterData.Interim.Get_Item_Status(ContractNum, SelectedItemID).Remain_Exps);
+        //    }
+        //}
 
         private void tabPage4_Click(object sender, EventArgs e)
         {
@@ -613,6 +613,8 @@ namespace HORAS.Contracts
             Con.ShowDialog();
             SelectedItemID = DisplayAllItems.ItemID;
             label31.Text = SelectedItemID.ToString();
+            labelRemainExp.Text =
+                    MasterData.NumericString((double)MasterData.Interim.Get_Item_Status(CBContract.SelectedItem.ToString(), SelectedItemID).Remain_Exps);
 
         }
 
