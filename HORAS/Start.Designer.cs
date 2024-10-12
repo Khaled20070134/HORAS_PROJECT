@@ -144,6 +144,7 @@
             metroButton5.TabIndex = 10;
             metroButton5.Text = "التقاريـــــــــــــر";
             metroButton5.Theme = MetroFramework.MetroThemeStyle.Dark;
+            metroButton5.Click += metroButton5_Click;
             // 
             // metroButton6
             // 

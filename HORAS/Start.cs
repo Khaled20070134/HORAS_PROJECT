@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,9 +14,11 @@ namespace HORAS
 {
     public partial class Start : Form
     {
+        string Reporting_URL = string.Empty;
         public Start()
         {
             InitializeComponent();
+            Reporting_URL = AppDomain.CurrentDomain.BaseDirectory;
 
         }
 
@@ -29,19 +32,19 @@ namespace HORAS
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-           // MasterData.MainForm.Hide();
+            // MasterData.MainForm.Hide();
             MasterData.ContractsMainForm.ShowDialog();
         }
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
-           // MasterData.MainForm.Hide();
+            // MasterData.MainForm.Hide();
             MasterData.AssMain.ShowDialog();
         }
 
         private void metroButton7_Click(object sender, EventArgs e)
         {
-           // MasterData.MainForm.Hide();
+            // MasterData.MainForm.Hide();
             MasterData.PartyForm.ShowDialog();
         }
 
@@ -53,7 +56,7 @@ namespace HORAS
 
         private void metroButton6_Click(object sender, EventArgs e)
         {
-           // MasterData.MainForm.Hide();
+            // MasterData.MainForm.Hide();
             MasterData.EmployeesForm.ShowDialog();
         }
 
@@ -177,6 +180,11 @@ namespace HORAS
         {
             CollectionsMain NForm = new CollectionsMain();
             NForm.ShowDialog();
+        }
+
+        private void metroButton5_Click(object sender, EventArgs e)
+        {
+          //  Process.Start();
         }
     }
 }

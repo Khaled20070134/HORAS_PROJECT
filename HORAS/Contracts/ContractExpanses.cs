@@ -74,7 +74,7 @@ namespace HORAS.Contracts
         {
             OpenFileDialog FileDialoge = new OpenFileDialog();
             FileDialoge.InitialDirectory = Application.StartupPath;
-            FileDialoge.Filter = "pdf files (*.pdf)|*.pdf";
+            FileDialoge.Filter = "pdf files (*.pdf;*.png;*.jpg;)|*.pdf;*.png;*.jpg;*.jpeg;";
             if (FileDialoge.ShowDialog() == DialogResult.OK)
                 textBoxFile.Text = FileDialoge.FileName;
         }
@@ -550,7 +550,7 @@ namespace HORAS.Contracts
 
             OpenFileDialog FileDialoge = new OpenFileDialog();
             FileDialoge.InitialDirectory = Application.StartupPath;
-            FileDialoge.Filter = "pdf files (*.pdf)|*.pdf";
+            FileDialoge.Filter = "pdf files (*.pdf;*.png;*.jpg;)|*.pdf;*.png;*.jpg;*.jpeg;";
             if (FileDialoge.ShowDialog() == DialogResult.OK)
                 textBoxFileUpdate.Text = FileDialoge.FileName;
         }
