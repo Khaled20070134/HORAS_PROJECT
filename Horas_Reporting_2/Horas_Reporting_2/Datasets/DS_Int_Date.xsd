@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DS_Int_Date" targetNamespace="http://tempuri.org/DS_Int_Date.xsd" xmlns:mstns="http://tempuri.org/DS_Int_Date.xsd" xmlns="http://tempuri.org/DS_Int_Date.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DS_Int_Date" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="DS_Int_Date" msprop:Generator_DataSetName="DS_Int_Date">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DT_Int_Date" msprop:Generator_RowEvHandlerName="DT_Int_DateRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_Int_DateRowDeleted" msprop:Generator_RowDeletingName="DT_Int_DateRowDeleting" msprop:Generator_RowEvArgName="DT_Int_DateRowChangeEvent" msprop:Generator_TablePropName="DT_Int_Date" msprop:Generator_RowChangedName="DT_Int_DateRowChanged" msprop:Generator_RowChangingName="DT_Int_DateRowChanging" msprop:Generator_TableClassName="DT_Int_DateDataTable" msprop:Generator_RowClassName="DT_Int_DateRow" msprop:Generator_TableVarName="tableDT_Int_Date" msprop:Generator_UserTableName="DT_Int_Date">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Contract_Number" msprop:Generator_ColumnPropNameInRow="Contract_Number" msprop:Generator_ColumnPropNameInTable="Contract_NumberColumn" msprop:Generator_ColumnVarNameInTable="columnContract_Number" msprop:Generator_UserColumnName="Contract_Number" type="xs:string" minOccurs="0" />
+              <xs:element name="Number_" msprop:Generator_ColumnPropNameInRow="Number_" msprop:Generator_ColumnPropNameInTable="Number_Column" msprop:Generator_ColumnVarNameInTable="columnNumber_" msprop:Generator_UserColumnName="Number_" type="xs:string" minOccurs="0" />
+              <xs:element name="Date_" msprop:Generator_ColumnPropNameInRow="Date_" msprop:Generator_ColumnPropNameInTable="Date_Column" msprop:Generator_ColumnVarNameInTable="columnDate_" msprop:Generator_UserColumnName="Date_" type="xs:string" minOccurs="0" />
+              <xs:element name="Items_Num" msprop:Generator_ColumnPropNameInRow="Items_Num" msprop:Generator_ColumnPropNameInTable="Items_NumColumn" msprop:Generator_ColumnVarNameInTable="columnItems_Num" msprop:Generator_UserColumnName="Items_Num" type="xs:string" minOccurs="0" />
+              <xs:element name="Total" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_UserColumnName="Total" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

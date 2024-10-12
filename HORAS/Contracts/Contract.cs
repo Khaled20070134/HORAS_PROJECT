@@ -33,8 +33,6 @@ namespace HORAS.Contracts
         public BGLTableAdapter BGLAdapter = new BGLTableAdapter();
         public BGLDataTable BGLDataTable = new BGLDataTable();
 
-        public AttachedContractsTableAdapter AttachContTableAdapter = new AttachedContractsTableAdapter();
-        public AttachedContractsDataTable AttachContDataTable = new AttachedContractsDataTable();
 
         #region properties
         public int ID { get; set; }
@@ -73,19 +71,19 @@ namespace HORAS.Contracts
             int ContractID = MasterData.Database.Contract.Select(i => i.ID).Max();
             MasterData.assessments.AssignItemsToContract(ContractID, ItemList);
 
-            if (Contract.Contract_type == (int)ContractType.AttachedContract)
-            {
-                AttachedContractsRow AttCont = AttachContDataTable.NewAttachedContractsRow();
-                AttCont.ContractID = ContractID;
-                AttCont.MainContID = MainContID;
-                AttachContTableAdapter.Connection.Open();
-                MasterData.Database.AttachedContracts.Rows.Add(Contract.ItemArray);
-                AttachContTableAdapter.Update(MasterData.Database);
-                AttachContTableAdapter.Adapter.Update(MasterData.Database.AttachedContracts);
-                MasterData.Database.AttachedContracts.AcceptChanges();
-                MasterData.Database.AcceptChanges();
-                AttachContTableAdapter.Connection.Close();
-            }
+            //if (Contract.Contract_type == (int)ContractType.AttachedContract)
+            //{
+            //    AttachedContractsRow AttCont = AttachContDataTable.NewAttachedContractsRow();
+            //    AttCont.ContractID = ContractID;
+            //    AttCont.MainContID = MainContID;
+            //    AttachContTableAdapter.Connection.Open();
+            //    MasterData.Database.AttachedContracts.Rows.Add(Contract.ItemArray);
+            //    AttachContTableAdapter.Update(MasterData.Database);
+            //    AttachContTableAdapter.Adapter.Update(MasterData.Database.AttachedContracts);
+            //    MasterData.Database.AttachedContracts.AcceptChanges();
+            //    MasterData.Database.AcceptChanges();
+            //    AttachContTableAdapter.Connection.Close();
+            //}
 
             // Insert Log Activity
             HorasDataSet.Log_TableRow Row = MasterData.LogActivity.LogDataTable.NewLog_TableRow();
@@ -570,10 +568,10 @@ namespace HORAS.Contracts
             BGLAdapter.Fill(BGLDataTable);
             BGLAdapter.Connection.Close();
 
-            AttachContTableAdapter.Connection.Open();
-            AttachContTableAdapter.GetData();
-            AttachContTableAdapter.Fill(AttachContDataTable);
-            AttachContTableAdapter.Connection.Close();
+            //AttachContTableAdapter.Connection.Open();
+            //AttachContTableAdapter.GetData();
+            //AttachContTableAdapter.Fill(AttachContDataTable);
+            //AttachContTableAdapter.Connection.Close();
         }
         #endregion
     }

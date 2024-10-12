@@ -226,6 +226,22 @@ namespace HORAS
 
             string[] Files = Directory.GetFiles(Settings1.Default.DB_Files, FileName + ".pdf");
             if (Files.Count() > 0) FoundFile = Files[0];
+            else
+            {
+                Files = Directory.GetFiles(Settings1.Default.DB_Files, FileName + ".png");
+                if (Files.Count() > 0) FoundFile = Files[0];
+                else
+                {
+                    Files = Directory.GetFiles(Settings1.Default.DB_Files, FileName + ".jpg");
+                    if (Files.Count() > 0) FoundFile = Files[0];
+                    else
+                    {
+                        Files = Directory.GetFiles(Settings1.Default.DB_Files, FileName + ".jpeg");
+                        if (Files.Count() > 0) FoundFile = Files[0];
+                    }
+                }
+            }
+
 
             return FoundFile;
         }
