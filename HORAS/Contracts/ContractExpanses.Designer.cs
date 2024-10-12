@@ -67,11 +67,12 @@
             label28 = new Label();
             pictureBox23 = new PictureBox();
             tabPage1 = new TabPage();
+            label31 = new Label();
+            button5 = new Button();
             labelRemainExp = new Label();
             label15 = new Label();
             pictureBox13 = new PictureBox();
             pictureBox12 = new PictureBox();
-            CBItems = new ComboBox();
             label12 = new Label();
             pictureBox24 = new PictureBox();
             checkBox = new CheckBox();
@@ -650,11 +651,12 @@
             // tabPage1
             // 
             tabPage1.BackColor = Color.Black;
+            tabPage1.Controls.Add(label31);
+            tabPage1.Controls.Add(button5);
             tabPage1.Controls.Add(labelRemainExp);
             tabPage1.Controls.Add(label15);
             tabPage1.Controls.Add(pictureBox13);
             tabPage1.Controls.Add(pictureBox12);
-            tabPage1.Controls.Add(CBItems);
             tabPage1.Controls.Add(label12);
             tabPage1.Controls.Add(pictureBox24);
             tabPage1.Controls.Add(checkBox);
@@ -688,6 +690,29 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "إضافة حركة مصروف";
             tabPage1.Click += tabPage1_Click;
+            // 
+            // label31
+            // 
+            label31.AutoSize = true;
+            label31.BackColor = Color.Transparent;
+            label31.ForeColor = Color.White;
+            label31.Location = new Point(299, 247);
+            label31.Name = "label31";
+            label31.Size = new Size(13, 15);
+            label31.TabIndex = 224;
+            label31.Text = "0";
+            label31.Visible = false;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(171, 242);
+            button5.Name = "button5";
+            button5.Size = new Size(75, 23);
+            button5.TabIndex = 223;
+            button5.Text = "اختيار بند";
+            button5.UseVisualStyleBackColor = true;
+            button5.Visible = false;
+            button5.Click += button5_Click_1;
             // 
             // labelRemainExp
             // 
@@ -733,27 +758,17 @@
             pictureBox12.TabStop = false;
             pictureBox12.Click += pictureBox12_Click;
             // 
-            // CBItems
-            // 
-            CBItems.Enabled = false;
-            CBItems.FormattingEnabled = true;
-            CBItems.Location = new Point(247, 248);
-            CBItems.Name = "CBItems";
-            CBItems.RightToLeft = RightToLeft.No;
-            CBItems.Size = new Size(151, 23);
-            CBItems.TabIndex = 81;
-            CBItems.SelectedIndexChanged += CBItems_SelectedIndexChanged;
-            // 
             // label12
             // 
             label12.AutoSize = true;
             label12.BackColor = Color.Transparent;
             label12.ForeColor = Color.White;
-            label12.Location = new Point(425, 252);
+            label12.Location = new Point(387, 250);
             label12.Name = "label12";
-            label12.Size = new Size(48, 15);
+            label12.Size = new Size(84, 15);
             label12.TabIndex = 80;
-            label12.Text = "رقم البند";
+            label12.Text = "رقم البند ألمختار";
+            label12.Visible = false;
             // 
             // pictureBox24
             // 
@@ -1684,6 +1699,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "ContractExpanses";
             Text = "ContractExpanses";
+            Load += ContractExpanses_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
@@ -1799,7 +1815,6 @@
         private Button button6;
         private Button UpDatebutton;
         private CheckBox checkBox;
-        private ComboBox CBItems;
         private Label label12;
         private PictureBox pictureBox24;
         private TabPage tabPage4;
@@ -1857,5 +1872,7 @@
         private Label label20;
         private PictureBox pictureBox16;
         private Label labelConPer;
+        private Button button5;
+        private Label label31;
     }
 }
