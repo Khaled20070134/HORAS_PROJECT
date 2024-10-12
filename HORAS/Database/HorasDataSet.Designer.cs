@@ -52,8 +52,6 @@ namespace HORAS.Database {
         
         private Invoice_HeadDataTable tableInvoice_Head;
         
-        private AttachedContractsDataTable tableAttachedContracts;
-        
         private global::System.Data.DataRelation relationFK_AssessmentHead_AssItems;
         
         private global::System.Data.DataRelation relationFK_InterimsItems_InterimsHead;
@@ -81,6 +79,8 @@ namespace HORAS.Database {
         private global::System.Data.DataRelation relationFK_Collections_Contract;
         
         private global::System.Data.DataRelation relationFK_Invoice_Head_InterimsHead;
+        
+        private global::System.Data.DataRelation relationFK_InterimsItems_AssItems;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -153,9 +153,6 @@ namespace HORAS.Database {
                 }
                 if ((ds.Tables["Invoice_Head"] != null)) {
                     base.Tables.Add(new Invoice_HeadDataTable(ds.Tables["Invoice_Head"]));
-                }
-                if ((ds.Tables["AttachedContracts"] != null)) {
-                    base.Tables.Add(new AttachedContractsDataTable(ds.Tables["AttachedContracts"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -317,16 +314,6 @@ namespace HORAS.Database {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public AttachedContractsDataTable AttachedContracts {
-            get {
-                return this.tableAttachedContracts;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -433,9 +420,6 @@ namespace HORAS.Database {
                 }
                 if ((ds.Tables["Invoice_Head"] != null)) {
                     base.Tables.Add(new Invoice_HeadDataTable(ds.Tables["Invoice_Head"]));
-                }
-                if ((ds.Tables["AttachedContracts"] != null)) {
-                    base.Tables.Add(new AttachedContractsDataTable(ds.Tables["AttachedContracts"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -554,12 +538,6 @@ namespace HORAS.Database {
                     this.tableInvoice_Head.InitVars();
                 }
             }
-            this.tableAttachedContracts = ((AttachedContractsDataTable)(base.Tables["AttachedContracts"]));
-            if ((initTable == true)) {
-                if ((this.tableAttachedContracts != null)) {
-                    this.tableAttachedContracts.InitVars();
-                }
-            }
             this.relationFK_AssessmentHead_AssItems = this.Relations["FK_AssessmentHead_AssItems"];
             this.relationFK_InterimsItems_InterimsHead = this.Relations["FK_InterimsItems_InterimsHead"];
             this.relationFK_AssItems_Contract = this.Relations["FK_AssItems_Contract"];
@@ -574,6 +552,7 @@ namespace HORAS.Database {
             this.relationFK_ExpansesMinor_ExpansesMajor = this.Relations["FK_ExpansesMinor_ExpansesMajor"];
             this.relationFK_Collections_Contract = this.Relations["FK_Collections_Contract"];
             this.relationFK_Invoice_Head_InterimsHead = this.Relations["FK_Invoice_Head_InterimsHead"];
+            this.relationFK_InterimsItems_AssItems = this.Relations["FK_InterimsItems_AssItems"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -612,8 +591,6 @@ namespace HORAS.Database {
             base.Tables.Add(this.tableCollections);
             this.tableInvoice_Head = new Invoice_HeadDataTable();
             base.Tables.Add(this.tableInvoice_Head);
-            this.tableAttachedContracts = new AttachedContractsDataTable();
-            base.Tables.Add(this.tableAttachedContracts);
             global::System.Data.ForeignKeyConstraint fkc;
             fkc = new global::System.Data.ForeignKeyConstraint("FK_AssessmentHead_AssItems", new global::System.Data.DataColumn[] {
                         this.tableAssessmentHead.IDColumn}, new global::System.Data.DataColumn[] {
@@ -678,6 +655,10 @@ namespace HORAS.Database {
                         this.tableInterimsHead.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableInvoice_Head.Interim_IDColumn}, false);
             this.Relations.Add(this.relationFK_Invoice_Head_InterimsHead);
+            this.relationFK_InterimsItems_AssItems = new global::System.Data.DataRelation("FK_InterimsItems_AssItems", new global::System.Data.DataColumn[] {
+                        this.tableAssItems.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableInterimsItems.ItemIDColumn}, false);
+            this.Relations.Add(this.relationFK_InterimsItems_AssItems);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -761,12 +742,6 @@ namespace HORAS.Database {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private bool ShouldSerializeInvoice_Head() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeAttachedContracts() {
             return false;
         }
         
@@ -866,9 +841,6 @@ namespace HORAS.Database {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void Invoice_HeadRowChangeEventHandler(object sender, Invoice_HeadRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void AttachedContractsRowChangeEventHandler(object sender, AttachedContractsRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -3140,8 +3112,6 @@ namespace HORAS.Database {
             
             private global::System.Data.DataColumn columnID;
             
-            private global::System.Data.DataColumn columnNumber;
-            
             private global::System.Data.DataColumn columnQty;
             
             private global::System.Data.DataColumn columnPrice_Unit;
@@ -3149,6 +3119,8 @@ namespace HORAS.Database {
             private global::System.Data.DataColumn columnHeadID;
             
             private global::System.Data.DataColumn columnIsBilled;
+            
+            private global::System.Data.DataColumn columnItemID;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -3195,14 +3167,6 @@ namespace HORAS.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn NumberColumn {
-                get {
-                    return this.columnNumber;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn QtyColumn {
                 get {
                     return this.columnQty;
@@ -3230,6 +3194,14 @@ namespace HORAS.Database {
             public global::System.Data.DataColumn IsBilledColumn {
                 get {
                     return this.columnIsBilled;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ItemIDColumn {
+                get {
+                    return this.columnItemID;
                 }
             }
             
@@ -3270,17 +3242,20 @@ namespace HORAS.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public InterimsItemsRow AddInterimsItemsRow(int ID, string Number, double Qty, double Price_Unit, InterimsHeadRow parentInterimsHeadRowByFK_InterimsItems_InterimsHead, bool IsBilled) {
+            public InterimsItemsRow AddInterimsItemsRow(int ID, double Qty, double Price_Unit, InterimsHeadRow parentInterimsHeadRowByFK_InterimsItems_InterimsHead, bool IsBilled, AssItemsRow parentAssItemsRowByFK_InterimsItems_AssItems) {
                 InterimsItemsRow rowInterimsItemsRow = ((InterimsItemsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
-                        Number,
                         Qty,
                         Price_Unit,
                         null,
-                        IsBilled};
+                        IsBilled,
+                        null};
                 if ((parentInterimsHeadRowByFK_InterimsItems_InterimsHead != null)) {
-                    columnValuesArray[4] = parentInterimsHeadRowByFK_InterimsItems_InterimsHead[0];
+                    columnValuesArray[3] = parentInterimsHeadRowByFK_InterimsItems_InterimsHead[0];
+                }
+                if ((parentAssItemsRowByFK_InterimsItems_AssItems != null)) {
+                    columnValuesArray[5] = parentAssItemsRowByFK_InterimsItems_AssItems[0];
                 }
                 rowInterimsItemsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowInterimsItemsRow);
@@ -3312,11 +3287,11 @@ namespace HORAS.Database {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
-                this.columnNumber = base.Columns["Number"];
                 this.columnQty = base.Columns["Qty"];
                 this.columnPrice_Unit = base.Columns["Price_Unit"];
                 this.columnHeadID = base.Columns["HeadID"];
                 this.columnIsBilled = base.Columns["IsBilled"];
+                this.columnItemID = base.Columns["ItemID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3324,8 +3299,6 @@ namespace HORAS.Database {
             private void InitClass() {
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
-                this.columnNumber = new global::System.Data.DataColumn("Number", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNumber);
                 this.columnQty = new global::System.Data.DataColumn("Qty", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQty);
                 this.columnPrice_Unit = new global::System.Data.DataColumn("Price_Unit", typeof(double), null, global::System.Data.MappingType.Element);
@@ -3334,11 +3307,12 @@ namespace HORAS.Database {
                 base.Columns.Add(this.columnHeadID);
                 this.columnIsBilled = new global::System.Data.DataColumn("IsBilled", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIsBilled);
+                this.columnItemID = new global::System.Data.DataColumn("ItemID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnItemID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
-                this.columnNumber.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5873,269 +5847,6 @@ namespace HORAS.Database {
         }
         
         /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class AttachedContractsDataTable : global::System.Data.TypedTableBase<AttachedContractsRow> {
-            
-            private global::System.Data.DataColumn columnContractID;
-            
-            private global::System.Data.DataColumn columnMainContID;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AttachedContractsDataTable() {
-                this.TableName = "AttachedContracts";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal AttachedContractsDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            [System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called" +
-                " or extended by application code.", DiagnosticId="SYSLIB0051")]
-            protected AttachedContractsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ContractIDColumn {
-                get {
-                    return this.columnContractID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn MainContIDColumn {
-                get {
-                    return this.columnMainContID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AttachedContractsRow this[int index] {
-                get {
-                    return ((AttachedContractsRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event AttachedContractsRowChangeEventHandler AttachedContractsRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event AttachedContractsRowChangeEventHandler AttachedContractsRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event AttachedContractsRowChangeEventHandler AttachedContractsRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event AttachedContractsRowChangeEventHandler AttachedContractsRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddAttachedContractsRow(AttachedContractsRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AttachedContractsRow AddAttachedContractsRow(int ContractID, int MainContID) {
-                AttachedContractsRow rowAttachedContractsRow = ((AttachedContractsRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        ContractID,
-                        MainContID};
-                rowAttachedContractsRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowAttachedContractsRow);
-                return rowAttachedContractsRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                AttachedContractsDataTable cln = ((AttachedContractsDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new AttachedContractsDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal void InitVars() {
-                this.columnContractID = base.Columns["ContractID"];
-                this.columnMainContID = base.Columns["MainContID"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            private void InitClass() {
-                this.columnContractID = new global::System.Data.DataColumn("ContractID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnContractID);
-                this.columnMainContID = new global::System.Data.DataColumn("MainContID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMainContID);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AttachedContractsRow NewAttachedContractsRow() {
-                return ((AttachedContractsRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new AttachedContractsRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(AttachedContractsRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.AttachedContractsRowChanged != null)) {
-                    this.AttachedContractsRowChanged(this, new AttachedContractsRowChangeEvent(((AttachedContractsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.AttachedContractsRowChanging != null)) {
-                    this.AttachedContractsRowChanging(this, new AttachedContractsRowChangeEvent(((AttachedContractsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.AttachedContractsRowDeleted != null)) {
-                    this.AttachedContractsRowDeleted(this, new AttachedContractsRowChangeEvent(((AttachedContractsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.AttachedContractsRowDeleting != null)) {
-                    this.AttachedContractsRowDeleting(this, new AttachedContractsRowChangeEvent(((AttachedContractsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveAttachedContractsRow(AttachedContractsRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                HorasDataSet ds = new HorasDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "AttachedContractsDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class ContractRow : global::System.Data.DataRow {
@@ -7438,6 +7149,17 @@ namespace HORAS.Database {
                     return ((ExpTransRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ExpTrans_AssItems"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public InterimsItemsRow[] GetInterimsItemsRows() {
+                if ((this.Table.ChildRelations["FK_InterimsItems_AssItems"] == null)) {
+                    return new InterimsItemsRow[0];
+                }
+                else {
+                    return ((InterimsItemsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_InterimsItems_AssItems"])));
+                }
+            }
         }
         
         /// <summary>
@@ -7804,22 +7526,6 @@ namespace HORAS.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Number {
-                get {
-                    try {
-                        return ((string)(this[this.tableInterimsItems.NumberColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Number\' in table \'InterimsItems\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableInterimsItems.NumberColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public double Qty {
                 get {
                     try {
@@ -7884,6 +7590,22 @@ namespace HORAS.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int ItemID {
+                get {
+                    try {
+                        return ((int)(this[this.tableInterimsItems.ItemIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ItemID\' in table \'InterimsItems\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableInterimsItems.ItemIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public InterimsHeadRow InterimsHeadRow {
                 get {
                     return ((InterimsHeadRow)(this.GetParentRow(this.Table.ParentRelations["FK_InterimsItems_InterimsHead"])));
@@ -7895,14 +7617,13 @@ namespace HORAS.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsNumberNull() {
-                return this.IsNull(this.tableInterimsItems.NumberColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetNumberNull() {
-                this[this.tableInterimsItems.NumberColumn] = global::System.Convert.DBNull;
+            public AssItemsRow AssItemsRow {
+                get {
+                    return ((AssItemsRow)(this.GetParentRow(this.Table.ParentRelations["FK_InterimsItems_AssItems"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_InterimsItems_AssItems"]);
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7951,6 +7672,18 @@ namespace HORAS.Database {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetIsBilledNull() {
                 this[this.tableInterimsItems.IsBilledColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsItemIDNull() {
+                return this.IsNull(this.tableInterimsItems.ItemIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetItemIDNull() {
+                this[this.tableInterimsItems.ItemIDColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -9300,77 +9033,6 @@ namespace HORAS.Database {
         }
         
         /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class AttachedContractsRow : global::System.Data.DataRow {
-            
-            private AttachedContractsDataTable tableAttachedContracts;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal AttachedContractsRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableAttachedContracts = ((AttachedContractsDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int ContractID {
-                get {
-                    try {
-                        return ((int)(this[this.tableAttachedContracts.ContractIDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ContractID\' in table \'AttachedContracts\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableAttachedContracts.ContractIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int MainContID {
-                get {
-                    try {
-                        return ((int)(this[this.tableAttachedContracts.MainContIDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'MainContID\' in table \'AttachedContracts\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableAttachedContracts.MainContIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsContractIDNull() {
-                return this.IsNull(this.tableAttachedContracts.ContractIDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetContractIDNull() {
-                this[this.tableAttachedContracts.ContractIDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsMainContIDNull() {
-                return this.IsNull(this.tableAttachedContracts.MainContIDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetMainContIDNull() {
-                this[this.tableAttachedContracts.MainContIDColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -9845,40 +9507,6 @@ namespace HORAS.Database {
                 }
             }
         }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class AttachedContractsRowChangeEvent : global::System.EventArgs {
-            
-            private AttachedContractsRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AttachedContractsRowChangeEvent(AttachedContractsRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AttachedContractsRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
     }
 }
 namespace HORAS.Database.HorasDataSetTableAdapters {
@@ -10211,7 +9839,7 @@ SELECT ID, Duration, DelayPenaltyP, CreationDate, StartDate, StartedBy, CreatedB
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
+            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10603,7 +10231,7 @@ SELECT ID, Confirmed, ConfirmationDate, ConfirmedBy, Subject, About FROM Assessm
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
+            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11097,7 +10725,7 @@ SELECT ID, Name, Address, TaxRegNumber, Phone, TaxDocument FROM Party WHERE (ID 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
+            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11588,7 +11216,7 @@ SELECT ID, Number, Description, Qty, AssID, Item_Unit, Contract_ID, Item_Type, L
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
+            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12437,7 +12065,7 @@ SELECT ID, User_ID, Description, ActivityDate, Note, Mode FROM Log_Table WHERE (
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
+            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12935,7 +12563,7 @@ SELECT ID, In_Date, ContractID, Confirm_Date, Number FROM InterimsHead WHERE (ID
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
+            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13331,19 +12959,17 @@ SELECT ID, In_Date, ContractID, Confirm_Date, Number FROM InterimsHead WHERE (ID
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "InterimsItems";
             tableMapping.ColumnMappings.Add("ID", "ID");
-            tableMapping.ColumnMappings.Add("Number", "Number");
             tableMapping.ColumnMappings.Add("Qty", "Qty");
             tableMapping.ColumnMappings.Add("Price_Unit", "Price_Unit");
             tableMapping.ColumnMappings.Add("HeadID", "HeadID");
             tableMapping.ColumnMappings.Add("IsBilled", "IsBilled");
+            tableMapping.ColumnMappings.Add("ItemID", "ItemID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [InterimsItems] WHERE (([ID] = @Original_ID) AND ((@IsNull_Number = 1 AND [Number] IS NULL) OR ([Number] = @Original_Number)) AND ((@IsNull_Qty = 1 AND [Qty] IS NULL) OR ([Qty] = @Original_Qty)) AND ((@IsNull_Price_Unit = 1 AND [Price_Unit] IS NULL) OR ([Price_Unit] = @Original_Price_Unit)) AND ((@IsNull_HeadID = 1 AND [HeadID] IS NULL) OR ([HeadID] = @Original_HeadID)) AND ((@IsNull_IsBilled = 1 AND [IsBilled] IS NULL) OR ([IsBilled] = @Original_IsBilled)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [InterimsItems] WHERE (([ID] = @Original_ID) AND ((@IsNull_Qty = 1 AND [Qty] IS NULL) OR ([Qty] = @Original_Qty)) AND ((@IsNull_Price_Unit = 1 AND [Price_Unit] IS NULL) OR ([Price_Unit] = @Original_Price_Unit)) AND ((@IsNull_HeadID = 1 AND [HeadID] IS NULL) OR ([HeadID] = @Original_HeadID)) AND ((@IsNull_IsBilled = 1 AND [IsBilled] IS NULL) OR ([IsBilled] = @Original_IsBilled)) AND ((@IsNull_ItemID = 1 AND [ItemID] IS NULL) OR ([ItemID] = @Original_ItemID)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Number", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Number", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Number", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Number", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Qty", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Qty", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Qty", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Qty", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Price_Unit", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price_Unit", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -13352,31 +12978,31 @@ SELECT ID, In_Date, ContractID, Confirm_Date, Number FROM InterimsHead WHERE (ID
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_HeadID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HeadID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_IsBilled", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsBilled", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IsBilled", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsBilled", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ItemID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ItemID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [InterimsItems] ([Number], [Qty], [Price_Unit], [HeadID], [IsBilled])" +
-                " VALUES (@Number, @Qty, @Price_Unit, @HeadID, @IsBilled);\r\nSELECT ID, Number, Qt" +
-                "y, Price_Unit, HeadID, IsBilled FROM InterimsItems WHERE (ID = SCOPE_IDENTITY())" +
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [InterimsItems] ([Qty], [Price_Unit], [HeadID], [IsBilled], [ItemID])" +
+                " VALUES (@Qty, @Price_Unit, @HeadID, @IsBilled, @ItemID);\r\nSELECT ID, Qty, Price" +
+                "_Unit, HeadID, IsBilled, ItemID FROM InterimsItems WHERE (ID = SCOPE_IDENTITY())" +
                 "";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Number", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Number", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Qty", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Qty", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price_Unit", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price_Unit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HeadID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HeadID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsBilled", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsBilled", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ItemID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [InterimsItems] SET [Number] = @Number, [Qty] = @Qty, [Price_Unit] = @Price_Unit, [HeadID] = @HeadID, [IsBilled] = @IsBilled WHERE (([ID] = @Original_ID) AND ((@IsNull_Number = 1 AND [Number] IS NULL) OR ([Number] = @Original_Number)) AND ((@IsNull_Qty = 1 AND [Qty] IS NULL) OR ([Qty] = @Original_Qty)) AND ((@IsNull_Price_Unit = 1 AND [Price_Unit] IS NULL) OR ([Price_Unit] = @Original_Price_Unit)) AND ((@IsNull_HeadID = 1 AND [HeadID] IS NULL) OR ([HeadID] = @Original_HeadID)) AND ((@IsNull_IsBilled = 1 AND [IsBilled] IS NULL) OR ([IsBilled] = @Original_IsBilled)));
-SELECT ID, Number, Qty, Price_Unit, HeadID, IsBilled FROM InterimsItems WHERE (ID = @ID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [InterimsItems] SET [Qty] = @Qty, [Price_Unit] = @Price_Unit, [HeadID] = @HeadID, [IsBilled] = @IsBilled, [ItemID] = @ItemID WHERE (([ID] = @Original_ID) AND ((@IsNull_Qty = 1 AND [Qty] IS NULL) OR ([Qty] = @Original_Qty)) AND ((@IsNull_Price_Unit = 1 AND [Price_Unit] IS NULL) OR ([Price_Unit] = @Original_Price_Unit)) AND ((@IsNull_HeadID = 1 AND [HeadID] IS NULL) OR ([HeadID] = @Original_HeadID)) AND ((@IsNull_IsBilled = 1 AND [IsBilled] IS NULL) OR ([IsBilled] = @Original_IsBilled)) AND ((@IsNull_ItemID = 1 AND [ItemID] IS NULL) OR ([ItemID] = @Original_ItemID)));
+SELECT ID, Qty, Price_Unit, HeadID, IsBilled, ItemID FROM InterimsItems WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Number", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Number", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Qty", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Qty", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price_Unit", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price_Unit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HeadID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HeadID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsBilled", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsBilled", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ItemID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Number", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Number", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Number", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Number", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Qty", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Qty", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Qty", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Qty", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Price_Unit", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price_Unit", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -13385,6 +13011,8 @@ SELECT ID, Number, Qty, Price_Unit, HeadID, IsBilled FROM InterimsItems WHERE (I
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_HeadID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HeadID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_IsBilled", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsBilled", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IsBilled", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsBilled", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ItemID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ItemID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -13392,7 +13020,7 @@ SELECT ID, Number, Qty, Price_Unit, HeadID, IsBilled FROM InterimsItems WHERE (I
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
+            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13401,11 +13029,13 @@ SELECT ID, Number, Qty, Price_Unit, HeadID, IsBilled FROM InterimsItems WHERE (I
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, Number, Qty, Price_Unit, HeadID, IsBilled FROM InterimsItems";
+            this._commandCollection[0].CommandText = "SELECT        ID, Qty, Price_Unit, HeadID, IsBilled, ItemID\r\nFROM            Inte" +
+                "rimsItems";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT ID, Number, Qty, Price_Unit FROM InterimsItems WHERE (HeadID = @HID)";
+            this._commandCollection[1].CommandText = "SELECT HeadID, ID, IsBilled, ItemID, Price_Unit, Qty FROM InterimsItems WHERE (He" +
+                "adID = @HID)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "HeadID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -13484,43 +13114,43 @@ SELECT ID, Number, Qty, Price_Unit, HeadID, IsBilled FROM InterimsItems WHERE (I
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, string Original_Number, global::System.Nullable<double> Original_Qty, global::System.Nullable<double> Original_Price_Unit, global::System.Nullable<int> Original_HeadID, global::System.Nullable<bool> Original_IsBilled) {
+        public virtual int Delete(int Original_ID, global::System.Nullable<double> Original_Qty, global::System.Nullable<double> Original_Price_Unit, global::System.Nullable<int> Original_HeadID, global::System.Nullable<bool> Original_IsBilled, global::System.Nullable<int> Original_ItemID) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
-            if ((Original_Number == null)) {
+            if ((Original_Qty.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((double)(Original_Qty.Value));
+            }
+            else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Number));
-            }
-            if ((Original_Qty.HasValue == true)) {
+            if ((Original_Price_Unit.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((double)(Original_Qty.Value));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((double)(Original_Price_Unit.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Original_Price_Unit.HasValue == true)) {
+            if ((Original_HeadID.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((double)(Original_Price_Unit.Value));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_HeadID.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Original_HeadID.HasValue == true)) {
+            if ((Original_IsBilled.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_HeadID.Value));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((bool)(Original_IsBilled.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((Original_IsBilled.HasValue == true)) {
+            if ((Original_ItemID.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((bool)(Original_IsBilled.Value));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_ItemID.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
@@ -13546,33 +13176,33 @@ SELECT ID, Number, Qty, Price_Unit, HeadID, IsBilled FROM InterimsItems WHERE (I
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Number, global::System.Nullable<double> Qty, global::System.Nullable<double> Price_Unit, global::System.Nullable<int> HeadID, global::System.Nullable<bool> IsBilled) {
-            if ((Number == null)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+        public virtual int Insert(global::System.Nullable<double> Qty, global::System.Nullable<double> Price_Unit, global::System.Nullable<int> HeadID, global::System.Nullable<bool> IsBilled, global::System.Nullable<int> ItemID) {
+            if ((Qty.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((double)(Qty.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Number));
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((Qty.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((double)(Qty.Value));
+            if ((Price_Unit.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((double)(Price_Unit.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Price_Unit.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((double)(Price_Unit.Value));
+            if ((HeadID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(HeadID.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((HeadID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(HeadID.Value));
+            if ((IsBilled.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((bool)(IsBilled.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((IsBilled.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((bool)(IsBilled.Value));
+            if ((ItemID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(ItemID.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
@@ -13597,73 +13227,73 @@ SELECT ID, Number, Qty, Price_Unit, HeadID, IsBilled FROM InterimsItems WHERE (I
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Number, global::System.Nullable<double> Qty, global::System.Nullable<double> Price_Unit, global::System.Nullable<int> HeadID, global::System.Nullable<bool> IsBilled, int Original_ID, string Original_Number, global::System.Nullable<double> Original_Qty, global::System.Nullable<double> Original_Price_Unit, global::System.Nullable<int> Original_HeadID, global::System.Nullable<bool> Original_IsBilled, int ID) {
-            if ((Number == null)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+        public virtual int Update(global::System.Nullable<double> Qty, global::System.Nullable<double> Price_Unit, global::System.Nullable<int> HeadID, global::System.Nullable<bool> IsBilled, global::System.Nullable<int> ItemID, int Original_ID, global::System.Nullable<double> Original_Qty, global::System.Nullable<double> Original_Price_Unit, global::System.Nullable<int> Original_HeadID, global::System.Nullable<bool> Original_IsBilled, global::System.Nullable<int> Original_ItemID, int ID) {
+            if ((Qty.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((double)(Qty.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Number));
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((Qty.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((double)(Qty.Value));
+            if ((Price_Unit.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((double)(Price_Unit.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Price_Unit.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((double)(Price_Unit.Value));
+            if ((HeadID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(HeadID.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((HeadID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(HeadID.Value));
+            if ((IsBilled.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((bool)(IsBilled.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((IsBilled.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((bool)(IsBilled.Value));
+            if ((ItemID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(ItemID.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_ID));
-            if ((Original_Number == null)) {
+            if ((Original_Qty.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(Original_Qty.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_Number));
-            }
-            if ((Original_Qty.HasValue == true)) {
+            if ((Original_Price_Unit.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((double)(Original_Qty.Value));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((double)(Original_Price_Unit.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((Original_Price_Unit.HasValue == true)) {
+            if ((Original_HeadID.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((double)(Original_Price_Unit.Value));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_HeadID.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((Original_HeadID.HasValue == true)) {
+            if ((Original_IsBilled.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_HeadID.Value));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((bool)(Original_IsBilled.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
-            if ((Original_IsBilled.HasValue == true)) {
+            if ((Original_ItemID.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((bool)(Original_IsBilled.Value));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_ItemID.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
@@ -13690,8 +13320,8 @@ SELECT ID, Number, Qty, Price_Unit, HeadID, IsBilled FROM InterimsItems WHERE (I
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Number, global::System.Nullable<double> Qty, global::System.Nullable<double> Price_Unit, global::System.Nullable<int> HeadID, global::System.Nullable<bool> IsBilled, int Original_ID, string Original_Number, global::System.Nullable<double> Original_Qty, global::System.Nullable<double> Original_Price_Unit, global::System.Nullable<int> Original_HeadID, global::System.Nullable<bool> Original_IsBilled) {
-            return this.Update(Number, Qty, Price_Unit, HeadID, IsBilled, Original_ID, Original_Number, Original_Qty, Original_Price_Unit, Original_HeadID, Original_IsBilled, Original_ID);
+        public virtual int Update(global::System.Nullable<double> Qty, global::System.Nullable<double> Price_Unit, global::System.Nullable<int> HeadID, global::System.Nullable<bool> IsBilled, global::System.Nullable<int> ItemID, int Original_ID, global::System.Nullable<double> Original_Qty, global::System.Nullable<double> Original_Price_Unit, global::System.Nullable<int> Original_HeadID, global::System.Nullable<bool> Original_IsBilled, global::System.Nullable<int> Original_ItemID) {
+            return this.Update(Qty, Price_Unit, HeadID, IsBilled, ItemID, Original_ID, Original_Qty, Original_Price_Unit, Original_HeadID, Original_IsBilled, Original_ItemID, Original_ID);
         }
     }
     
@@ -13904,7 +13534,7 @@ SELECT ID, ExpID, CreatedBy, Tr_Date, Description, ContractID, AttachFile, ItemN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
+            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15259,7 +14889,7 @@ SELECT ID, Serial, Amount, ContractID, Status, EndDate FROM BGL WHERE (ID = @ID)
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
+            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15725,7 +15355,7 @@ SELECT ID, Serial, Amount, ContractID, Status, EndDate FROM BGL WHERE (ID = @ID)
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
+            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -16097,7 +15727,7 @@ SELECT ID, HeadID, Title, Direct_InDirect FROM ExpansesMinor WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
+            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -16539,7 +16169,7 @@ SELECT ID, Amount, Contract_ID, Bank_Name, TransferNum, Col_Type, Col_Date FROM 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
+            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17024,7 +16654,7 @@ SELECT ID, Inv_Num, Inv_date, Interim_ID, Inv_Type FROM Invoice_Head WHERE (ID =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
+            this._connection.ConnectionString = "Data Source=KHALED;Initial Catalog=HORAS;Integrated Security=True;Encrypt=False";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17278,243 +16908,6 @@ SELECT ID, Inv_Num, Inv_date, Interim_ID, Inv_Type FROM Invoice_Head WHERE (ID =
     }
     
     /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class AttachedContractsTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public AttachedContractsTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "AttachedContracts";
-            tableMapping.ColumnMappings.Add("ContractID", "ContractID");
-            tableMapping.ColumnMappings.Add("MainContID", "MainContID");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[AttachedContracts] ([ContractID], [MainContID]) VALUES (@Contr" +
-                "actID, @MainContID)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ContractID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContractID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MainContID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MainContID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-P3USC9V;Initial Catalog=HORAS;User ID=HID;Password=20080134;Encrypt=True;TrustServerCertificate=True";
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ContractID, MainContID FROM dbo.AttachedContracts";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(HorasDataSet.AttachedContractsDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual HorasDataSet.AttachedContractsDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            HorasDataSet.AttachedContractsDataTable dataTable = new HorasDataSet.AttachedContractsDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HorasDataSet.AttachedContractsDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(HorasDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "AttachedContracts");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<int> ContractID, global::System.Nullable<int> MainContID) {
-            if ((ContractID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ContractID.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            if ((MainContID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(MainContID.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-    }
-    
-    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -17553,8 +16946,6 @@ SELECT ID, Inv_Num, Inv_date, Interim_ID, Inv_Type FROM Invoice_Head WHERE (ID =
         private CollectionsTableAdapter _collectionsTableAdapter;
         
         private Invoice_HeadTableAdapter _invoice_HeadTableAdapter;
-        
-        private AttachedContractsTableAdapter _attachedContractsTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -17769,20 +17160,6 @@ SELECT ID, Inv_Num, Inv_date, Interim_ID, Inv_Type FROM Invoice_Head WHERE (ID =
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public AttachedContractsTableAdapter AttachedContractsTableAdapter {
-            get {
-                return this._attachedContractsTableAdapter;
-            }
-            set {
-                this._attachedContractsTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -17856,10 +17233,6 @@ SELECT ID, Inv_Num, Inv_date, Interim_ID, Inv_Type FROM Invoice_Head WHERE (ID =
                             && (this._invoice_HeadTableAdapter.Connection != null))) {
                     return this._invoice_HeadTableAdapter.Connection;
                 }
-                if (((this._attachedContractsTableAdapter != null) 
-                            && (this._attachedContractsTableAdapter.Connection != null))) {
-                    return this._attachedContractsTableAdapter.Connection;
-                }
                 return null;
             }
             set {
@@ -17913,9 +17286,6 @@ SELECT ID, Inv_Num, Inv_date, Interim_ID, Inv_Type FROM Invoice_Head WHERE (ID =
                     count = (count + 1);
                 }
                 if ((this._invoice_HeadTableAdapter != null)) {
-                    count = (count + 1);
-                }
-                if ((this._attachedContractsTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -18056,15 +17426,6 @@ SELECT ID, Inv_Num, Inv_date, Interim_ID, Inv_Type FROM Invoice_Head WHERE (ID =
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._attachedContractsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.AttachedContracts.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._attachedContractsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             return result;
         }
         
@@ -18188,14 +17549,6 @@ SELECT ID, Inv_Num, Inv_date, Interim_ID, Inv_Type FROM Invoice_Head WHERE (ID =
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._attachedContractsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.AttachedContracts.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._attachedContractsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             return result;
         }
         
@@ -18206,14 +17559,6 @@ SELECT ID, Inv_Num, Inv_date, Interim_ID, Inv_Type FROM Invoice_Head WHERE (ID =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private int UpdateDeletedRows(HorasDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._attachedContractsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.AttachedContracts.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._attachedContractsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._invoice_HeadTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Invoice_Head.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -18436,11 +17781,6 @@ SELECT ID, Inv_Num, Inv_date, Interim_ID, Inv_Type FROM Invoice_Head WHERE (ID =
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._attachedContractsTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._attachedContractsTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
-            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana" +
@@ -18599,15 +17939,6 @@ SELECT ID, Inv_Num, Inv_date, Interim_ID, Inv_Type FROM Invoice_Head WHERE (ID =
                         adaptersWithAcceptChangesDuringUpdate.Add(this._invoice_HeadTableAdapter.Adapter);
                     }
                 }
-                if ((this._attachedContractsTableAdapter != null)) {
-                    revertConnections.Add(this._attachedContractsTableAdapter, this._attachedContractsTableAdapter.Connection);
-                    this._attachedContractsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._attachedContractsTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._attachedContractsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._attachedContractsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._attachedContractsTableAdapter.Adapter);
-                    }
-                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -18721,10 +18052,6 @@ SELECT ID, Inv_Num, Inv_date, Interim_ID, Inv_Type FROM Invoice_Head WHERE (ID =
                 if ((this._invoice_HeadTableAdapter != null)) {
                     this._invoice_HeadTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._invoice_HeadTableAdapter]));
                     this._invoice_HeadTableAdapter.Transaction = null;
-                }
-                if ((this._attachedContractsTableAdapter != null)) {
-                    this._attachedContractsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._attachedContractsTableAdapter]));
-                    this._attachedContractsTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
