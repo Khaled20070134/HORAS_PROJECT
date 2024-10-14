@@ -51,7 +51,7 @@ namespace HORAS.Interims_Data
                 LoadGeneral();
 
                 foreach (var Item in ItemsDataTable)
-                    listBoxItems.Items.Add(Item.Number);
+                    listBoxItems.Items.Add(Item.ID);
             }
         }
 
@@ -65,7 +65,7 @@ namespace HORAS.Interims_Data
             foreach (var Item in ItemsDataTable)
             {
                 Item_TYPE Type;
-                Type = MasterData.GetItemType(comboBoxContracts.SelectedItem.ToString(), Item.Number);
+                Type = MasterData.GetItemType(comboBoxContracts.SelectedItem.ToString(), Item.ID);
                 Sum += (Item.Price_Unit * Item.Qty);
                 //switch (Type)
                 //{
@@ -142,16 +142,16 @@ namespace HORAS.Interims_Data
         {
             if (listBoxItems.SelectedIndex != -1)
             {
-                string SelectedItemNumber = listBoxItems.SelectedItem.ToString();
+                int slectedItemID = int.Parse(listBoxItems.SelectedItem);
                 string SelectedContractNumber = comboBoxContracts.SelectedItem.ToString();
 
                 // Load Description
                 labelDescription.Text =
                 MasterData.assessments.NotNullContracts.
-                FirstOrDefault(X => X.Contract_ID == SelectedContrctID && X.Number == SelectedItemNumber).Description;
+                FirstOrDefault(X => X.Contract_ID == SelectedContrctID && X.ID == slectedItemID).Description;
 
                 // Load Item Type
-                Item_TYPE ITpe = MasterData.GetItemType(SelectedContractNumber, SelectedItemNumber);
+                Item_TYPE ITpe = MasterData.GetItemType(SelectedContractNumber, slectedItemID);
                 labelItemType.Text = ITpe.ToString();
                 int Typeint = (int)ITpe;
                 //FirstOrDefault(X => X.Contract_ID == SelectedContrctID && X.Number == SelectedItemNumber).Item_Type;
@@ -159,7 +159,7 @@ namespace HORAS.Interims_Data
 
                 double Qty;
                 Qty = MasterData.Interim.InterimsItemsDataTable.
-                    FirstOrDefault(X => X.HeadID == SelectedInterimID && X.Number == SelectedItemNumber).Qty;
+                    FirstOrDefault(X => X.HeadID == SelectedInterimID && X.ID == slectedItemID).Qty;
 
                 // Load Qty
                 switch (Typeint)
@@ -169,7 +169,7 @@ namespace HORAS.Interims_Data
                         break;
                     default:
                         Qty = MasterData.Interim.InterimsItemsDataTable.
-                             FirstOrDefault(X => X.HeadID == SelectedInterimID && X.Number == SelectedItemNumber).Qty;
+                             FirstOrDefault(X => X.HeadID == SelectedInterimID && X.ID == slectedItemID).Qty;
                         labelQTy.Text = MasterData.NumericString(Qty);
                         break;
                 }
@@ -177,7 +177,7 @@ namespace HORAS.Interims_Data
                 // Load Price from Interim
                 double Price, PriceUnit = 0;
                 Price = MasterData.Interim.InterimsItemsDataTable.
-   FirstOrDefault(X => X.HeadID == SelectedInterimID && X.Number == SelectedItemNumber).Price_Unit;
+   FirstOrDefault(X => X.HeadID == SelectedInterimID && X.ID == slectedItemID).Price_Unit;
                 labelPriceInter.Text = MasterData.NumericString(Price);
                 //switch (Typeint)
                 //{
@@ -194,7 +194,7 @@ namespace HORAS.Interims_Data
                 //        break;
                 //}
                 ///////////////////////////////////////////////////////////////////////////////
-                I_Status Status = MasterData.Interim.Get_Item_Status(SelectedContractNumber, SelectedItemNumber);
+                I_Status Status = MasterData.Interim.Get_Item_Status(SelectedContractNumber, slectedItemID);
                 labelPOC.Text = ((Status.Delivered_QP / Status.Total_QP) * 100).ToString() + " %";
                 labelPriceAss.Text = Status.Total_Value.ToString();
                 labelRemain.Text = (Status.Total_QP - Status.Delivered_QP).ToString();

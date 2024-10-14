@@ -74,26 +74,26 @@ namespace HORAS.Interims_Data
             foreach (var Item in ItemsList)
             {
                 HorasDataSet.AssItemsRow HeadData = MasterData.assessments.AssItemsAdapter.NotNullContracts().
-                    FirstOrDefault(X => X.Number == Item.Number && X.Contract_ID == ContractID);
+                    FirstOrDefault(X => X.ID == Item.ID && X.Contract_ID == ContractID);
                 string ItemType = MasterData.GetItemTypeString(HeadData.Item_Type);
                 string LOL = MasterData.NumericString(HeadData.LOL) + " %";
-                DGVItems.Rows.Add(Item.Number, HeadData.Description, MasterData.NumericString(Item.Price_Unit), ItemType, LOL);
+                DGVItems.Rows.Add(Item.ID, HeadData.Description, MasterData.NumericString(Item.Price_Unit), ItemType, LOL);
             }
 
         }
 
         private void DGVItems_SelectionChanged(object sender, EventArgs e)
         {
-            string SelectedItemNumber = DGVItems.SelectedRows[0].Cells[0].Value.ToString();
+            int SelectedItemID = int.Parse(DGVItems.SelectedRows[0].Cells[0].Value);
             string SelectedContractNumber = LinkContract.Text;
             int SelectedInterimID = MasterData.Interim.InterimsHeadDataTable.
                 FirstOrDefault(x => x.Number == comboBoxIntNum.SelectedItem.ToString()).ID;
 
             double Qty;
             Qty = MasterData.Interim.InterimsItemsDataTable.
-                FirstOrDefault(X => X.HeadID == SelectedInterimID && X.Number == SelectedItemNumber).Qty;
+                FirstOrDefault(X => X.HeadID == SelectedInterimID && X.ID == SelectedItemID).Qty;
 
-            Item_TYPE ITpe = MasterData.GetItemType(SelectedContractNumber, SelectedItemNumber);
+            Item_TYPE ITpe = MasterData.GetItemType(SelectedContractNumber, SelectedItemID);
             int Typeint = (int)ITpe;
 
             // Load Qty
@@ -113,7 +113,7 @@ namespace HORAS.Interims_Data
             // Load Price from Interim
             double Price, PriceUnit = 0;
             Price = MasterData.Interim.InterimsItemsDataTable.
-                 FirstOrDefault(X => X.HeadID == SelectedInterimID && X.Number == SelectedItemNumber).Price_Unit;
+                 FirstOrDefault(X => X.HeadID == SelectedInterimID && X.ID == SelectedItemID).Price_Unit;
             labelPriceInter.Text = MasterData.NumericString(Price);
 
             //switch (Typeint)
@@ -131,7 +131,7 @@ namespace HORAS.Interims_Data
             //        break;
             //}
             ///////////////////////////////////////////////////////////////////////////////
-            I_Status Status = MasterData.Interim.Get_Item_Status(SelectedContractNumber, SelectedItemNumber);
+            I_Status Status = MasterData.Interim.Get_Item_Status(SelectedContractNumber, SelectedItemID);
             labelPOC.Text = ((Status.Delivered_QP / Status.Total_QP) * 100).ToString() + " %";
             labelPriceAss.Text = MasterData.NumericString(Status.Total_Value);
             labelRemain.Text = (Status.Total_QP - Status.Delivered_QP).ToString();

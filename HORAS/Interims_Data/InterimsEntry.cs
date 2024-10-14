@@ -78,18 +78,18 @@ namespace HORAS.Interims_Data
 
             SelectedContrctID = MasterData.Contracts.ContractDataTable.
                 FirstOrDefault(X => X.Number == CBContracts.SelectedItem.ToString()).ID;
-            comboBoxItems.Items.Clear();
-            var ItemsList = MasterData.assessments.AssItemsAdapter.GetContractItems(SelectedContrctID);
-            foreach (var Item in ItemsList)
-                comboBoxItems.Items.Add(Item.Number);
+           // comboBoxItems.Items.Clear();
+           // var ItemsList = MasterData.assessments.AssItemsAdapter.GetContractItems(SelectedContrctID);
+            //foreach (var Item in ItemsList)
+              //  comboBoxItems.Items.Add(Item.Number);
         }
 
         private void comboBoxItems_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxItems.SelectedIndex == -1) return;
-            I_Status Item_Status = MasterData.Interim.Get_Item_Status(CBContracts.SelectedItem.ToString(),
-                MYSelectedItemID);
-            LoadData(Item_Status);
+            //if (comboBoxItems.SelectedIndex == -1) return;
+            //I_Status Item_Status = MasterData.Interim.Get_Item_Status(CBContracts.SelectedItem.ToString(),
+            //    MYSelectedItemID);
+            //LoadData(Item_Status);
 
         }
         void LoadData(I_Status Item_Status)
@@ -150,7 +150,7 @@ namespace HORAS.Interims_Data
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (NUDQ.Value > 0 && NUDV.Value > 0 && comboBoxItems.SelectedIndex != -1 && CBContracts.SelectedIndex != -1)
+            if (NUDQ.Value > 0 && NUDV.Value > 0   && CBContracts.SelectedIndex != -1)
             {
                 if ((NUDV.Value * NUDQ.Value) + decimal.Parse(labelTotalDeliveredValue.Text)
                     > decimal.Parse(labelTotalExps.Text))
