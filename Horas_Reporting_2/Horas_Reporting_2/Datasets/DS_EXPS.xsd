@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DS_EXPS" targetNamespace="http://tempuri.org/DS_EXPS.xsd" xmlns:mstns="http://tempuri.org/DS_EXPS.xsd" xmlns="http://tempuri.org/DS_EXPS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DS_EXPS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="DS_EXPS" msprop:Generator_DataSetName="DS_EXPS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DT_EXPS" msprop:Generator_RowEvHandlerName="DT_EXPSRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_EXPSRowDeleted" msprop:Generator_RowDeletingName="DT_EXPSRowDeleting" msprop:Generator_RowEvArgName="DT_EXPSRowChangeEvent" msprop:Generator_TablePropName="DT_EXPS" msprop:Generator_RowChangedName="DT_EXPSRowChanged" msprop:Generator_RowChangingName="DT_EXPSRowChanging" msprop:Generator_TableClassName="DT_EXPSDataTable" msprop:Generator_RowClassName="DT_EXPSRow" msprop:Generator_TableVarName="tableDT_EXPS" msprop:Generator_UserTableName="DT_EXPS">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Amount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnPropNameInTable="AmountColumn" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_UserColumnName="Amount" type="xs:string" minOccurs="0" />
+              <xs:element name="EX_Desc" msprop:Generator_ColumnPropNameInRow="EX_Desc" msprop:Generator_ColumnPropNameInTable="EX_DescColumn" msprop:Generator_ColumnVarNameInTable="columnEX_Desc" msprop:Generator_UserColumnName="EX_Desc" type="xs:string" minOccurs="0" />
+              <xs:element name="EX_Date" msprop:Generator_ColumnPropNameInRow="EX_Date" msprop:Generator_ColumnPropNameInTable="EX_DateColumn" msprop:Generator_ColumnVarNameInTable="columnEX_Date" msprop:Generator_UserColumnName="EX_Date" type="xs:string" minOccurs="0" />
+              <xs:element name="IT_Desc" msprop:Generator_ColumnPropNameInRow="IT_Desc" msprop:Generator_ColumnPropNameInTable="IT_DescColumn" msprop:Generator_ColumnVarNameInTable="columnIT_Desc" msprop:Generator_UserColumnName="IT_Desc" type="xs:string" minOccurs="0" />
+              <xs:element name="IT_Num" msprop:Generator_ColumnPropNameInRow="IT_Num" msprop:Generator_ColumnPropNameInTable="IT_NumColumn" msprop:Generator_ColumnVarNameInTable="columnIT_Num" msprop:Generator_UserColumnName="IT_Num" type="xs:string" minOccurs="0" />
+              <xs:element name="Major_Title" msprop:Generator_ColumnPropNameInRow="Major_Title" msprop:Generator_ColumnPropNameInTable="Major_TitleColumn" msprop:Generator_ColumnVarNameInTable="columnMajor_Title" msprop:Generator_UserColumnName="Major_Title" type="xs:string" minOccurs="0" />
+              <xs:element name="Minor_Title" msprop:Generator_ColumnPropNameInRow="Minor_Title" msprop:Generator_ColumnPropNameInTable="Minor_TitleColumn" msprop:Generator_ColumnVarNameInTable="columnMinor_Title" msprop:Generator_UserColumnName="Minor_Title" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

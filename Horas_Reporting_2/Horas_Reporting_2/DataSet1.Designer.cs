@@ -86,6 +86,8 @@ namespace Horas_Reporting_2 {
         
         private global::System.Data.DataRelation relationFK_Log_Table_Employees;
         
+        private global::System.Data.DataRelation relationFK_InterimsItems_AssItems;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -599,6 +601,7 @@ namespace Horas_Reporting_2 {
             this.relationFK_InterimsItems_InterimsHead = this.Relations["FK_InterimsItems_InterimsHead"];
             this.relationFK_Invoice_Head_InterimsHead = this.Relations["FK_Invoice_Head_InterimsHead"];
             this.relationFK_Log_Table_Employees = this.Relations["FK_Log_Table_Employees"];
+            this.relationFK_InterimsItems_AssItems = this.Relations["FK_InterimsItems_AssItems"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -701,6 +704,10 @@ namespace Horas_Reporting_2 {
                         this.tableEmployees.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableLog_Table.User_IDColumn}, false);
             this.Relations.Add(this.relationFK_Log_Table_Employees);
+            this.relationFK_InterimsItems_AssItems = new global::System.Data.DataRelation("FK_InterimsItems_AssItems", new global::System.Data.DataColumn[] {
+                        this.tableAssItems.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableInterimsItems.ItemIDColumn}, false);
+            this.Relations.Add(this.relationFK_InterimsItems_AssItems);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4847,8 +4854,6 @@ namespace Horas_Reporting_2 {
             
             private global::System.Data.DataColumn columnID;
             
-            private global::System.Data.DataColumn columnNumber;
-            
             private global::System.Data.DataColumn columnQty;
             
             private global::System.Data.DataColumn columnPrice_Unit;
@@ -4856,6 +4861,8 @@ namespace Horas_Reporting_2 {
             private global::System.Data.DataColumn columnHeadID;
             
             private global::System.Data.DataColumn columnIsBilled;
+            
+            private global::System.Data.DataColumn columnItemID;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -4900,14 +4907,6 @@ namespace Horas_Reporting_2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn NumberColumn {
-                get {
-                    return this.columnNumber;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn QtyColumn {
                 get {
                     return this.columnQty;
@@ -4935,6 +4934,14 @@ namespace Horas_Reporting_2 {
             public global::System.Data.DataColumn IsBilledColumn {
                 get {
                     return this.columnIsBilled;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ItemIDColumn {
+                get {
+                    return this.columnItemID;
                 }
             }
             
@@ -4975,17 +4982,20 @@ namespace Horas_Reporting_2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public InterimsItemsRow AddInterimsItemsRow(string Number, double Qty, double Price_Unit, InterimsHeadRow parentInterimsHeadRowByFK_InterimsItems_InterimsHead, bool IsBilled) {
+            public InterimsItemsRow AddInterimsItemsRow(double Qty, double Price_Unit, InterimsHeadRow parentInterimsHeadRowByFK_InterimsItems_InterimsHead, bool IsBilled, AssItemsRow parentAssItemsRowByFK_InterimsItems_AssItems) {
                 InterimsItemsRow rowInterimsItemsRow = ((InterimsItemsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        Number,
                         Qty,
                         Price_Unit,
                         null,
-                        IsBilled};
+                        IsBilled,
+                        null};
                 if ((parentInterimsHeadRowByFK_InterimsItems_InterimsHead != null)) {
-                    columnValuesArray[4] = parentInterimsHeadRowByFK_InterimsItems_InterimsHead[0];
+                    columnValuesArray[3] = parentInterimsHeadRowByFK_InterimsItems_InterimsHead[0];
+                }
+                if ((parentAssItemsRowByFK_InterimsItems_AssItems != null)) {
+                    columnValuesArray[5] = parentAssItemsRowByFK_InterimsItems_AssItems[0];
                 }
                 rowInterimsItemsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowInterimsItemsRow);
@@ -5017,11 +5027,11 @@ namespace Horas_Reporting_2 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
-                this.columnNumber = base.Columns["Number"];
                 this.columnQty = base.Columns["Qty"];
                 this.columnPrice_Unit = base.Columns["Price_Unit"];
                 this.columnHeadID = base.Columns["HeadID"];
                 this.columnIsBilled = base.Columns["IsBilled"];
+                this.columnItemID = base.Columns["ItemID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5029,8 +5039,6 @@ namespace Horas_Reporting_2 {
             private void InitClass() {
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
-                this.columnNumber = new global::System.Data.DataColumn("Number", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNumber);
                 this.columnQty = new global::System.Data.DataColumn("Qty", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQty);
                 this.columnPrice_Unit = new global::System.Data.DataColumn("Price_Unit", typeof(double), null, global::System.Data.MappingType.Element);
@@ -5039,6 +5047,8 @@ namespace Horas_Reporting_2 {
                 base.Columns.Add(this.columnHeadID);
                 this.columnIsBilled = new global::System.Data.DataColumn("IsBilled", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIsBilled);
+                this.columnItemID = new global::System.Data.DataColumn("ItemID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnItemID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -5047,7 +5057,6 @@ namespace Horas_Reporting_2 {
                 this.columnID.AllowDBNull = false;
                 this.columnID.ReadOnly = true;
                 this.columnID.Unique = true;
-                this.columnNumber.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6976,6 +6985,17 @@ namespace Horas_Reporting_2 {
                 }
                 else {
                     return ((ExpTransRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ExpTrans_AssItems"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public InterimsItemsRow[] GetInterimsItemsRows() {
+                if ((this.Table.ChildRelations["FK_InterimsItems_AssItems"] == null)) {
+                    return new InterimsItemsRow[0];
+                }
+                else {
+                    return ((InterimsItemsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_InterimsItems_AssItems"])));
                 }
             }
         }
@@ -9096,22 +9116,6 @@ namespace Horas_Reporting_2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Number {
-                get {
-                    try {
-                        return ((string)(this[this.tableInterimsItems.NumberColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Number\' in table \'InterimsItems\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableInterimsItems.NumberColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public double Qty {
                 get {
                     try {
@@ -9176,6 +9180,22 @@ namespace Horas_Reporting_2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int ItemID {
+                get {
+                    try {
+                        return ((int)(this[this.tableInterimsItems.ItemIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ItemID\' in table \'InterimsItems\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableInterimsItems.ItemIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public InterimsHeadRow InterimsHeadRow {
                 get {
                     return ((InterimsHeadRow)(this.GetParentRow(this.Table.ParentRelations["FK_InterimsItems_InterimsHead"])));
@@ -9187,14 +9207,13 @@ namespace Horas_Reporting_2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsNumberNull() {
-                return this.IsNull(this.tableInterimsItems.NumberColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetNumberNull() {
-                this[this.tableInterimsItems.NumberColumn] = global::System.Convert.DBNull;
+            public AssItemsRow AssItemsRow {
+                get {
+                    return ((AssItemsRow)(this.GetParentRow(this.Table.ParentRelations["FK_InterimsItems_AssItems"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_InterimsItems_AssItems"]);
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9243,6 +9262,18 @@ namespace Horas_Reporting_2 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetIsBilledNull() {
                 this[this.tableInterimsItems.IsBilledColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsItemIDNull() {
+                return this.IsNull(this.tableInterimsItems.ItemIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetItemIDNull() {
+                this[this.tableInterimsItems.ItemIDColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -16413,19 +16444,17 @@ SELECT ID, In_Date, ContractID, Confirm_Date, Number FROM InterimsHead WHERE (ID
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "InterimsItems";
             tableMapping.ColumnMappings.Add("ID", "ID");
-            tableMapping.ColumnMappings.Add("Number", "Number");
             tableMapping.ColumnMappings.Add("Qty", "Qty");
             tableMapping.ColumnMappings.Add("Price_Unit", "Price_Unit");
             tableMapping.ColumnMappings.Add("HeadID", "HeadID");
             tableMapping.ColumnMappings.Add("IsBilled", "IsBilled");
+            tableMapping.ColumnMappings.Add("ItemID", "ItemID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[InterimsItems] WHERE (([ID] = @Original_ID) AND ((@IsNull_Number = 1 AND [Number] IS NULL) OR ([Number] = @Original_Number)) AND ((@IsNull_Qty = 1 AND [Qty] IS NULL) OR ([Qty] = @Original_Qty)) AND ((@IsNull_Price_Unit = 1 AND [Price_Unit] IS NULL) OR ([Price_Unit] = @Original_Price_Unit)) AND ((@IsNull_HeadID = 1 AND [HeadID] IS NULL) OR ([HeadID] = @Original_HeadID)) AND ((@IsNull_IsBilled = 1 AND [IsBilled] IS NULL) OR ([IsBilled] = @Original_IsBilled)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [InterimsItems] WHERE (([ID] = @Original_ID) AND ((@IsNull_Qty = 1 AND [Qty] IS NULL) OR ([Qty] = @Original_Qty)) AND ((@IsNull_Price_Unit = 1 AND [Price_Unit] IS NULL) OR ([Price_Unit] = @Original_Price_Unit)) AND ((@IsNull_HeadID = 1 AND [HeadID] IS NULL) OR ([HeadID] = @Original_HeadID)) AND ((@IsNull_IsBilled = 1 AND [IsBilled] IS NULL) OR ([IsBilled] = @Original_IsBilled)) AND ((@IsNull_ItemID = 1 AND [ItemID] IS NULL) OR ([ItemID] = @Original_ItemID)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Number", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Number", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Number", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Number", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Qty", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Qty", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Qty", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Qty", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Price_Unit", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price_Unit", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -16434,31 +16463,31 @@ SELECT ID, In_Date, ContractID, Confirm_Date, Number FROM InterimsHead WHERE (ID
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_HeadID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HeadID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_IsBilled", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsBilled", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IsBilled", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsBilled", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ItemID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ItemID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[InterimsItems] ([Number], [Qty], [Price_Unit], [HeadID], [IsBi" +
-                "lled]) VALUES (@Number, @Qty, @Price_Unit, @HeadID, @IsBilled);\r\nSELECT ID, Numb" +
-                "er, Qty, Price_Unit, HeadID, IsBilled FROM InterimsItems WHERE (ID = SCOPE_IDENT" +
-                "ITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [InterimsItems] ([Qty], [Price_Unit], [HeadID], [IsBilled], [ItemID])" +
+                " VALUES (@Qty, @Price_Unit, @HeadID, @IsBilled, @ItemID);\r\nSELECT ID, Qty, Price" +
+                "_Unit, HeadID, IsBilled, ItemID FROM InterimsItems WHERE (ID = SCOPE_IDENTITY())" +
+                "";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Number", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Number", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Qty", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Qty", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price_Unit", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price_Unit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HeadID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HeadID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsBilled", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsBilled", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ItemID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[InterimsItems] SET [Number] = @Number, [Qty] = @Qty, [Price_Unit] = @Price_Unit, [HeadID] = @HeadID, [IsBilled] = @IsBilled WHERE (([ID] = @Original_ID) AND ((@IsNull_Number = 1 AND [Number] IS NULL) OR ([Number] = @Original_Number)) AND ((@IsNull_Qty = 1 AND [Qty] IS NULL) OR ([Qty] = @Original_Qty)) AND ((@IsNull_Price_Unit = 1 AND [Price_Unit] IS NULL) OR ([Price_Unit] = @Original_Price_Unit)) AND ((@IsNull_HeadID = 1 AND [HeadID] IS NULL) OR ([HeadID] = @Original_HeadID)) AND ((@IsNull_IsBilled = 1 AND [IsBilled] IS NULL) OR ([IsBilled] = @Original_IsBilled)));
-SELECT ID, Number, Qty, Price_Unit, HeadID, IsBilled FROM InterimsItems WHERE (ID = @ID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [InterimsItems] SET [Qty] = @Qty, [Price_Unit] = @Price_Unit, [HeadID] = @HeadID, [IsBilled] = @IsBilled, [ItemID] = @ItemID WHERE (([ID] = @Original_ID) AND ((@IsNull_Qty = 1 AND [Qty] IS NULL) OR ([Qty] = @Original_Qty)) AND ((@IsNull_Price_Unit = 1 AND [Price_Unit] IS NULL) OR ([Price_Unit] = @Original_Price_Unit)) AND ((@IsNull_HeadID = 1 AND [HeadID] IS NULL) OR ([HeadID] = @Original_HeadID)) AND ((@IsNull_IsBilled = 1 AND [IsBilled] IS NULL) OR ([IsBilled] = @Original_IsBilled)) AND ((@IsNull_ItemID = 1 AND [ItemID] IS NULL) OR ([ItemID] = @Original_ItemID)));
+SELECT ID, Qty, Price_Unit, HeadID, IsBilled, ItemID FROM InterimsItems WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Number", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Number", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Qty", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Qty", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price_Unit", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price_Unit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HeadID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HeadID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsBilled", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsBilled", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ItemID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Number", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Number", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Number", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Number", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Qty", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Qty", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Qty", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Qty", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Price_Unit", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price_Unit", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -16467,6 +16496,8 @@ SELECT ID, Number, Qty, Price_Unit, HeadID, IsBilled FROM InterimsItems WHERE (I
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_HeadID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HeadID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_IsBilled", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsBilled", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IsBilled", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsBilled", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ItemID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ItemID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -16483,7 +16514,8 @@ SELECT ID, Number, Qty, Price_Unit, HeadID, IsBilled FROM InterimsItems WHERE (I
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, Number, Qty, Price_Unit, HeadID, IsBilled FROM dbo.InterimsItems";
+            this._commandCollection[0].CommandText = "SELECT        ID, Qty, Price_Unit, HeadID, IsBilled, ItemID\r\nFROM            Inte" +
+                "rimsItems";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -16544,43 +16576,43 @@ SELECT ID, Number, Qty, Price_Unit, HeadID, IsBilled FROM InterimsItems WHERE (I
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, string Original_Number, global::System.Nullable<double> Original_Qty, global::System.Nullable<double> Original_Price_Unit, global::System.Nullable<int> Original_HeadID, global::System.Nullable<bool> Original_IsBilled) {
+        public virtual int Delete(int Original_ID, global::System.Nullable<double> Original_Qty, global::System.Nullable<double> Original_Price_Unit, global::System.Nullable<int> Original_HeadID, global::System.Nullable<bool> Original_IsBilled, global::System.Nullable<int> Original_ItemID) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
-            if ((Original_Number == null)) {
+            if ((Original_Qty.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((double)(Original_Qty.Value));
+            }
+            else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Number));
-            }
-            if ((Original_Qty.HasValue == true)) {
+            if ((Original_Price_Unit.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((double)(Original_Qty.Value));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((double)(Original_Price_Unit.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Original_Price_Unit.HasValue == true)) {
+            if ((Original_HeadID.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((double)(Original_Price_Unit.Value));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_HeadID.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Original_HeadID.HasValue == true)) {
+            if ((Original_IsBilled.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_HeadID.Value));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((bool)(Original_IsBilled.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((Original_IsBilled.HasValue == true)) {
+            if ((Original_ItemID.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((bool)(Original_IsBilled.Value));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_ItemID.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
@@ -16606,33 +16638,33 @@ SELECT ID, Number, Qty, Price_Unit, HeadID, IsBilled FROM InterimsItems WHERE (I
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Number, global::System.Nullable<double> Qty, global::System.Nullable<double> Price_Unit, global::System.Nullable<int> HeadID, global::System.Nullable<bool> IsBilled) {
-            if ((Number == null)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+        public virtual int Insert(global::System.Nullable<double> Qty, global::System.Nullable<double> Price_Unit, global::System.Nullable<int> HeadID, global::System.Nullable<bool> IsBilled, global::System.Nullable<int> ItemID) {
+            if ((Qty.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((double)(Qty.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Number));
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((Qty.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((double)(Qty.Value));
+            if ((Price_Unit.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((double)(Price_Unit.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Price_Unit.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((double)(Price_Unit.Value));
+            if ((HeadID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(HeadID.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((HeadID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(HeadID.Value));
+            if ((IsBilled.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((bool)(IsBilled.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((IsBilled.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((bool)(IsBilled.Value));
+            if ((ItemID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(ItemID.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
@@ -16657,73 +16689,73 @@ SELECT ID, Number, Qty, Price_Unit, HeadID, IsBilled FROM InterimsItems WHERE (I
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Number, global::System.Nullable<double> Qty, global::System.Nullable<double> Price_Unit, global::System.Nullable<int> HeadID, global::System.Nullable<bool> IsBilled, int Original_ID, string Original_Number, global::System.Nullable<double> Original_Qty, global::System.Nullable<double> Original_Price_Unit, global::System.Nullable<int> Original_HeadID, global::System.Nullable<bool> Original_IsBilled, int ID) {
-            if ((Number == null)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+        public virtual int Update(global::System.Nullable<double> Qty, global::System.Nullable<double> Price_Unit, global::System.Nullable<int> HeadID, global::System.Nullable<bool> IsBilled, global::System.Nullable<int> ItemID, int Original_ID, global::System.Nullable<double> Original_Qty, global::System.Nullable<double> Original_Price_Unit, global::System.Nullable<int> Original_HeadID, global::System.Nullable<bool> Original_IsBilled, global::System.Nullable<int> Original_ItemID, int ID) {
+            if ((Qty.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((double)(Qty.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Number));
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((Qty.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((double)(Qty.Value));
+            if ((Price_Unit.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((double)(Price_Unit.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Price_Unit.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((double)(Price_Unit.Value));
+            if ((HeadID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(HeadID.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((HeadID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(HeadID.Value));
+            if ((IsBilled.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((bool)(IsBilled.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((IsBilled.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((bool)(IsBilled.Value));
+            if ((ItemID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(ItemID.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_ID));
-            if ((Original_Number == null)) {
+            if ((Original_Qty.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(Original_Qty.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_Number));
-            }
-            if ((Original_Qty.HasValue == true)) {
+            if ((Original_Price_Unit.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((double)(Original_Qty.Value));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((double)(Original_Price_Unit.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((Original_Price_Unit.HasValue == true)) {
+            if ((Original_HeadID.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((double)(Original_Price_Unit.Value));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_HeadID.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((Original_HeadID.HasValue == true)) {
+            if ((Original_IsBilled.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_HeadID.Value));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((bool)(Original_IsBilled.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
-            if ((Original_IsBilled.HasValue == true)) {
+            if ((Original_ItemID.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((bool)(Original_IsBilled.Value));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_ItemID.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
@@ -16750,8 +16782,8 @@ SELECT ID, Number, Qty, Price_Unit, HeadID, IsBilled FROM InterimsItems WHERE (I
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Number, global::System.Nullable<double> Qty, global::System.Nullable<double> Price_Unit, global::System.Nullable<int> HeadID, global::System.Nullable<bool> IsBilled, int Original_ID, string Original_Number, global::System.Nullable<double> Original_Qty, global::System.Nullable<double> Original_Price_Unit, global::System.Nullable<int> Original_HeadID, global::System.Nullable<bool> Original_IsBilled) {
-            return this.Update(Number, Qty, Price_Unit, HeadID, IsBilled, Original_ID, Original_Number, Original_Qty, Original_Price_Unit, Original_HeadID, Original_IsBilled, Original_ID);
+        public virtual int Update(global::System.Nullable<double> Qty, global::System.Nullable<double> Price_Unit, global::System.Nullable<int> HeadID, global::System.Nullable<bool> IsBilled, global::System.Nullable<int> ItemID, int Original_ID, global::System.Nullable<double> Original_Qty, global::System.Nullable<double> Original_Price_Unit, global::System.Nullable<int> Original_HeadID, global::System.Nullable<bool> Original_IsBilled, global::System.Nullable<int> Original_ItemID) {
+            return this.Update(Qty, Price_Unit, HeadID, IsBilled, ItemID, Original_ID, Original_Qty, Original_Price_Unit, Original_HeadID, Original_IsBilled, Original_ItemID, Original_ID);
         }
     }
     
