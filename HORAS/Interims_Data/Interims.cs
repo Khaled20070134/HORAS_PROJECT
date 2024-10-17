@@ -103,7 +103,7 @@ namespace HORAS.Interims_Data
             I_Status i_Status = new I_Status();
 
             // Load Item Type
-            Item_TYPE ITpe = MasterData.GetItemType(SelectedContractNumber, SelectedItemNumber);
+            Item_TYPE ITpe = MasterData.GetItemType(SelectedContractNumber, MyItemID);
             int Typeint = (int)ITpe;
 
             int SelectedContrctID = MasterData.Contracts.ContractDataTable.
@@ -112,15 +112,15 @@ namespace HORAS.Interims_Data
             int ItemID = MyItemID;
 
             i_Status.Total_QP = MasterData.assessments.AssItemsDataTable.
-    FirstOrDefault(X => X.Contract_ID == SelectedContrctID && X.Number == SelectedItemNumber).Qty;
+    FirstOrDefault(X => X.Contract_ID == SelectedContrctID && X.ID == MyItemID).Qty;
 
             i_Status.Total_Value = MasterData.assessments.AssItemsDataTable.
-                FirstOrDefault(X => X.Contract_ID == SelectedContrctID && X.Number == SelectedItemNumber).Total_Price * i_Status.Total_QP;
+                FirstOrDefault(X => X.Contract_ID == SelectedContrctID && X.ID == MyItemID).Total_Price * i_Status.Total_QP;
 
 
 
             i_Status.LOL = MasterData.assessments.AssItemsDataTable.
-                FirstOrDefault(X => X.Contract_ID == SelectedContrctID && X.Number == SelectedItemNumber).LOL;
+                FirstOrDefault(X => X.Contract_ID == SelectedContrctID && X.ID == MyItemID).LOL;
 
             List<InterimsHeadRow> ListOfInterims = MasterData.Interim.InterimsHeadDataTable.
                 Where(X => X.ContractID == SelectedContrctID && !X.IsConfirm_DateNull()).ToList();
@@ -130,12 +130,12 @@ namespace HORAS.Interims_Data
                 // Set Delivered Total Value
                 i_Status.Delivered_Value +=
                 MasterData.Interim.InterimsItemsDataTable.
-                Where(X => X.HeadID == Interim.ID && X.Number == SelectedItemNumber).Sum(Y => Y.Price_Unit * Y.Qty);
+                Where(X => X.HeadID == Interim.ID && X.ID == MyItemID).Sum(Y => Y.Price_Unit * Y.Qty);
 
                 // Set Delivered Quantity or Percentage
                 i_Status.Delivered_QP +=
                 MasterData.Interim.InterimsItemsDataTable.
-                Where(X => X.HeadID == Interim.ID && X.Number == SelectedItemNumber).Sum(Y => Y.Qty);
+                Where(X => X.HeadID == Interim.ID && X.ID == MyItemID).Sum(Y => Y.Qty);
             }
 
             // Set Remain Data of Item
@@ -153,17 +153,17 @@ namespace HORAS.Interims_Data
 
             return i_Status;
         }
-        public double getPrevData(int contractID, string ItemNumber)
+        public double getPrevData(int contractID, int ItemID)
         {
             List<int> Interims = new List<int>();
             var List = InterimsHeadDataTable.Where(X => X.ContractID == contractID && !X.IsContractIDNull());
             double QtySum = 0;
             foreach (var Row in List)
             {
-                var Check = InterimsItemsDataTable.FirstOrDefault(X => X.HeadID == Row.ID && X.Number == ItemNumber);
+                var Check = InterimsItemsDataTable.FirstOrDefault(X => X.HeadID == Row.ID && X.ID == ItemID);
                 if (Check != null)
                 {
-                    QtySum += InterimsItemsDataTable.FirstOrDefault(X => X.HeadID == Row.ID && X.Number == ItemNumber).Qty;
+                    QtySum += InterimsItemsDataTable.FirstOrDefault(X => X.HeadID == Row.ID && X.ID == ItemID).Qty;
                 }
             }
 

@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using static HORAS.Database.HorasDataSet;
 using HORAS.Contracts;
 using static HORAS.Enums;
+using System.Diagnostics.Contracts;
 
 namespace HORAS.Interims_Data
 {
@@ -21,6 +22,7 @@ namespace HORAS.Interims_Data
         List<InterimsItemsRow> ListToSave = new List<InterimsItemsRow>();
         List<Items> LoadedItemsList = new List<Items>();
         InterimsItemsRow ItemRow;
+        public static int MYSelectedItemID = 0;
         public InterimsEntry()
         {
             InitializeComponent();
@@ -39,7 +41,7 @@ namespace HORAS.Interims_Data
                 MasterData.CopyFile(TextBoxOrigIntfile.Text, File1Name);
             }
         }
-            void LoadContracts()
+        void LoadContracts()
         {
             var LoadContracts = MasterData.Contracts.ContractDataTable.
                 Where(X => X.IM_Completed == false && X.Signed && !X.IsStartedByNull()).ToList();
@@ -76,18 +78,18 @@ namespace HORAS.Interims_Data
 
             SelectedContrctID = MasterData.Contracts.ContractDataTable.
                 FirstOrDefault(X => X.Number == CBContracts.SelectedItem.ToString()).ID;
-            comboBoxItems.Items.Clear();
-            var ItemsList = MasterData.assessments.AssItemsAdapter.GetContractItems(SelectedContrctID);
-            foreach (var Item in ItemsList)
-                comboBoxItems.Items.Add(Item.Number);
+           // comboBoxItems.Items.Clear();
+           // var ItemsList = MasterData.assessments.AssItemsAdapter.GetContractItems(SelectedContrctID);
+            //foreach (var Item in ItemsList)
+              //  comboBoxItems.Items.Add(Item.Number);
         }
 
         private void comboBoxItems_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxItems.SelectedIndex == -1) return;
-            I_Status Item_Status = MasterData.Interim.Get_Item_Status(CBContracts.SelectedItem.ToString(),
-                comboBoxItems.SelectedItem.ToString());
-            LoadData(Item_Status);
+            //if (comboBoxItems.SelectedIndex == -1) return;
+            //I_Status Item_Status = MasterData.Interim.Get_Item_Status(CBContracts.SelectedItem.ToString(),
+            //    MYSelectedItemID);
+            //LoadData(Item_Status);
 
         }
         void LoadData(I_Status Item_Status)
@@ -148,7 +150,7 @@ namespace HORAS.Interims_Data
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (NUDQ.Value > 0 && NUDV.Value > 0 && comboBoxItems.SelectedIndex != -1 && CBContracts.SelectedIndex != -1)
+            if (NUDQ.Value > 0 && NUDV.Value > 0   && CBContracts.SelectedIndex != -1)
             {
                 if ((NUDV.Value * NUDQ.Value) + decimal.Parse(labelTotalDeliveredValue.Text)
                     > decimal.Parse(labelTotalExps.Text))
@@ -157,12 +159,12 @@ namespace HORAS.Interims_Data
                     return;
                 }
 
-                string ItemNum = comboBoxItems.SelectedItem.ToString();
+                int ItemID = MYSelectedItemID;
 
                 if (DGV.Rows.Count > 0)
                 {
                     DataGridViewRow myrow = DGV.Rows.Cast<DataGridViewRow>().Where
-                        (x => x.Cells[0].Value.ToString().Equals(ItemNum)).First();
+                        (x => x.Cells[0].Value.ToString().Equals(ItemID)).First();
 
                     if (myrow.Index != -1)
                     {
@@ -170,7 +172,7 @@ namespace HORAS.Interims_Data
                         return;
                     }
                 }
-                DGV.Rows.Add(comboBoxItems.SelectedItem.ToString(), NUDQ.Value, NUDV.Value);
+                DGV.Rows.Add(MYSelectedItemID, NUDQ.Value, NUDV.Value);
                 UpdateTotalGV();
                 setStatus("تمت الاضافة إلى بنود المستخلص", 1);
             }
@@ -204,7 +206,7 @@ namespace HORAS.Interims_Data
                 MasterData.Interim.InterimsHeadRow.ID = -1;
                 LoadItems();
                 MasterData.Interim.AddNew(ListToSave);
-              
+
                 CopyFiles(int.Parse(textBoxInterimNumber.Text));
                 setStatus("تم حفظ بيانات المستخلص بنجاح", 1);
                 Reset();
@@ -235,6 +237,29 @@ namespace HORAS.Interims_Data
         private void pictureBox10_Click(object sender, EventArgs e)
         {
             TextBoxOrigIntfile.Text = string.Empty;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (CBContracts.SelectedIndex == -1) return;
+            DisplayAllItems Con = new DisplayAllItems(CBContracts.SelectedItem.ToString());
+            Con.ShowDialog();
+            MYSelectedItemID = DisplayAllItems.ItemID;
+            labelItemselected.Text = MYSelectedItemID.ToString();
+
+            I_Status Item_Status = MasterData.Interim.Get_Item_Status(CBContracts.SelectedItem.ToString(),
+                MYSelectedItemID);
+            LoadData(Item_Status);
+        }
+
+        private void InterimsEntry_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

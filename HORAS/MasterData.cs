@@ -187,12 +187,12 @@ namespace HORAS
         {
             return Num.ToString("N", new CultureInfo("en-US"));
         }
-        public static Item_TYPE GetItemType(string ContractNumber, string ItemNumber)
+        public static Item_TYPE GetItemType(string ContractNumber, int ItemID)
         {
             int ContractID = Contracts.ContractDataTable.FirstOrDefault(X => X.Number == ContractNumber).ID;
 
             Item_TYPE Type;
-            var Result = assessments.AssItemsAdapter.GetItemType(ContractID, ItemNumber);
+            var Result = assessments.AssItemsAdapter.GetItemType(ContractID, ItemID);
             Type = (Item_TYPE)Result[0].Item_Type;
             return Type;
         }

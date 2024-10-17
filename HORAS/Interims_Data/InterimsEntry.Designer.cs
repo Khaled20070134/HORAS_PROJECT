@@ -34,6 +34,10 @@
             pictureBox2 = new PictureBox();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            labelItemselected = new Label();
+            button5 = new Button();
+            label12 = new Label();
+            pictureBox24 = new PictureBox();
             button1 = new Button();
             NUDV = new NumericUpDown();
             NUDQ = new NumericUpDown();
@@ -56,16 +60,13 @@
             pictureBox5 = new PictureBox();
             labelTotalQty = new Label();
             label6 = new Label();
-            comboBoxItems = new ComboBox();
-            pictureBox1 = new PictureBox();
-            label2 = new Label();
             tabPage2 = new TabPage();
             labelTotalGV = new Label();
             label20 = new Label();
             pictureBox13 = new PictureBox();
             button2 = new Button();
             DGV = new DataGridView();
-            ItemNo = new DataGridViewTextBoxColumn();
+            ItemID = new DataGridViewTextBoxColumn();
             QTY = new DataGridViewTextBoxColumn();
             Value = new DataGridViewTextBoxColumn();
             button3 = new Button();
@@ -88,6 +89,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox24).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NUDV).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NUDQ).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
@@ -97,7 +99,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DGV).BeginInit();
@@ -156,6 +157,10 @@
             // tabPage1
             // 
             tabPage1.BackColor = Color.Black;
+            tabPage1.Controls.Add(labelItemselected);
+            tabPage1.Controls.Add(button5);
+            tabPage1.Controls.Add(label12);
+            tabPage1.Controls.Add(pictureBox24);
             tabPage1.Controls.Add(button1);
             tabPage1.Controls.Add(NUDV);
             tabPage1.Controls.Add(NUDQ);
@@ -178,15 +183,58 @@
             tabPage1.Controls.Add(pictureBox5);
             tabPage1.Controls.Add(labelTotalQty);
             tabPage1.Controls.Add(label6);
-            tabPage1.Controls.Add(comboBoxItems);
-            tabPage1.Controls.Add(pictureBox1);
-            tabPage1.Controls.Add(label2);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(837, 233);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "إضافة بند إلى المستخلص";
+            // 
+            // labelItemselected
+            // 
+            labelItemselected.AutoSize = true;
+            labelItemselected.BackColor = Color.Transparent;
+            labelItemselected.ForeColor = Color.White;
+            labelItemselected.Location = new Point(628, 29);
+            labelItemselected.Name = "labelItemselected";
+            labelItemselected.Size = new Size(13, 15);
+            labelItemselected.TabIndex = 228;
+            labelItemselected.Text = "0";
+            labelItemselected.Visible = false;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(500, 24);
+            button5.Name = "button5";
+            button5.Size = new Size(75, 23);
+            button5.TabIndex = 227;
+            button5.Text = "اختيار بند";
+            button5.UseVisualStyleBackColor = true;
+            button5.Visible = false;
+            button5.Click += button5_Click;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.BackColor = Color.Transparent;
+            label12.ForeColor = Color.White;
+            label12.Location = new Point(716, 32);
+            label12.Name = "label12";
+            label12.Size = new Size(84, 15);
+            label12.TabIndex = 226;
+            label12.Text = "رقم البند ألمختار";
+            label12.Visible = false;
+            // 
+            // pictureBox24
+            // 
+            pictureBox24.BackColor = Color.Transparent;
+            pictureBox24.Image = (Image)resources.GetObject("pictureBox24.Image");
+            pictureBox24.Location = new Point(806, 32);
+            pictureBox24.Name = "pictureBox24";
+            pictureBox24.Size = new Size(16, 18);
+            pictureBox24.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox24.TabIndex = 225;
+            pictureBox24.TabStop = false;
             // 
             // button1
             // 
@@ -446,38 +494,6 @@
             label6.TabIndex = 77;
             label6.Text = "كمية أو نسبة البند فى المقايسة";
             // 
-            // comboBoxItems
-            // 
-            comboBoxItems.FormattingEnabled = true;
-            comboBoxItems.Location = new Point(545, 20);
-            comboBoxItems.Name = "comboBoxItems";
-            comboBoxItems.Size = new Size(182, 23);
-            comboBoxItems.TabIndex = 75;
-            comboBoxItems.SelectedIndexChanged += comboBoxItems_SelectedIndexChanged;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(806, 22);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(16, 18);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 73;
-            pictureBox1.TabStop = false;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(749, 24);
-            label2.Name = "label2";
-            label2.Size = new Size(48, 15);
-            label2.TabIndex = 74;
-            label2.Text = "رقم البند";
-            // 
             // tabPage2
             // 
             tabPage2.BackColor = Color.Black;
@@ -545,19 +561,20 @@
             DGV.AllowUserToAddRows = false;
             DGV.AllowUserToDeleteRows = false;
             DGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGV.Columns.AddRange(new DataGridViewColumn[] { ItemNo, QTY, Value });
+            DGV.Columns.AddRange(new DataGridViewColumn[] { ItemID, QTY, Value });
             DGV.Location = new Point(6, 6);
             DGV.MultiSelect = false;
             DGV.Name = "DGV";
             DGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DGV.Size = new Size(825, 185);
             DGV.TabIndex = 0;
+            DGV.CellContentClick += DGV_CellContentClick;
             // 
-            // ItemNo
+            // ItemID
             // 
-            ItemNo.Frozen = true;
-            ItemNo.HeaderText = "رقم البند";
-            ItemNo.Name = "ItemNo";
+            ItemID.Frozen = true;
+            ItemID.HeaderText = "رقم البند";
+            ItemID.Name = "ItemID";
             // 
             // QTY
             // 
@@ -804,10 +821,12 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "InterimsEntry";
             Text = "InterimsEntry";
+            Load += InterimsEntry_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox24).EndInit();
             ((System.ComponentModel.ISupportInitialize)NUDV).EndInit();
             ((System.ComponentModel.ISupportInitialize)NUDQ).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
@@ -817,7 +836,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
@@ -870,9 +888,6 @@
         private PictureBox pictureBox5;
         private Label labelTotalQty;
         private Label label6;
-        private ComboBox comboBoxItems;
-        private PictureBox pictureBox1;
-        private Label label2;
         private DataGridView DGV;
         private Label label20;
         private PictureBox pictureBox13;
@@ -880,9 +895,6 @@
         private TableLayoutPanel tableLayoutPanel1;
         private PictureBox pictureBoxStatus;
         private Label labelStatus;
-        private DataGridViewTextBoxColumn ItemNo;
-        private DataGridViewTextBoxColumn QTY;
-        private DataGridViewTextBoxColumn Value;
         private Label labelTotalGV;
         private Button button3;
         private Button buttonchosecontract;
@@ -891,5 +903,12 @@
         private PictureBox pictureBox14;
         private Label label11;
         private MetroFramework.Controls.MetroTextBox TextBoxOrigIntfile;
+        private Label labelItemselected;
+        private Button button5;
+        private Label label12;
+        private PictureBox pictureBox24;
+        private DataGridViewTextBoxColumn ItemID;
+        private DataGridViewTextBoxColumn QTY;
+        private DataGridViewTextBoxColumn Value;
     }
 }
