@@ -742,6 +742,10 @@ namespace HORAS.Database
 {
 }
 
+namespace HORAS.Database
+{
+}
+
 namespace HORAS.Database.HorasDataSetTableAdapters
 {
     partial class EmployeesTableAdapter
