@@ -31,7 +31,7 @@ namespace HORAS.Contracts
                    Where(X => X.Contract_ID == contractID).ToList();
 
             dataGridViewDisplayItems.Rows.Clear();
-            foreach (var Item in itemlist) dataGridViewDisplayItems.Rows.Add(Item.Number, Item.Description);
+            foreach (var Item in itemlist) dataGridViewDisplayItems.Rows.Add(Item.ID,Item.Number, Item.Description);
 
 
         }
@@ -45,9 +45,10 @@ namespace HORAS.Contracts
         {
             if (dataGridViewDisplayItems.SelectedRows.Count > 0)
             {
-                int selectedrowindex = dataGridViewDisplayItems.SelectedRows[0].Index;
-                DataGridViewRow selectedRow = dataGridViewDisplayItems.Rows[selectedrowindex];
-                ItemID = int.Parse( selectedRow.Cells[0].Value.ToString());
+                
+                int selectedRowIndex = dataGridViewDisplayItems.SelectedRows[0].Index;
+                ItemID =int.Parse(dataGridViewDisplayItems.Rows[selectedRowIndex].Cells[0].Value.ToString());
+               
                 Close();
             }
         }

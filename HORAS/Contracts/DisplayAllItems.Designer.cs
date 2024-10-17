@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             dataGridViewDisplayItems = new DataGridView();
-            Description = new DataGridViewTextBoxColumn();
-            Number = new DataGridViewTextBoxColumn();
             label8 = new Label();
             button1 = new Button();
+            ID = new DataGridViewTextBoxColumn();
+            Description = new DataGridViewTextBoxColumn();
+            Number = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDisplayItems).BeginInit();
             SuspendLayout();
             // 
@@ -41,7 +42,7 @@
             dataGridViewDisplayItems.AllowUserToAddRows = false;
             dataGridViewDisplayItems.AllowUserToDeleteRows = false;
             dataGridViewDisplayItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewDisplayItems.Columns.AddRange(new DataGridViewColumn[] { Description, Number });
+            dataGridViewDisplayItems.Columns.AddRange(new DataGridViewColumn[] { ID, Description, Number });
             dataGridViewDisplayItems.Location = new Point(45, 61);
             dataGridViewDisplayItems.MultiSelect = false;
             dataGridViewDisplayItems.Name = "dataGridViewDisplayItems";
@@ -51,20 +52,6 @@
             dataGridViewDisplayItems.Size = new Size(697, 307);
             dataGridViewDisplayItems.TabIndex = 1;
             dataGridViewDisplayItems.CellDoubleClick += dataGridViewDisplayItems_CellDoubleClick;
-            // 
-            // Description
-            // 
-            Description.HeaderText = "رقم البند";
-            Description.Name = "Description";
-            Description.ReadOnly = true;
-            Description.Width = 500;
-            // 
-            // Number
-            // 
-            Number.HeaderText = "وصف البند";
-            Number.Name = "Number";
-            Number.ReadOnly = true;
-            Number.Width = 150;
             // 
             // label8
             // 
@@ -96,6 +83,27 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // ID
+            // 
+            ID.HeaderText = "Column1";
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Visible = false;
+            // 
+            // Description
+            // 
+            Description.HeaderText = "رقم البند";
+            Description.Name = "Description";
+            Description.ReadOnly = true;
+            Description.Width = 500;
+            // 
+            // Number
+            // 
+            Number.HeaderText = "وصف البند";
+            Number.Name = "Number";
+            Number.ReadOnly = true;
+            Number.Width = 150;
+            // 
             // DisplayAllItems
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -118,8 +126,9 @@
 
         private DataGridView dataGridViewDisplayItems;
         private Label label8;
+        private Button button1;
+        private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Description;
         private DataGridViewTextBoxColumn Number;
-        private Button button1;
     }
 }

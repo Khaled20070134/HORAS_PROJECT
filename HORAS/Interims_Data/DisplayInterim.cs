@@ -84,7 +84,7 @@ namespace HORAS.Interims_Data
 
         private void DGVItems_SelectionChanged(object sender, EventArgs e)
         {
-            int SelectedItemID = int.Parse(DGVItems.SelectedRows[0].Cells[0].Value);
+            int SelectedItemID = int.Parse(DGVItems.SelectedRows[0].Cells[0].Value.ToString());
             string SelectedContractNumber = LinkContract.Text;
             int SelectedInterimID = MasterData.Interim.InterimsHeadDataTable.
                 FirstOrDefault(x => x.Number == comboBoxIntNum.SelectedItem.ToString()).ID;

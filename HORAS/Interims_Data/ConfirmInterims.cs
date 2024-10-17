@@ -27,6 +27,71 @@ namespace HORAS.Interims_Data
             LoadContractData();
 
         }
+
+        public static int SelectedITemID = 0;
+
+        void LoadItemData(I_Status status) 
+        {
+             
+            //int slectedItemID = 
+            string SelectedContractNumber = comboBoxContracts.SelectedItem.ToString();
+
+            // Load Description
+            labelDescription.Text =
+            MasterData.assessments.NotNullContracts.
+            FirstOrDefault(X => X.Contract_ID == SelectedContrctID && X.ID == DisplayAllinterimsItems.ItemID).Description;
+
+            // Load Item Type
+            Item_TYPE ITpe = MasterData.GetItemType(SelectedContractNumber, DisplayAllinterimsItems.ItemID);
+            labelItemType.Text = ITpe.ToString();
+            int Typeint = (int)ITpe;
+            //FirstOrDefault(X => X.Contract_ID == SelectedContrctID && X.Number == SelectedItemNumber).Item_Type;
+            //labelItemType.Text = ((Item_TYPE)Typeint).ToString();
+
+             
+            double Qty = MasterData.Interim.InterimsItemsDataTable.
+                FirstOrDefault(X => X.HeadID == SelectedInterimID && X.ItemID == DisplayAllinterimsItems.ItemID).Qty;
+            labelQTy.Text = MasterData.NumericString(Qty);
+            // Load Qty
+            //switch (Typeint)
+            //{
+            //    case 0:
+            //        labelQTy.Text = MasterData.NumericString(Qty);
+            //        break;
+            //    default:
+            //        Qty = MasterData.Interim.InterimsItemsDataTable.
+            //             FirstOrDefault(X => X.HeadID == SelectedInterimID && X.ID == slectedItemID).Qty;
+            //        labelQTy.Text = MasterData.NumericString(Qty);
+            //        break;
+            //}
+
+            // Load Price from Interim
+            double Price, PriceUnit = 0;
+            Price = MasterData.Interim.InterimsItemsDataTable.
+FirstOrDefault(X => X.HeadID == SelectedInterimID && X.ItemID == DisplayAllinterimsItems.ItemID).Price_Unit;
+            labelPriceInter.Text = MasterData.NumericString(Price);
+            //switch (Typeint)
+            //{
+            //    case 0:
+            //        double Price, PriceUnit = 0;
+            //        Price = MasterData.Interim.InterimsItemsDataTable.
+            //            FirstOrDefault(X => X.HeadID == SelectedInterimID && X.Number == SelectedItemNumber).Price_Unit;
+            //        labelPriceInter.Text = MasterData.NumericString(Qty / Price);
+            //        break;
+            //    default:
+            //        Price = MasterData.Interim.InterimsItemsDataTable.
+            //           FirstOrDefault(X => X.HeadID == SelectedInterimID && X.Number == SelectedItemNumber).Price_Unit;
+            //        labelPriceInter.Text = MasterData.NumericString(Price);
+            //        break;
+            //}
+            ///////////////////////////////////////////////////////////////////////////////
+            I_Status Status = MasterData.Interim.Get_Item_Status(SelectedContractNumber, DisplayAllinterimsItems.ItemID);
+            labelPOC.Text = ((Status.Delivered_QP / Status.Total_QP) * 100).ToString() + " %";
+            labelPriceAss.Text = Status.Total_Value.ToString();
+            labelRemain.Text = (Status.Total_QP - Status.Delivered_QP).ToString();
+
+
+        }
         void LoadData()
         {
             var Results = MasterData.Contracts.ContractTableAdapter.ContractsAndInterimsConfirm();
@@ -39,21 +104,21 @@ namespace HORAS.Interims_Data
 
         }
 
-        private void listBoxInterims_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listBoxInterims.SelectedIndex != -1)
-            {
-                listBoxItems.Items.Clear();
-                string InteNumber = listBoxInterims.SelectedItem.ToString();
-                SelectedInterimID = MasterData.Interim.InterimsHeadDataTable.FirstOrDefault(X => X.Number == InteNumber).ID;
-                ItemsDataTable =
-                    MasterData.Interim.InterimsItemsTableAdapter.GetItemsOfInte(SelectedInterimID);
-                LoadGeneral();
+        //private void listBoxInterims_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (listBoxInterims.SelectedIndex != -1)
+        //    {
+        //        listBoxItems.Items.Clear();
+        //        string InteNumber = listBoxInterims.SelectedItem.ToString();
+        //        SelectedInterimID = MasterData.Interim.InterimsHeadDataTable.FirstOrDefault(X => X.Number == InteNumber).ID;
+        //        ItemsDataTable =
+        //            MasterData.Interim.InterimsItemsTableAdapter.GetItemsOfInte(SelectedInterimID);
+        //        LoadGeneral();
 
-                foreach (var Item in ItemsDataTable)
-                    listBoxItems.Items.Add(Item.ID);
-            }
-        }
+        //        foreach (var Item in ItemsDataTable)
+        //            listBoxItems.Items.Add(Item.ID);
+        //    }
+        //}
 
         void LoadGeneral()
         {
@@ -116,8 +181,8 @@ namespace HORAS.Interims_Data
         void Reset()
         {
             comboBoxContracts.Items.Clear();
+            //listBoxItems.Items.Clear();
             listBoxInterims.Items.Clear();
-            listBoxItems.Items.Clear();
             labelNoItems.Text = labelTotalItems.Text = labelDescription.Text =
                 labelPriceAss.Text = labelQTy.Text = labelEntryDate.Text =
                 labelPriceInter.Text = labelItemType.Text = labelRemain.Text = labelPOC.Text = string.Empty;
@@ -138,69 +203,69 @@ namespace HORAS.Interims_Data
             setStatus("تم تأكيد بيانات المستخلص", 1);
         }
 
-        private void listBoxItems_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listBoxItems.SelectedIndex != -1)
-            {
-                int slectedItemID = int.Parse(listBoxItems.SelectedItem);
-                string SelectedContractNumber = comboBoxContracts.SelectedItem.ToString();
+   //     private void listBoxItems_SelectedIndexChanged(object sender, EventArgs e)
+   //     {
+   //         if (listBoxItems.SelectedIndex != -1)
+   //         {
+   //             int slectedItemID = int.Parse(listBoxItems.SelectedItem.ToString());
+   //             string SelectedContractNumber = comboBoxContracts.SelectedItem.ToString();
 
-                // Load Description
-                labelDescription.Text =
-                MasterData.assessments.NotNullContracts.
-                FirstOrDefault(X => X.Contract_ID == SelectedContrctID && X.ID == slectedItemID).Description;
+   //             // Load Description
+   //             labelDescription.Text =
+   //             MasterData.assessments.NotNullContracts.
+   //             FirstOrDefault(X => X.Contract_ID == SelectedContrctID && X.ID == slectedItemID).Description;
 
-                // Load Item Type
-                Item_TYPE ITpe = MasterData.GetItemType(SelectedContractNumber, slectedItemID);
-                labelItemType.Text = ITpe.ToString();
-                int Typeint = (int)ITpe;
-                //FirstOrDefault(X => X.Contract_ID == SelectedContrctID && X.Number == SelectedItemNumber).Item_Type;
-                //labelItemType.Text = ((Item_TYPE)Typeint).ToString();
+   //             // Load Item Type
+   //             Item_TYPE ITpe = MasterData.GetItemType(SelectedContractNumber, slectedItemID);
+   //             labelItemType.Text = ITpe.ToString();
+   //             int Typeint = (int)ITpe;
+   //             //FirstOrDefault(X => X.Contract_ID == SelectedContrctID && X.Number == SelectedItemNumber).Item_Type;
+   //             //labelItemType.Text = ((Item_TYPE)Typeint).ToString();
 
-                double Qty;
-                Qty = MasterData.Interim.InterimsItemsDataTable.
-                    FirstOrDefault(X => X.HeadID == SelectedInterimID && X.ID == slectedItemID).Qty;
+   //             double Qty;
+   //             Qty = MasterData.Interim.InterimsItemsDataTable.
+   //                 FirstOrDefault(X => X.HeadID == SelectedInterimID && X.ID == slectedItemID).Qty;
 
-                // Load Qty
-                switch (Typeint)
-                {
-                    case 0:
-                        labelQTy.Text = MasterData.NumericString(Qty);
-                        break;
-                    default:
-                        Qty = MasterData.Interim.InterimsItemsDataTable.
-                             FirstOrDefault(X => X.HeadID == SelectedInterimID && X.ID == slectedItemID).Qty;
-                        labelQTy.Text = MasterData.NumericString(Qty);
-                        break;
-                }
+   //             // Load Qty
+   //             switch (Typeint)
+   //             {
+   //                 case 0:
+   //                     labelQTy.Text = MasterData.NumericString(Qty);
+   //                     break;
+   //                 default:
+   //                     Qty = MasterData.Interim.InterimsItemsDataTable.
+   //                          FirstOrDefault(X => X.HeadID == SelectedInterimID && X.ID == slectedItemID).Qty;
+   //                     labelQTy.Text = MasterData.NumericString(Qty);
+   //                     break;
+   //             }
 
-                // Load Price from Interim
-                double Price, PriceUnit = 0;
-                Price = MasterData.Interim.InterimsItemsDataTable.
-   FirstOrDefault(X => X.HeadID == SelectedInterimID && X.ID == slectedItemID).Price_Unit;
-                labelPriceInter.Text = MasterData.NumericString(Price);
-                //switch (Typeint)
-                //{
-                //    case 0:
-                //        double Price, PriceUnit = 0;
-                //        Price = MasterData.Interim.InterimsItemsDataTable.
-                //            FirstOrDefault(X => X.HeadID == SelectedInterimID && X.Number == SelectedItemNumber).Price_Unit;
-                //        labelPriceInter.Text = MasterData.NumericString(Qty / Price);
-                //        break;
-                //    default:
-                //        Price = MasterData.Interim.InterimsItemsDataTable.
-                //           FirstOrDefault(X => X.HeadID == SelectedInterimID && X.Number == SelectedItemNumber).Price_Unit;
-                //        labelPriceInter.Text = MasterData.NumericString(Price);
-                //        break;
-                //}
-                ///////////////////////////////////////////////////////////////////////////////
-                I_Status Status = MasterData.Interim.Get_Item_Status(SelectedContractNumber, slectedItemID);
-                labelPOC.Text = ((Status.Delivered_QP / Status.Total_QP) * 100).ToString() + " %";
-                labelPriceAss.Text = Status.Total_Value.ToString();
-                labelRemain.Text = (Status.Total_QP - Status.Delivered_QP).ToString();
+   //             // Load Price from Interim
+   //             double Price, PriceUnit = 0;
+   //             Price = MasterData.Interim.InterimsItemsDataTable.
+   //FirstOrDefault(X => X.HeadID == SelectedInterimID && X.ID == slectedItemID).Price_Unit;
+   //             labelPriceInter.Text = MasterData.NumericString(Price);
+   //             //switch (Typeint)
+   //             //{
+   //             //    case 0:
+   //             //        double Price, PriceUnit = 0;
+   //             //        Price = MasterData.Interim.InterimsItemsDataTable.
+   //             //            FirstOrDefault(X => X.HeadID == SelectedInterimID && X.Number == SelectedItemNumber).Price_Unit;
+   //             //        labelPriceInter.Text = MasterData.NumericString(Qty / Price);
+   //             //        break;
+   //             //    default:
+   //             //        Price = MasterData.Interim.InterimsItemsDataTable.
+   //             //           FirstOrDefault(X => X.HeadID == SelectedInterimID && X.Number == SelectedItemNumber).Price_Unit;
+   //             //        labelPriceInter.Text = MasterData.NumericString(Price);
+   //             //        break;
+   //             //}
+   //             ///////////////////////////////////////////////////////////////////////////////
+   //             I_Status Status = MasterData.Interim.Get_Item_Status(SelectedContractNumber, slectedItemID);
+   //             labelPOC.Text = ((Status.Delivered_QP / Status.Total_QP) * 100).ToString() + " %";
+   //             labelPriceAss.Text = Status.Total_Value.ToString();
+   //             labelRemain.Text = (Status.Total_QP - Status.Delivered_QP).ToString();
 
-            }
-        }
+   //         }
+   //     }
 
         private void buttonchosecontract_Click(object sender, EventArgs e)
         {
@@ -219,6 +284,9 @@ namespace HORAS.Interims_Data
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadContractData();
+            buttonSelecteItem.Visible = true;
+            labelItemselected.Visible = true;   
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -240,6 +308,19 @@ namespace HORAS.Interims_Data
             {
                 MasterData.OpenFile(Output);
             }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (comboBoxContracts.SelectedIndex == -1) return;
+            DisplayAllinterimsItems Con = new DisplayAllinterimsItems(listBoxInterims.SelectedItem.ToString());
+            Con.ShowDialog();
+            SelectedItemID = DisplayAllinterimsItems.ItemID;
+            labelItemselected.Text = SelectedItemID.ToString();
+
+            I_Status Item_Status = MasterData.Interim.Get_Item_Status(comboBoxContracts.SelectedItem.ToString(),
+                SelectedItemID);
+            LoadItemData(Item_Status);
         }
     }
 }

@@ -200,7 +200,6 @@
             labelItemselected.Size = new Size(13, 15);
             labelItemselected.TabIndex = 228;
             labelItemselected.Text = "0";
-            labelItemselected.Visible = false;
             // 
             // button5
             // 
@@ -210,7 +209,6 @@
             button5.TabIndex = 227;
             button5.Text = "اختيار بند";
             button5.UseVisualStyleBackColor = true;
-            button5.Visible = false;
             button5.Click += button5_Click;
             // 
             // label12
@@ -235,6 +233,7 @@
             pictureBox24.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox24.TabIndex = 225;
             pictureBox24.TabStop = false;
+            pictureBox24.Click += pictureBox24_Click;
             // 
             // button1
             // 

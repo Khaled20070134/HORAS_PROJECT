@@ -60,7 +60,7 @@ namespace HORAS.Interims_Data
             {
                 ItemRow = MasterData.Interim.InterimsItemsDataTable.NewInterimsItemsRow();
                 ItemRow.ID = StartItemIndex;
-                ItemRow.Number = DGV.Rows[i].Cells[0].Value.ToString();
+                ItemRow.ItemID = int.Parse(DGV.Rows[i].Cells[0].Value.ToString());
                 //ItemRow.HeadID = ContractID;
                 ItemRow.Price_Unit = double.Parse(DGV.Rows[i].Cells[2].Value.ToString());
                 ItemRow.Qty = double.Parse(DGV.Rows[i].Cells[1].Value.ToString());
@@ -78,10 +78,11 @@ namespace HORAS.Interims_Data
 
             SelectedContrctID = MasterData.Contracts.ContractDataTable.
                 FirstOrDefault(X => X.Number == CBContracts.SelectedItem.ToString()).ID;
-           // comboBoxItems.Items.Clear();
-           // var ItemsList = MasterData.assessments.AssItemsAdapter.GetContractItems(SelectedContrctID);
+            // comboBoxItems.Items.Clear();
+            // var ItemsList = MasterData.assessments.AssItemsAdapter.GetContractItems(SelectedContrctID);
             //foreach (var Item in ItemsList)
-              //  comboBoxItems.Items.Add(Item.Number);
+            //  comboBoxItems.Items.Add(Item.Number);
+
         }
 
         private void comboBoxItems_SelectedIndexChanged(object sender, EventArgs e)
@@ -150,7 +151,7 @@ namespace HORAS.Interims_Data
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (NUDQ.Value > 0 && NUDV.Value > 0   && CBContracts.SelectedIndex != -1)
+            if (NUDQ.Value > 0 && NUDV.Value > 0 && CBContracts.SelectedIndex != -1)
             {
                 if ((NUDV.Value * NUDQ.Value) + decimal.Parse(labelTotalDeliveredValue.Text)
                     > decimal.Parse(labelTotalExps.Text))
@@ -258,6 +259,11 @@ namespace HORAS.Interims_Data
         }
 
         private void DGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void pictureBox24_Click(object sender, EventArgs e)
         {
 
         }
