@@ -8,12 +8,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HORAS {
+namespace Horas_Reporting_2 {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.11.0.0")]
-    public sealed partial class Settings1 : global::System.Configuration.ApplicationSettingsBase {
+    internal sealed partial class Settings1 : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings1 defaultInstance = ((Settings1)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings1())));
         
@@ -32,30 +32,6 @@ namespace HORAS {
             }
             set {
                 this["CS"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string DB_Files {
-            get {
-                return ((string)(this["DB_Files"]));
-            }
-            set {
-                this["DB_Files"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Reporting_URL {
-            get {
-                return ((string)(this["Reporting_URL"]));
-            }
-            set {
-                this["Reporting_URL"] = value;
             }
         }
     }

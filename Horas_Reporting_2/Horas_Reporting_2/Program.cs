@@ -17,7 +17,14 @@ namespace Horas_Reporting_2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Startup());
+
+            MasterData.LoadMasterData();
+            if (MasterData.DatabaseConnected) Application.Run(new Startup());
+            else
+                Application.Run(new ConnectionData());
+
+
+          //  Application.Run(new Startup());
         }
     }
 }

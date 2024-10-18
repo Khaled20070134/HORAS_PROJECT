@@ -83,6 +83,16 @@ namespace Horas_Reporting_2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap databasesettings_32 {
+            get {
+                object obj = ResourceManager.GetObject("databasesettings_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap left_Arrow_2_16 {
             get {
                 object obj = ResourceManager.GetObject("left_Arrow_2_16", resourceCulture);
@@ -106,6 +116,16 @@ namespace Horas_Reporting_2.Properties {
         internal static System.Drawing.Bitmap left_Arrow_32 {
             get {
                 object obj = ResourceManager.GetObject("left_Arrow_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Server_32 {
+            get {
+                object obj = ResourceManager.GetObject("Server_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -95,6 +95,14 @@ namespace HORAS
             ConnectionString = string.Empty;
 
             DatabaseConnected = false;
+
+
+
+            if (Settings1.Default.Reporting_URL == string.Empty)
+            {
+                FilePath_R Form = new FilePath_R();
+                Form.ShowDialog();
+            }
         }
 
         public static void LoadMasterData()
@@ -243,6 +251,15 @@ namespace HORAS
             }
 
 
+            return FoundFile;
+        }
+
+
+        public static string GetExeFile(string FileName)
+        {
+            string FoundFile = string.Empty;
+            string[] Files = Directory.GetFiles(Settings1.Default.DB_Files, FileName + ".pdf");
+            if (Files.Count() > 0) FoundFile = Files[0];
             return FoundFile;
         }
 

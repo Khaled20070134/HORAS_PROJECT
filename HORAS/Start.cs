@@ -184,7 +184,17 @@ namespace HORAS
 
         private void metroButton5_Click(object sender, EventArgs e)
         {
-          //  Process.Start();
+            if (Settings1.Default.Reporting_URL == string.Empty)
+            {
+                FilePath_R Form = new FilePath_R();
+                Form.Show();
+                if (Settings1.Default.Reporting_URL != string.Empty)
+                    MasterData.OpenFile(Settings1.Default.Reporting_URL);
+                else
+                    MessageBox.Show("No File Selected");
+            }
+            else MasterData.OpenFile(Settings1.Default.Reporting_URL);
+
         }
     }
 }

@@ -1,6 +1,9 @@
 ﻿using Horas_Reporting_2.DataSet1TableAdapters;
+using Horas_Reporting_2.Properties;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -44,6 +47,78 @@ namespace Horas_Reporting_2
 
         public static PartyTableAdapter PartyTableAdapter = new PartyTableAdapter();
         public static PartyDataTable PartyDataTable = new PartyDataTable();
+
+        public static bool DatabaseConnected = false;
+        public static string ConnectionString;
+
+        static void SetConnectionString()
+        {
+            //Settings1.Default.Reload();
+
+            try
+            {
+                ContractTableAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                ExpTrAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                IExpansesAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                JExpansesAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                //BGLAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                //CollectionAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                EmployeesTableAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                AssessmentHeadTableAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                AssItemsAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                PartyTableAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                InterimsHeadTableAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                InterimsItemsTableAdapter.Connection.ConnectionString = Settings1.Default.CS;
+                LogTableAdapter.Connection.ConnectionString = Settings1.Default.CS;
+            }
+            catch (InvalidOperationException Ex)
+            {
+
+                DatabaseConnected = false;
+                return;
+            }
+            // Settings1.Default.Save();
+        }
+
+        static bool CheckConnectionString()
+        {
+            if (Settings1.Default.CS == string.Empty) return false;
+            try
+            {
+                var conn = new SqlConnection(Settings1.Default.CS);
+                conn.Open();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public static void LoadMasterData()
+        {
+            try
+            {
+                //DatabaseConnected = CheckConnectionString();
+                if (!CheckConnectionString()) return;
+                SetConnectionString();
+             RefreshContractsList();
+                RefreshAssList();
+                RefreshEmployeeList();
+                RefreshPartyList();
+                RefreshActivitiesList();
+                RefreshInterimsList();
+                //Collections.RefreshList();
+
+                DatabaseConnected = true;
+            }
+            catch (InvalidOperationException Ex)
+            {
+
+                DatabaseConnected = false;
+                return;
+            }
+        }
 
         public static void RefreshInterimsList()
         {
