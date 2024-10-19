@@ -51,5 +51,10 @@ namespace Horas_Reporting_2
             Form.ShowDialog();
             Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

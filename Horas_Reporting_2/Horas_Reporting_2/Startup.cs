@@ -53,5 +53,10 @@ namespace Horas_Reporting_2
             InterimWithContract Form = new InterimWithContract();
             Form.ShowDialog();
         }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

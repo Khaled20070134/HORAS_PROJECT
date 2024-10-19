@@ -35,12 +35,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(90, 157);
+            this.button1.Location = new System.Drawing.Point(108, 114);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(102, 23);
             this.button1.TabIndex = 18;
@@ -53,7 +54,7 @@
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox2.Image = global::Horas_Reporting_2.Properties.Resources.left_Arrow_2_32;
-            this.pictureBox2.Location = new System.Drawing.Point(464, 143);
+            this.pictureBox2.Location = new System.Drawing.Point(482, 100);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(23, 25);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -62,14 +63,14 @@
             // 
             // DTP_To
             // 
-            this.DTP_To.Location = new System.Drawing.Point(216, 158);
+            this.DTP_To.Location = new System.Drawing.Point(234, 115);
             this.DTP_To.Name = "DTP_To";
             this.DTP_To.Size = new System.Drawing.Size(200, 20);
             this.DTP_To.TabIndex = 16;
             // 
             // DTP_From
             // 
-            this.DTP_From.Location = new System.Drawing.Point(216, 129);
+            this.DTP_From.Location = new System.Drawing.Point(234, 86);
             this.DTP_From.Name = "DTP_From";
             this.DTP_From.Size = new System.Drawing.Size(200, 20);
             this.DTP_From.TabIndex = 15;
@@ -80,7 +81,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(427, 160);
+            this.label2.Location = new System.Drawing.Point(445, 117);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(25, 17);
             this.label2.TabIndex = 14;
@@ -92,7 +93,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(430, 131);
+            this.label1.Location = new System.Drawing.Point(448, 88);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(22, 17);
             this.label1.TabIndex = 13;
@@ -110,13 +111,24 @@
             this.label3.TabIndex = 19;
             this.label3.Text = "فلتر بيانات المستخلصات الخاصة بفترة محددة";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(108, 143);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(102, 23);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "رجـــــوع";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // InterimWithDate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Horas_Reporting_2.Properties.Resources.black_desktop_background_geometric_pattern_design_vector_53876_140229;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(577, 309);
+            this.ClientSize = new System.Drawing.Size(560, 211);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox2);
@@ -143,5 +155,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button2;
     }
 }
